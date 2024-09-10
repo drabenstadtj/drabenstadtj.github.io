@@ -15,6 +15,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            animation: rainbowBackground 10s linear infinite;
         }
         .container {
             width: 90%;
@@ -48,6 +49,79 @@
         .donation-link {
             font-size: 1.2em;
             font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        Yes, you can make the transition smoother by adjusting the keyframes and ensuring that the color transitions loop seamlessly. To achieve this, I suggest slightly tweaking the keyframes so that the first and last keyframe are the same, ensuring a smooth transition.
+
+Here’s the updated version of your HTML with a smoother looping rainbow background:
+
+html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Upgrade Copland!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ff915f;
+            color: black;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            animation: rainbowBackground 10s linear infinite;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-family: 'Unbounded', sans-serif;
+            font-weight: bold;
+            text-align: center;
+        }
+        p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .donation-link {
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        @keyframes rainbowBackground {
+            0% { background-color: #ff0000; }
+            16.6% { background-color: #ff9900; }
+            33.3% { background-color: #ffff00; }
+            50% { background-color: #00ff00; }
+            66.6% { background-color: #00ffff; }
+            83.3% { background-color: #0000ff; }
+            100% { background-color: #ff0000; } 
         }
 
         /* Media queries for mobile responsiveness */
@@ -98,7 +172,10 @@
             <li><strong>Total:</strong> $229.38</li>
         </ul>
 
-        <p class="donation-link"><strong>Donations:</strong> <br> <a href="https://paypal.me/coplandparts" target="_blank">paypal</a> <br> <a href="https://account.venmo.com/u/jackdrabenstadt" target="_blank">venmo</a></p>
+        <p class="donation-link"><strong>Donations:</strong> <br> 
+            <a href="https://paypal.me/coplandparts" target="_blank">PayPal</a> <br> 
+            <a href="https://account.venmo.com/u/jackdrabenstadt" target="_blank">Venmo</a>
+        </p>
 
         <p>
             As a thank-you for contributing, I’d love to hear any ideas or requests for things you’d like me to host or how I run the server. Your input will help shape the future of Copland and ensure it continues serving everyone’s needs.
