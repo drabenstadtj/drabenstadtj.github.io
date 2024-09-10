@@ -12,11 +12,31 @@
             background-color: #ff915f;
             color: black;
             font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
         h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             font-family: 'Unbounded', sans-serif;
             font-weight: bold;
+            text-align: center;
+        }
+        p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
         }
         a {
             color: blue;
@@ -25,36 +45,70 @@
         a:hover {
             text-decoration: underline;
         }
+        .donation-link {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Media queries for mobile responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            p, li {
+                font-size: 1em;
+            }
+            ul {
+                padding-left: 10px;
+            }
+            .donation-link {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            p, li {
+                font-size: 0.95em;
+            }
+            ul {
+                padding-left: 5px;
+            }
+        }
     </style>
 </head>
-<body style="width: 800px; margin: auto;">
-    <h1>HELP UPGRADE COPLAND!</h1>
+<body>
+    <div class="container">
+        <h1>HELP UPGRADE COPLAND!</h1>
 
-    <p>
-        Hey everyone! As you know, I run the <a href="https://jellyfin.org" target="_blank">Jellyfin</a> media server on my computer, Copland, so we can all enjoy shared media 😊. To keep things running smoothly and improve your experience, I need to upgrade a few parts.
-    </p>
+        <p>
+            Hey everyone! As you know, I run the <a href="https://jellyfin.org" target="_blank">Jellyfin</a> media server on my computer, Copland, so we can all enjoy shared media 😊. To keep things running smoothly and improve your experience, I need to upgrade a few parts.
+        </p>
 
-    <p>
-        I’m looking to add a SATA expansion card in order to add more hard drives for additional storage and upgrade the case to accommodate more drives. Here are the parts I’m aiming for:
-    </p>
+        <p>
+            I’m looking to add a SATA expansion card in order to add more hard drives for additional storage and upgrade the case to accommodate more drives. Here are the parts I’m aiming for:
+        </p>
 
-    <ul>
-        <li><a target="_blank" href="https://www.seagate.com/products/hard-drives/barracuda-hard-drive/?sku=ST8000DM004&utm_campaign=internal-2025-shopping-global&utm_medium=organic&utm_source=google-shopping&utm_product=barracuda&utm_use_case=general&prodSrc=barracuda&use_case=general">Hard Drives:</a> ($119.99)</li>
-        <li><a target="_blank" href="https://www.newegg.com/black-fractal-design-define-r5-atx-micro-atx-mid-tower/p/N82E16811352048?item=N82E16811352048&nm_mc=knc-googleadwords&cm_mmc=knc-googleadwords-_-cases%20(computer%20cases%20-%20atx%20form)-_-fractal%20design-_-11352048&utm_source=google&utm_medium=organic+shopping&utm_campaign=knc-googleadwords-_-cases%20(computer%20cases%20-%20atx%20form)-_-fractal%20design-_-11352048&source=region">Case:</a> ($74.99)</li>
-        <li><a target="_blank" href="https://a.co/d/fXf8TSL">SATA Expansion Card:</a> ($34.40)</li>
-        <li><strong>Total:</strong> $229.38</li>
-    </ul>
+        <ul>
+            <li><a target="_blank" href="https://www.seagate.com/products/hard-drives/barracuda-hard-drive/?sku=ST8000DM004&utm_campaign=internal-2025-shopping-global&utm_medium=organic&utm_source=google-shopping&utm_product=barracuda&utm_use_case=general&prodSrc=barracuda&use_case=general">Hard Drives:</a> ($119.99)</li>
+            <li><a target="_blank" href="https://www.newegg.com/black-fractal-design-define-r5-atx-micro-atx-mid-tower/p/N82E16811352048?item=N82E16811352048&nm_mc=knc-googleadwords&cm_mmc=knc-googleadwords-_-cases%20(computer%20cases%20-%20atx%20form)-_-fractal%20design-_-11352048&utm_source=google&utm_medium=organic+shopping&utm_campaign=knc-googleadwords-_-cases%20(computer%20cases%20-%20atx%20form)-_-fractal%20design-_-11352048&source=region">Case:</a> ($74.99)</li>
+            <li><a target="_blank" href="https://a.co/d/fXf8TSL">SATA Expansion Card:</a> ($34.40)</li>
+            <li><strong>Total:</strong> $229.38</li>
+        </ul>
 
-    <p><strong>Donations:</strong> <a href="https://paypal.me/coplandparts" target="_blank">paypal.me/coplandparts</a></p>
+        <p class="donation-link"><strong>Donations:</strong> <a href="https://paypal.me/coplandparts" target="_blank">paypal.me/coplandparts</a></p>
 
-    <p>
-        As a thank-you for contributing, I’d love to hear any ideas or requests for things you’d like me to host or how I run the server. Your input will help shape the future of Copland and ensure it continues serving everyone’s needs.
-    </p>
+        <p>
+            As a thank-you for contributing, I’d love to hear any ideas or requests for things you’d like me to host or how I run the server. Your input will help shape the future of Copland and ensure it continues serving everyone’s needs.
+        </p>
 
-    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdqW-z4HZ35T7wM11NmlArp4HSRak7UhRlNeIwbE368lixa9g/viewform?usp=sf_link">Requests and Ideas Form</a></p>
+        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdqW-z4HZ35T7wM11NmlArp4HSRak7UhRlNeIwbE368lixa9g/viewform?usp=sf_link" target="_blank">Requests and Ideas Form</a></p>
 
-    <p>
-        Any contribution will help make sure there is plenty of space and a reliable setup to continue enjoying our shared media. Thanks! 🥳
-    </p>
+        <p>
+            Any contribution will help make sure there is plenty of space and a reliable setup to continue enjoying our shared media. Thanks! 🥳
+        </p>
+    </div>
 </body>
 </html>
