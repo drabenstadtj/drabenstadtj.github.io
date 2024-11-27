@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    background-color: #1F1F28;
+    color: #FDF6E3;
+}
+header {
+    display: flex;
+    justify-content: space-between; /* Space between name and navbar */
+    align-items: center; /* Center items vertically */
+    padding: 20px 80px;
+}
+
+
+nav {
+    background: transparent; /* No background for minimal design */
+    
+}
+.navbar {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+}
+.navbar li {
+    font-size: 18px;
+    margin-left: 40px; /* Space between nav items */
+}
+.navbar a {
+    text-decoration: none; /* No underline */
+    color: #FDF6E3;
+}
+a:hover {
+    color: #8a8a8a;
+}
+
+.cursor {
+    display: inline-block;
+    width: 15px; /* Width of the cursor */
+    height: 30px; /* Height of the cursor */
+    background-color: #FDF6E3; /* Cursor color */
+    animation: blink 1s steps(1) infinite; /* Blink animation */
+    margin-left: 5px; /* Space between text and cursor */
+    position: relative; /* Position relative for top adjustment */
+    top: 3px; /* Adjust this value as needed for vertical alignment */
+}
+@keyframes blink {
+    50% {
+        opacity: 0; /* Invisible at halfway point */
+    }
+}
+
+.container {
+    max-width: 800px;
+    padding: 0px 80px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.social-links {
+    display:flex;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    justify-content: space-between; /* Space between name and navbar */
+
+}
+.social-links li {
+    padding:20px;
+}
+.social-links a {
+    text-decoration: none;
+    color: #FDF6E3;
+    font-size: 24px; /* Adjust icon size */
+}
+
+.social-links a:hover {
+    color: #8a8a8a;
+}
+
+
+.card {
+    display: flex; /* Use flexbox for horizontal layout */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #00000026;
+    box-shadow: 0 2px 10px #ffffff26; /* Subtle shadow */
+    max-width: 800px; /* Maximum width for the card */
+    height: 300px; /* Fixed height for the card */
+    overflow: hidden; /* Prevent overflow */
+    margin: 20px auto 40px auto; /* Center the card horizontally */
+}
+
+.card-image {
+    width: 50%; /* Left half for the image */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Cover the area while maintaining aspect ratio */
+}
+
+.card-content {
+    width: 50%; /* Right half for the content */
+    padding: 20px; /* Padding inside the content area */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+}
+
+.card-content h3 {
+    margin: 0; /* Remove default margin */
+    font-size: 1.5em; /* Increase font size for the title */
+}
+
+.card-content p {
+    margin: 10px 0 0; /* Margin for the description */
+}

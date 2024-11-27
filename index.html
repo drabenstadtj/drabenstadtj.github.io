@@ -1,191 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help Upgrade Copland!</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #ff915f;
-            color: black;
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            animation: rainbowBackground 10s linear infinite;
-        }
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 2.5em;
-            font-family: 'Unbounded', sans-serif;
-            font-weight: bold;
-            text-align: center;
-        }
-        p {
-            font-size: 1.1em;
-            margin-bottom: 15px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        a {
-            color: blue;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .donation-link {
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        Yes, you can make the transition smoother by adjusting the keyframes and ensuring that the color transitions loop seamlessly. To achieve this, I suggest slightly tweaking the keyframes so that the first and last keyframe are the same, ensuring a smooth transition.
-
-Here’s the updated version of your HTML with a smoother looping rainbow background:
-
-html
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help Upgrade Copland!</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Unbounded:wght@700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: #ff915f;
-            color: black;
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            animation: rainbowBackground 10s linear infinite;
-        }
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            font-size: 2.5em;
-            font-family: 'Unbounded', sans-serif;
-            font-weight: bold;
-            text-align: center;
-        }
-        p {
-            font-size: 1.1em;
-            margin-bottom: 15px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        a {
-            color: blue;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .donation-link {
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        @keyframes rainbowBackground {
-            0% { background-color: #ff0000; }
-            16.6% { background-color: #ff9900; }
-            33.3% { background-color: #ffff00; }
-            50% { background-color: #00ff00; }
-            66.6% { background-color: #00ffff; }
-            83.3% { background-color: #0000ff; }
-            100% { background-color: #ff0000; } 
-        }
-
-        /* Media queries for mobile responsiveness */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            p, li {
-                font-size: 1em;
-            }
-            ul {
-                padding-left: 10px;
-            }
-            .donation-link {
-                font-size: 1.1em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8em;
-            }
-            p, li {
-                font-size: 0.95em;
-            }
-            ul {
-                padding-left: 5px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>HELP UPGRADE COPLAND!</h1>
-
-        <p>
-            Hey everyone! As you know, I run the <a href="https://jellyfin.org" target="_blank">Jellyfin</a> media server on my computer, Copland, so we can all enjoy shared media 😉. To keep things running smoothly and improve your experience, I need to upgrade a few parts.
-        </p>
-
-        <p>
-            I’m looking to add a SATA expansion card in order to add more hard drives for additional storage and upgrade the case to accommodate more drives. Here are the parts I’m aiming for:
-        </p>
-
-        <ul>
-            <li><a target="_blank" href="https://www.seagate.com/products/hard-drives/barracuda-hard-drive/?sku=ST8000DM004&utm_campaign=internal-2025-shopping-global&utm_medium=organic&utm_source=google-shopping&utm_product=barracuda&utm_use_case=general&prodSrc=barracuda&use_case=general">Hard Drives:</a> ($119.99)</li>
-            <li><a target="_blank" href="https://www.newegg.com/black-fractal-design-define-r5-atx-micro-atx-mid-tower/p/N82E16811352048?item=N82E16811352048&nm_mc=knc-googleadwords&cm_mmc=knc-googleadwords-_-cases%20(computer%20cases%20-%20atx%20form)-_-fractal%20design-_-11352048&utm_source=google&utm_medium=organic+shopping&utm_campaign=knc-googleadwords-_-cases%20(computer%20cases%20-%20atx%20form)-_-fractal%20design-_-11352048&source=region">Case:</a> ($74.99)</li>
-            <li><a target="_blank" href="https://a.co/d/fXf8TSL">SATA Expansion Card:</a> ($34.40)</li>
-            <li><strong>Total:</strong> $229.38</li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Jack Drabenstadt<span class="cursor"></span></h1>
+      <nav>
+        <ul class="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
-
-        <p class="donation-link"><strong>Donations:</strong> <br> 
-            <a href="https://paypal.me/coplandparts" target="_blank">PayPal</a> <br> 
-            <a href="https://account.venmo.com/u/jackdrabenstadt" target="_blank">Venmo</a>
-        </p>
-
-        <p>
-            As a thank-you for contributing, I’d love to hear any ideas or requests for things you’d like me to host or how I run the server. Your input will help shape the future of Copland and ensure it continues serving everyone’s needs.
-        </p>
-
-        <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSdqW-z4HZ35T7wM11NmlArp4HSRak7UhRlNeIwbE368lixa9g/viewform?usp=sf_link" target="_blank">Requests and Ideas Form</a></p>
-
-        <p>
-            Any contribution will help make sure there is plenty of space and a reliable setup to continue enjoying our shared media. Thanks! 🥳
-        </p>
+      </nav>
+    </header>
+    <div class="container">
+      <h2>Home</h2>
+      <p> <img src="images/profile.png" alt="Profile Picture" width="200px" height="200px" style="float: right; border-radius: 20px;">
+        I am currently a double major in Computer Science and Digital Narrative
+        and Interactive Design (DNID) at the University of Pittsburgh. My
+        studies allow me to blend technical proficiency in coding and software
+        development with creative storytelling and interactive design. This
+        interdisciplinary approach empowers me to explore how technologies such
+        as games, virtual reality, and digital media can create engaging and
+        meaningful user experiences.
+        <br /><br />
+        As a Student Technical Consultant at the University, I assist students
+        and faculty with technical troubleshooting and support. Additionally, I
+        work as a Barista, where I've honed my customer service, multitasking,
+        and time-management skills. My upcoming research focuses on modeling
+        critical infrastructure resilience against compound threats like natural
+        disasters and cyberattacks, designing adaptive system architectures for
+        improved recovery and adaptability.
+        <br /><br />
+        I am passionate about bridging the gap between technology and
+        storytelling, particularly in the field of game development. My goal is
+        to create immersive, story-driven experiences that push the boundaries
+        of interactive media.
+      </p>
     </div>
-</body>
+  </body>
 </html>
