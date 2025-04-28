@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  font-family: "Lora", serif;
+  font-size: 18px;
+  background-color: #1f1f28;
+  font-weight: 200;
+  color: #fdf6e3;
+}
+header {
+  display: flex;
+  justify-content: space-between; /* Space between name and navbar */
+  align-items: center; /* Center items vertically */
+  padding: 20px 80px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+}
+header h1 {
+  font-weight: 400;
+}
+
+header ul {
+  text-underline-offset: 4px;
+}
+
+nav {
+  background: transparent; /* No background for minimal design */
+}
+
+.navbar {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navbar li {
+  margin-left: 40px; /* Space between nav items */
+}
+.navbar a {
+  text-decoration: underline; /* No underline */
+  color: #fdf6e3;
+}
+a:hover {
+  color: #8a8a8a;
+}
+
+.container {
+  max-width: 800px;
+  padding: 0px 80px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.container h2 {
+  font-size: 36px;
+}
+.social-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  justify-content: space-between; /* Space between name and navbar */
+  font-family: "Montserrat", sans-serif;
+}
+.social-links li {
+  padding: 20px;
+}
+.social-links a {
+  text-decoration: none;
+  color: #fdf6e3;
+  font-size: 24px; /* Adjust icon size */
+}
+
+.social-links a:hover {
+  color: #8a8a8a;
+}
+
+.card {
+  display: flex;
+  aspect-ratio: 2 / 1; /* Whole card keeps 2:1 ratio */
+  /* max-width: 800px; */
+  width: 100%; /* So it scales on smaller screens */
+  overflow: hidden;
+  margin: 20px auto 40px 0px;
+}
+
+.card-image {
+  width: 50%; /* Half the card */
+  height: 100%; /* Full height */
+  object-fit: cover;
+}
+
+.card-content {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box; /* just in case, ensures sizing math */
+}
+
+.card-content h3,
+.card-content p,
+.card-content a {
+  padding: 0 20px; /* Add side padding only to text elements */
+}
+
+.card-content a {
+  margin-top: 20px; /* Add space between description and link */
+  text-decoration: underline;
+  color: #fdf6e3;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.7;
+}
+.card-content a:hover {
+    color: #8a8a8a;
+  }
+.card-content h3 {
+  margin: 0; /* Remove default margin */
+  font-size: 1.5em; /* Increase font size for the title */
+}
+
+.card-content p {
+  margin: 10px 0 0; /* Margin for the description */
+}
+
+.pdf-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: underline;
+    color: #fdf6e3;
+    font-family: "Montserrat", sans-serif;
+    opacity: 0.7;
+  }
+  
+  .pdf-link:hover {
+    color: #8a8a8a;
+  }
