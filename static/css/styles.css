@@ -89,6 +89,13 @@ header {
   text-align: center;
 }
 
+.container li {
+  margin-bottom: 10px;
+}
+.container a {
+  font-weight: bold;
+}
+
 .itch-embed {
   display: flex;
   justify-content: center;
