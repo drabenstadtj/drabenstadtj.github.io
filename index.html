@@ -1,41 +1,178 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Jack Drabenstadt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="static/css/styles.css" />
   </head>
   <body>
     <header>
-      <h1>Jack Drabenstadt</h1>
-      <nav>
-        <ul class="navbar">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="work.html">Work</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+      <div id="hero">
+        <h1><span id="name"></span><span class="cursor"></span></h1>
+        <p>Programmer · Game Designer · Sysadmin (kinda)</p>
+      </div>
 
-    <main class="container">
-      <section class="intro">
-        <h2>Welcome</h2>
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const element = document.getElementById("name");
+        
+          const correct = "Jack Drabenstadt";
+          const typos = [
+            "Jack Drabensdt",   // missing "a"
+            "Jak Drabenstadt",  // missing "c"
+            "Jack Drabenstat",  // missing "d"
+          ];
+        
+          // Pick one typo or go straight to correct
+          let current = Math.random() < 0.3
+            ? typos[Math.floor(Math.random() * typos.length)]
+            : correct;
+        
+          let j = 0;
+          let deleting = false;
+          let fixing = false;
+        
+          function typeEffect() {
+            if (!deleting && !fixing) {
+              // Typing forward
+              element.textContent = current.substring(0, j + 1);
+              j++;
+        
+              if (j === current.length) {
+                if (current === correct) {
+                  // Done typing correctly → stop
+                  return;
+                } else {
+                  // Pause, then delete wrong part
+                  setTimeout(() => {
+                    deleting = true;
+                    typeEffect();
+                  }, 1000);
+                  return;
+                }
+              }
+            } else if (deleting) {
+              // Delete wrong characters until overlap
+              const overlap = commonPrefixLength(correct, current);
+              if (j > overlap) {
+                element.textContent = current.substring(0, j - 1);
+                j--;
+              } else {
+                deleting = false;
+                fixing = true;
+              }
+            } else if (fixing) {
+              // Retype correctly
+              element.textContent = correct.substring(0, j + 1);
+              j++;
+              if (j === correct.length) {
+                // Finished retyping → stop
+                return;
+              }
+            }
+        
+            const speed = deleting ? 50 : 100;
+            setTimeout(typeEffect, speed);
+          }
+        
+          function commonPrefixLength(a, b) {
+            let n = 0;
+            while (n < a.length && n < b.length && a[n] === b[n]) n++;
+            return n;
+          }
+        
+          typeEffect();
+        });
+        </script>
+        
+        <style>
+        /* Cursor animation */
+        .cursor {
+          display: inline-block;
+          width: 0.6ch;
+          height: 1.2em;
+          background: currentColor;
+          margin-left: 4px;
+          vertical-align: bottom;
+          animation: blink 1s steps(1) infinite;
+        }
+        
+        @keyframes blink {
+          50% { opacity: 0; }
+        }
+        </style>
+
+      <div id="nav">
+        <nav>
+          <ul>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#writing">Writing</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div id="main-content">
+      <div id="profile">
+        <div id="headshot">
+          <img src="static/images/jack.jpeg" />
+        </div>
+        <div id="socials">
+          <ul>
+            <li><a href="https://github.com/drabenstadtj/">Github</a></li>
+            <li><a href="https://drabenstadtj.itch.io">itch.io</a></li>
+            <li><a href="mailto:jackdrabenstadt@gmail.com">Email Me</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container" id="about">
+        <h3>About Me</h3>
         <p>
-          I'm Jack Drabenstadt, a Computer Science and Digital Narrative &
-          Interactive Design student at the University of Pittsburgh. I create
-          projects that merge technical skill with creative storytelling,
-          blending game design, software development, and research on
-          infrastructure resilience.
+          I’m a Computer Science and Digital Narrative & Interactive Design
+          student at the University of Pittsburgh, focused on game design. I
+          previously conducted research at Pitt, writing C code for
+          intrusion-tolerant distributed systems, and I enjoy exploring
+          storytelling and interactive systems through games and media.
+          Currently, I’m working on an independent study to design and develop
+          my own game.
         </p>
-        <p>
-          I'm passionate about building immersive, story-driven experiences that
-          push the boundaries of interactive media.
-        </p>
-      </section>
-    </main>
+      </div>
+    </div>
+
+    <div class="container" id="projects">
+      <h3>Projects</h3>
+      <p>Some info about my projects...</p>
+      <ul>
+        <li><a href="discards.html">Discards</a></li>
+        <li><a href="strangers-path.html">Strangers Path</a></li>
+        <li><a href="#writing">Home Server</a></li>
+        <li><a href="home-audio.html">Whole Home Audio</a></li>
+      </ul>
+    </div>
+
+    <div class="container" id="writing">
+      <h3>Writing</h3>
+      <p>Some info about my writing...</p>
+      <ul>
+        <li>
+          <a href="lain-analysis.html"
+            >Digital Boundaries and Human Autonomy in Serial Experiments Lain</a
+          >
+        </li>
+        <li>
+          <a href="mouthwashing-analysis.html"
+            >Complicity and Collapse in MOUTHWASHING</a
+          >
+        </li>
+      </ul>
+    </div>
   </body>
 </html>

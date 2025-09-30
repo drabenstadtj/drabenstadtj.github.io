@@ -1,0 +1,116 @@
+/* Base styles */
+body {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #d1e5f4;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-weight: 700;
+  margin: 0.5em 0;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 40px;
+  /* background-color: #c6def1; */
+  border-radius: 7.5px;
+  /* padding: 20px; */
+}
+
+#nav ul {
+  padding: 0;
+  margin: 0;
+}
+
+#nav li {
+  padding-bottom: 10px;
+}
+
+/* Hero */
+#hero {
+  text-align: center;
+}
+
+/* Main content layout */
+#main-content {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 30px;
+}
+
+/* Profile section */
+#profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: #c6def1; */
+  border-radius: 10px;
+  padding: 20px;
+  gap: 15px;
+}
+
+#headshot img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10%; /* circular thumbnail */
+}
+
+#socials ul {
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Containers for About, Projects, Writing */
+.container {
+  padding: 20px;
+  margin-top: 30px;
+}
+
+#about {
+  padding-top:0;
+  margin-top:0;
+}
+
+.container h3 {
+  text-align: center;
+}
+
+.itch-embed {
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  margin-bottom: 40px;
+}
+
+/* Cursor animation */
+.cursor {
+  display: inline-block;
+  width: 0.6ch;
+  height: 1.2em;
+  background: currentColor;
+  margin-left: 4px;
+  vertical-align: bottom;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

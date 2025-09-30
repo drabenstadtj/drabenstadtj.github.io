@@ -1,0 +1,141 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jack Drabenstadt - Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="static/css/styles.css" />
+    <style>
+      p {
+        text-indent: 30px;
+      }
+      h1 {
+        margin-top: 40px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><a href="index.html">Home</a> > DIY Multi-Room Home Audio System</h1>
+
+    <p>
+      I'm a bit obsessive about audio quality and have accrued a lot of speakers
+      and equipment over the years. My most recent addition includes a 5.2
+      surround receiver and two surround speakers, which ended up freeing an
+      existing amplifier and speakers. I wanted to use them all together so that
+      wherever you are in the house, the sound is clear and balanced. I was
+      inspired by legendary club sound systems like Paradise Garage and by
+      visiting Nowadays club in New York, where speakers are placed
+      strategically around the room for even coverage. The initial idea for this
+      project came from my roommate: we wanted to be able to walk around the
+      house and listen to music without having to swith which speaker or device
+      was playing. I decided to build a custom system that streams Spotify to
+      multiple rooms at once.
+    </p>
+
+    <h2>How It Works</h2>
+
+    <div style="overflow: auto; margin-bottom: 20px">
+      <img
+        src="static/images/home-server.jpeg"
+        alt="Home server"
+        style="
+          float: right;
+          width: 250px;
+          margin-left: 20px;
+          margin-bottom: 10px;
+        "
+      />
+      <p>
+        Over the past few years, I've learned a lot tinkering with my home
+        server, and I’ve also realized just how much amazing open-source
+        software exists. When I started looking for ways to make this multi-room
+        system, Snapcast immediately caught my attention. It works using a
+        <strong>snapserver</strong> that distributes the audio signal and
+        <strong>snapclients</strong> that receive the audio over Wi-Fi and play
+        it back. I already had a server running 24/7 for my other services, so
+        it made sense to use it as the snapserver. I spun up a Docker container
+        for it, configured my audio sources, and got it up and running.
+      </p>
+    </div>
+
+    <div style="overflow: auto; margin-bottom: 20px">
+      <img
+        src="static/images/pi-case.png"
+        alt="Raspberry Pi custom case"
+        style="
+          float: left;
+          width: 300px;
+          margin-right: 20px;
+          margin-bottom: 10px;
+        "
+      />
+      <p>
+        For the clients, I went with Raspberry Pis. My home server hobby
+        actually started with a Pi years ago, and I like keeping power
+        consumption low, so they were perfect. I imaged some micro SD cards with
+        Pi OS and SSH’d into each one to install and configure the snapclient
+        software. Each room now has a Raspberry Pi with a DAC that I soldered on
+        for better audio quality, as the Raspberry Pis I was using only have
+        micro-USB output. To house everything neatly, I designed and 3D-printed
+        custom cases. I went through several iterations, testing the fit to make
+        sure the DACs and boards were secure and nothing would come loose.
+      </p>
+    </div>
+
+    <p>
+      The Pis connect over Wi-Fi, which means when playing from snapserver the
+      music plays from every source at once. Snapcast keeps everything in sync
+      and accounts for delay, so there’s no lag or echo between rooms. The
+      system uses
+      <strong>Librespot</strong> to stream music straight from Spotify, which
+      lets us control playback directly from the Spotify app on our phones.
+      Later on I also started experimenting with the Snapcast configuration to
+      eventually allow automatic switching between Spotify Connect and AirPlay.
+    </p>
+
+    <h2>The Inspiration</h2>
+
+    <div style="overflow: auto; margin-bottom: 20px">
+      <img
+        src="static/images/paradise-garage.png"
+        alt="Paradise Garage sound system"
+        style="
+          float: left;
+          width: 200px;
+          margin-right: 20px;
+          margin-bottom: 10px;
+        "
+      />
+      <p>
+        A big part of this project was inspired by my love for high-quality
+        sound and legendary club systems. Clubs like Paradise Garage didn’t just
+        put speakers in a room but designed the space around the sound. I wanted
+        to bring a little bit of that philosophy into my own home. Combining
+        that inspiration with research I recently did concerning distributed systems and low-level
+        programming made this project really fun: managing synchronized audio
+        over Wi-Fi reminded me of working with Linux sockets, and ensuring
+        everything stayed in sync was reminiscent of a small-scale distributed
+        system.
+      </p>
+    </div>
+
+    <h2>Final Thoughts</h2>
+
+    <p>
+      The system is now fully functional, streaming Spotify throughout the house
+      with clean, balanced sound. I'm always looking for projects to combine
+      hardware, software, and design and it’s been a lot of fun refining it
+      along the way. There’s still room to experiment with getting the volume
+      levels synchronized between rooms and other tweaks, but for now its been
+      very useful.
+    </p>
+  </body>
+</html>
