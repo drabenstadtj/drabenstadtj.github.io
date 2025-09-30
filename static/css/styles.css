@@ -4,11 +4,16 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  background-color: #d1e5f4;
+  background-color: #cee3bb;
   display: flex;
   flex-direction: column;
   max-width: 800px;
   margin: auto;
+}
+
+a:link {
+  color: #495341;
+  font-weight: bold;
 }
 
 /* Headings */
