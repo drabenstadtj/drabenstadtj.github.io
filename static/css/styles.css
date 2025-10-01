@@ -130,3 +130,19 @@ footer {
     opacity: 0;
   }
 }
+
+@media screen and (max-width: 768px) {
+  #main-content {
+    flex-direction: column;
+    align-items: center; /* center children */
+  }
+
+  #profile {
+    order: -1; /* ensure profile shows above About */
+    margin-bottom: 20px;
+  }
+
+  #about {
+    padding-top: 20px;
+  }
+}
