@@ -1,0 +1,180 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jack Drabenstadt - Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="static/css/styles.css" />
+    <style>
+      p {
+        text-indent: 30px;
+        margin-bottom: 1.5rem;
+      }
+      h1 {
+        margin-top: 40px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><a href="index.html">Home</a> > Dynamic System Reconfiguration</h1>
+
+    <h2>Project Overview</h2>
+    <p>
+      I worked closely with Dr. Amy Babay on the design and implementation of a
+      fully dynamic reconfiguration system for a multi-site distributed network
+      system called
+      <a href="https://github.com/amybabay/spire/tree/dev-reconf">Spire</a>. The
+      system allows runtime updates to topology, cryptographic keys, and
+      component roles without downtime, enabling robust response to failures and
+      temporary deployments like mobile control centers.
+    </p>
+
+    <h2>Workflow</h2>
+    <ul>
+      <li>
+        <strong>Config Manager:</strong> Converts a high-level YAML
+        configuration into a complete, signed configuration, generating all
+        necessary cryptographic keys.
+      </li>
+      <li>
+        <strong>Config Disseminator:</strong> Reliably transmits the signed
+        configuration to all participating hosts, handling large configurations
+        via fragmentation.
+      </li>
+      <li>
+        <strong>Config Agent:</strong> Runs on each host, receives and verifies
+        the configuration, applies updates to local components, and triggers
+        reloads or restarts to activate changes.
+      </li>
+    </ul>
+
+    <h2>Technical Achievements</h2>
+    <ul>
+      <li>
+        Replaced hard-coded system constants with a human-readable YAML
+        configuration model.
+      </li>
+      <li>
+        Designed a hybrid cryptography system (AES-256 + RSA-OAEP) with digital
+        signatures to secure sensitive keys and configuration integrity.
+      </li>
+      <li>
+        Refactored core applications to dynamically load network addresses,
+        keys, and threshold cryptography shares at runtime.
+      </li>
+      <li>
+        Implemented reliable multicast delivery with message fragmentation and
+        version tracking.
+      </li>
+      <li>
+        Validated the system in a 26-node Docker environment with multiple
+        failure and recovery scenarios.
+      </li>
+    </ul>
+
+    <h2>Key Technical Challenges and Resolutions</h2>
+    <ul>
+      <li>
+        <strong>Legacy Static Configuration Dependencies</strong>
+        <ul>
+          <li>
+            <em>Challenge:</em> Components relied on compile-time constants and
+            hardcoded arrays, making runtime reconfiguration impossible without
+            risking inconsistencies or crashes.
+          </li>
+          <li>
+            <em>Resolution:</em> Performed a full audit of static constants,
+            replaced them with dynamic initialization functions, and refactored
+            core subsystems to read values from the unified YAML file at
+            startup.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Cryptographic Key Management</strong>
+        <ul>
+          <li>
+            <em>Challenge:</em> Integrating a secure key distribution and
+            storage mechanism into a system with multiple key types while
+            ensuring confidentiality and integrity.
+          </li>
+          <li>
+            <em>Resolution:</em> Implemented a hybrid encryption scheme
+            combining AES-256 for bulk data and RSA-OAEP for key protection.
+            Automated key generation and YAML population ensured secure and
+            reproducible configuration artifacts.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Reliable Network Dissemination of Large Configurations</strong>
+        <ul>
+          <li>
+            <em>Challenge:</em> Configuration payloads could exceed a single
+            network message size, requiring reliable delivery to many hosts.
+          </li>
+          <li>
+            <em>Resolution:</em> Designed a message fragmentation and reassembly
+            protocol over Spines multicast. Agents verified completeness and
+            signatures before applying configurations, preventing partial
+            updates or replay attacks.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Host Identification and Environment Ambiguity</strong>
+        <ul>
+          <li>
+            <em>Challenge:</em> Determining which host an agent was running on
+            was error-prone when relying solely on IP address parsing.
+          </li>
+          <li>
+            <em>Resolution:</em> Config_agent now accepts the host's unique
+            hostname as a command-line argument, providing a deterministic and
+            unambiguous host identification mechanism.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Integration Bugs from Extensive Refactoring</strong>
+        <ul>
+          <li>
+            <em>Challenge:</em> Refactoring core components to remove static
+            dependencies introduced subtle bugs, including segmentation faults
+            and mismatched key sizes.
+          </li>
+          <li>
+            <em>Resolution:</em> Built a comprehensive containerized test
+            harness to simulate all sites. Incremental validation, detailed
+            logging, and automated cryptography verification allowed systematic
+            bug identification and resolution.
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>Skills Developed</h2>
+    <ul>
+      <li>Advanced C/C++ systems programming and network protocol design</li>
+      <li>Cryptography and key management with OpenSSL</li>
+      <li>Distributed system design and reliable multicast communication</li>
+      <li>Configuration management and automated deployment</li>
+      <li>
+        Research-driven problem solving and large-scale system integration
+      </li>
+    </ul>
+
+    <h2>Impact</h2>
+    <p>
+      The project produced a resilient distributed system capable of live,
+      dynamic reconfiguration, validating that research-driven engineering can
+      directly deliver operational, deployable outcomes.
+    </p>
+  </body>
+</html>
