@@ -27,13 +27,14 @@ h2,
 h3 {
   /* font-weight: 800; */
   font-family: "Roboto Mono", monospace;
-
   font-weight: bold;
   margin: 0.5em 0;
   font-size: x-large;
   /* background-image: linear-gradient(to right, #a3b890, transparent 90%); */
   background-image: linear-gradient(to right, #c5d9d7, transparent 50%);
   border-radius: 5px;
+  padding-left: 10px;
+
 }
 
 /* Header */
@@ -113,7 +114,6 @@ header h1 {
 
 .container h3 {
   /* text-align: center; */
-  padding-left: 10px;
 }
 
 .container li {
