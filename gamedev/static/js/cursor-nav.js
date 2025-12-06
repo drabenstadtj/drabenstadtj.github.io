@@ -26,18 +26,22 @@ class CursorNav {
   handleKeyPress(e) {
     switch(e.key) {
       case 'ArrowUp':
+        e.preventDefault();
         this.moveCursor(-1);
         break;
       case 'ArrowDown':
+        e.preventDefault();
         this.moveCursor(1);
         break;
       case 'Enter':
       case 'ArrowRight':
+        e.preventDefault();
         this.selectItem();
         break;
       case 'Backspace':
       case 'Escape':
       case 'ArrowLeft':
+        e.preventDefault();
         this.goBack();
         break;
     }
@@ -117,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
   else {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Backspace' || e.key === 'Escape' || e.key === 'ArrowLeft') {
+        e.preventDefault();
         globalGoBack();
       }
     });
