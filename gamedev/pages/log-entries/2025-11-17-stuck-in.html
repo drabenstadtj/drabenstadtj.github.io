@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/css/styles.css" />
+    <title>Stuck In - Game Design Log</title>
+  </head>
+  <body>
+    <a href="../gamelog.html">< back to log</a>
+    <div class="header">
+      <h1>Stuck In</h1>
+      <div class="stats">
+        <p>Nov 17, 2025</p>
+      </div>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-content">
+
+        <p>
+          It's been a little while since an update, mostly because I've been
+          heads-down working on Lamport General Systems. <br />
+          For a few weeks after finishing my concept doc, I've been designing
+          the BFT system for the in-game network. I hadn't realized that even
+          though it doesn't have the same constraints as a real BFT system, it's
+          still really hard. I'm trying to make it fun, base it on real-life BFT
+          systems, and keep it accessible—which turns out to be actual system
+          design work. The tough part is making decisions when you have to
+          consider how each one affects everything else in the system. I keep
+          feeling like I haven't thought through all the implications, which is
+          uncomfortable. <br />
+          But apart from the design challenges, it's been great to finally start
+          building things in Godot. I began with some Python scripts to model
+          the system, then realized GDScript was just as simple to use, so I
+          switched over. After iterating on the Godot design for a bit, I've
+          ended up with a few different underlying system designs, a harness
+          that ties the systems into the 3D game world, and I even made some
+          models in Blender. Now I have some neat low-poly server computers,
+          monitors, and a working BFT system—though it still needs balancing.
+        </p>
+        <figure>
+          <img src="../static/images/lgs-sysdesign.jpg" alt="">
+          <figcaption>Server Computer and Monitor Models Made For my Game</figcaption>
+        </figure>
+      </div>
+    </div>
+  </body>
+</html>

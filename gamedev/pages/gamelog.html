@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/styles.css" />
+    <title>Game Design Log</title>
+  </head>
+  <body>
+    <a href="../index.html">< back</a>
+    <div class="header">
+      <h1>Game Design Log</h1>
+      <div class="stats">
+        <p>Total Entries: <span id="total-entries">6</span></p>
+        <p>Last Updated: <span id="last-updated">No 17, 2025</span></p>
+      </div>
+    </div>
+
+    <div class="log-list">
+      <div class="log-preview">
+        <a href="log-entries/2025-11-17-stuck-in.html">
+          <div class="log-preview-header">
+            <h2>Stuck In</h2>
+            <p class="date">Nov 17, 2025</p>
+          </div>
+          <p class="log-preview-description">
+            I've been heads-down designing the BFT system for Lamport General
+            Systems, which turned out to be actual system design work—making it
+            fun, realistic, and accessible all at once is harder than I
+            expected.
+          </p>
+        </a>
+      </div>
+      <div class="log-preview deliverable-preview">
+        <a href="log-entries/2025-10-27-concept-complete.html">
+          <div class="log-preview-header">
+            <h2>
+              <span class="deliverable-badge">[DELIVERABLE]</span> Concept
+              Complete
+            </h2>
+            <p class="date">Oct 27, 2025</p>
+          </div>
+          <p class="log-preview-description">
+            After nine weeks of research and development, I finally have a
+            complete concept document for Lamport General Systems.
+          </p>
+        </a>
+      </div>
+      <div class="log-preview deliverable-preview">
+        <a href="log-entries/2025-10-12-jammin.html">
+          <div class="log-preview-header">
+            <h2>
+              <span class="deliverable-badge">[DELIVERABLE]</span> Jammin'
+            </h2>
+            <p class="date">Oct 12, 2025</p>
+          </div>
+          <p class="log-preview-description">
+            A reflection on my second year at the Pitt Games 4 Social Impact
+            game jam, where improved planning and tight scope management led our
+            team from last year's spectacular failure to winning an award for
+            technical achievement with our penguin migration platformer.
+          </p>
+        </a>
+      </div>
+      <div class="log-preview deliverable-preview">
+        <a href="log-entries/2025-10-09-pitch-the-baby.html">
+          <div class="log-preview-header">
+            <h2>
+              <span class="deliverable-badge">[DELIVERABLE]</span> Pitch the
+              Baby
+            </h2>
+            <p class="date">Oct 9, 2025</p>
+          </div>
+          <p class="log-preview-description">
+            I successfully pitched my game at the DNID Capstone Pitch event!
+            Despite my nerves about public speaking, I prepared thoroughly and
+            received valuable feedback from students, professors, and industry
+            professionals about my distributed systems game concept.
+          </p>
+        </a>
+      </div>
+
+      <div class="log-preview">
+        <a href="log-entries/2025-10-08-forcing-focus.html">
+          <div class="log-preview-header">
+            <h2>Forcing Focus</h2>
+            <p class="date">Oct 8, 2025</p>
+          </div>
+          <p class="log-preview-description">
+            Creating my pitch deck for the Capstone event forced me to make
+            concrete decisions about vague ideas. The process of distilling my
+            game concept revealed gaps in my design, particularly around the
+            core loop, proving that presentation documents are more than just
+            writing things down.
+          </p>
+        </a>
+      </div>
+
+      <div class="log-preview">
+        <a href="log-entries/2025-10-02-hardcore-ideation.html">
+          <div class="log-preview-header">
+            <h2>Hardcore Ideation</h2>
+            <p class="date">Oct 2, 2025</p>
+          </div>
+          <p class="log-preview-description">
+            After letting ideas about distributed systems, Routine, and Alien
+            percolate, I spent hours in stream-of-consciousness writing mode.
+            The process of creating a concept document helped me reach a tipping
+            point where everything clicked and now I'm obsessed with working on
+            this project.
+          </p>
+        </a>
+      </div>
+    </div>
+
+  <button class="font-toggle" onclick="toggleFont()">Toggle Font</button>
+
+  <script>
+    function toggleFont() {
+      document.body.classList.toggle('vt323-font');
+      localStorage.setItem('useVT323', document.body.classList.contains('vt323-font'));
+    }
+
+    // Load saved preference
+    if (localStorage.getItem('useVT323') === 'true') {
+      document.body.classList.add('vt323-font');
+    }
+  </script>
+  </body>
+</html>

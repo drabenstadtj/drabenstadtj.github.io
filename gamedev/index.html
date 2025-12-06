@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/css/styles.css" />
+    <title>Game Design Log</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Jack's Site</h1>
+      <div class="profile">
+        <a target="_blank" href="https://jackdrab.dev">jackdrab.dev</a>
+        ·
+        <a target="_blank" href="https://github.com/drabenstadtj">Github</a>
+        ·
+        <a target="_blank" href="https://drabenstadtj.itch.io/">Itch.io</a>
+        ·
+        <a target="_blank" href="https://steamcommunity.com/id/nobenobe/"
+          >Steam</a
+        >
+      </div>
+    </div>
+    <div class="nav">
+      <div class="entries">
+        <div class="entry">
+          <a href="pages/gamelog.html">
+          <div class="entry-header">
+            <h2>Game Design Log</h2>
+          </a>
+          </div>
+        </div>
+        <div class="entry">
+          <a href="pages/lamport.html">
+          <div class="entry-header">
+            <h2>Project: Lamport General Systems</h2>
+          </a>
+          </div>
+        </div>
+
+      </div>
+  </div>
+
+  <button class="font-toggle" onclick="toggleFont()">Toggle Font</button>
+
+  <script>
+    function toggleFont() {
+      document.body.classList.toggle('vt323-font');
+      localStorage.setItem('useVT323', document.body.classList.contains('vt323-font'));
+    }
+
+    // Load saved preference
+    if (localStorage.getItem('useVT323') === 'true') {
+      document.body.classList.add('vt323-font');
+    }
+  </script>
+  </body>
+</html>

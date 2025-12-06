@@ -1,0 +1,441 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+@font-face {
+  font-family: 'IBM XGA';
+  src: url('../fonts/Px437_IBM_XGA-AI_12x20.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  position: relative;
+  padding-top: 20px;
+  background-color: #0a0a0a;
+  color: #ffaa00;
+  font-family: "IBM XGA", monospace;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-shadow: 0 0 4px rgba(255, 170, 0, 0.3);
+  font-size: 1.1em;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+body.vt323-font {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1em;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(255, 140, 0, 0.015) 0%, rgba(139, 69, 0, 0.01) 60%, transparent 100%);
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: url("../images/noise.gif");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    ),
+    radial-gradient(ellipse at center, rgba(255, 140, 0, 0.015) 0%, rgba(139, 69, 0, 0.01) 60%, transparent 100%);
+  z-index: 9998;
+}
+
+a {
+  color: inherit;
+}
+
+/* Page Header */
+.header {
+  background-color: #ffaa00;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  min-height: 70px;
+}
+
+.header h1 {
+  text-align: start;
+  padding-left: 10px;
+  margin: 0;
+}
+
+.stats {
+  padding: 10px 20px 10px 10px;
+}
+
+.stats p {
+  margin: 0%;
+}
+
+.profile {
+  padding: 10px 20px 10px 10px;
+}
+
+/* Log List (main page previews) */
+.log-list {
+  /* margin-top: 20px; */
+}
+
+.log-preview {
+  border-left: 2px solid #ffaa00;
+  border-right: 2px solid #ffaa00;
+  border-bottom: 2px solid #ffaa00;
+}
+
+.log-preview:first-child {
+  border-top: 2px solid #ffaa00;
+}
+
+.log-preview:hover {
+  background: rgba(255, 170, 0, 0.08);
+}
+
+.log-preview a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.log-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ffaa00;
+  background-color: rgba(255, 170, 0, 0.05);
+}
+
+.log-preview-header h2 {
+  margin: 0;
+  padding-left: 10px;
+}
+
+.log-preview-header .date {
+  margin: 0;
+  padding-right: 5px;
+}
+
+.log-preview-description {
+  padding: 10px 20px;
+  margin: 0;
+}
+
+/* Page Sections */
+.page-section {
+  border-left: 2px solid #ffaa00;
+  border-right: 2px solid #ffaa00;
+  border-bottom: 2px solid #ffaa00;
+}
+
+.page-section:first-child {
+  border-top: 2px solid #ffaa00;
+}
+
+.page-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ffaa00;
+  background-color: rgba(255, 170, 0, 0.2);
+}
+
+.page-section-header h2 {
+  margin: 0;
+  padding-left: 10px;
+}
+
+.page-section-content {
+  padding: 20px 20px;
+  margin: 0;
+}
+
+/* Full Log Entry (individual pages) */
+.log-entry {
+  /* margin-top: 20px; */
+  border: 2px solid #ffaa00;
+}
+
+.log-content {
+  padding: 20px;
+}
+
+.log-content p {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.log-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Page Content Block */
+.page-content-block {
+  border: 2px solid #ffaa00;
+}
+
+.page-content-block-inner {
+  padding: 20px;
+}
+
+.page-content-block-inner p {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.page-content-block-inner p:last-child {
+  margin-bottom: 0;
+}
+
+/* Navigation Links */
+a[href="../index.html"],
+a[href="../gamelog.html"] {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.nav .log-preview-header {
+  border-bottom: none;
+  padding: 10px 0px;
+}
+
+.nav h2:hover::before {
+  content: "> ";
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.nav .log-list:first-child {
+  border-top: none;
+}
+
+/* Deliverable Styling */
+.deliverable-preview {
+  border-left: 2px solid #ff4444;
+  border-right: 2px solid #ff4444;
+  border-bottom: 2px solid #ff4444;
+  animation: alert-pulse 2s ease-in-out infinite;
+}
+
+.deliverable-preview:first-child {
+  border-top: 2px solid #ff4444;
+}
+
+.deliverable-preview:hover {
+  background: rgba(255, 68, 68, 0.15);
+  animation: alert-pulse-hover 1s ease-in-out infinite;
+}
+
+.deliverable-preview .log-preview-header {
+  background-color: rgba(255, 68, 68, 0.22);
+  border-bottom: 2px solid #ff4444;
+  animation: header-flash 2s ease-in-out infinite;
+}
+
+/* .deliverable-preview .log-preview-header h2::before {
+  content: "[!] ";
+  color: #ff4444;
+  text-shadow: 0 0 8px rgba(255, 68, 68, 0.8);
+  animation: blink 1.5s step-start infinite;
+} */
+
+.deliverable-entry {
+  border: 2px solid #ff4444;
+  animation: alert-pulse 2s ease-in-out infinite;
+}
+
+.deliverable-entry .log-content a {
+  color: #ff4444;
+  text-decoration: none;
+  text-shadow: 0 0 5px rgba(255, 68, 68, 0.6);
+}
+
+.deliverable-entry .log-content a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 8px rgba(255, 68, 68, 0.9);
+}
+
+/* Animations */
+@keyframes alert-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(255, 68, 68, 0.3),
+      inset 0 0 10px rgba(255, 68, 68, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.6),
+      inset 0 0 20px rgba(255, 68, 68, 0.2);
+  }
+}
+
+@keyframes alert-pulse-hover {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.5),
+      inset 0 0 15px rgba(255, 68, 68, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.8),
+      inset 0 0 25px rgba(255, 68, 68, 0.25);
+  }
+}
+
+@keyframes header-flash {
+  0%,
+  100% {
+    background-color: rgba(255, 68, 68, 0.22);
+  }
+  50% {
+    background-color: rgba(255, 68, 68, 0.35);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+.deliverable-badge {
+  display: inline-block;
+  color: #ff4444;
+  font-weight: 500;
+  text-shadow: 0 0 8px rgba(255, 68, 68, 0.8);
+  animation: blink 1.5s step-start infinite;
+  margin-right: 8px;
+}
+
+
+
+.log-content figure {
+  margin: 20px 0;
+  border: 2px solid #ffaa00;
+  padding: 0;
+  max-width: 600px; /* Add this line */
+  margin-left: auto;  /* Add this line */
+  margin-right: auto; /* Add this line */
+}
+
+.log-content figure img {
+  width: 100%;
+  display: block;
+  border: none;
+  margin: 0;
+  filter: contrast(1.1) brightness(0.9);
+}
+
+.log-content figcaption {
+  background-color: rgba(255, 170, 0, 0.05);
+  padding: 10px;
+  margin: 0;
+  border-top: 2px solid #ffaa00;
+  font-size: 0.9em;
+}
+
+.log-content figcaption::before {
+  content: "> ";
+}
+
+/* Project Page Items */
+.project-items-list {
+  margin: 0;
+  padding: 0;
+}
+
+.project-item {
+  border-left: 2px solid #ffaa00;
+  border-right: 2px solid #ffaa00;
+  border-bottom: 2px solid #ffaa00;
+}
+
+.project-item:first-child {
+  border-top: 2px solid #ffaa00;
+}
+
+.project-item:hover {
+  background: rgba(255, 170, 0, 0.08);
+}
+
+.project-item a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ffaa00;
+  background-color: rgba(255, 170, 0, 0.05);
+}
+
+.project-item-header h2 {
+  margin: 0;
+  padding-left: 10px;
+}
+
+.project-item-description {
+  padding: 10px 20px;
+  margin: 0;
+}
+
+/* Font Toggle Button */
+.font-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(255, 170, 0, 0.1);
+  border: 2px solid #ffaa00;
+  color: #ffaa00;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9em;
+  z-index: 10000;
+  transition: background-color 0.2s;
+}
+
+.font-toggle:hover {
+  background-color: rgba(255, 170, 0, 0.2);
+}
