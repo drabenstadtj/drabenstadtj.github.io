@@ -14,10 +14,7 @@
 
     <div class="page-content-block">
       <div class="page-content-block-inner">
-        <p>
-          [Your reflective text here - describe the project, what you learned as a designer,
-          the journey you went through developing this game concept.]
-        </p>
+        <p>[ IN PROGRESS ]</p>
       </div>
     </div>
 
@@ -25,19 +22,14 @@
       <div class="page-section-header">
         <h2>Key Challenges</h2>
       </div>
-      <p class="page-section-content">
-        [Describe the major hurdles you faced - whether technical, design, or creative -
-        and how you approached solving them. Be honest about what worked and what didn't.]
-      </p>
+      <p class="page-section-content">[ IN PROGRESS ]</p>
     </div>
 
     <div class="page-section">
       <div class="page-section-header">
         <h2>Looking Forward</h2>
       </div>
-      <p class="page-section-content">
-        [Where is the project going? What would you do differently? What are you excited about?]
-      </p>
+      <p class="page-section-content">[ IN PROGRESS ]</p>
     </div>
 
     <div class="page-section">
@@ -46,49 +38,56 @@
       </div>
       <div class="page-section-content">
         <div class="project-items-list">
-      <div class="project-item">
-        <a href="../static/deliverables/lgs-concept-doc.pdf" target="_blank">
-          <div class="project-item-header">
-            <h2>Concept Document</h2>
+          <div class="project-item">
+            <a
+              href="../static/deliverables/lgs-concept-doc.pdf"
+              target="_blank"
+            >
+              <div class="project-item-header">
+                <h2>Concept Document</h2>
+              </div>
+              <p class="project-item-description">
+                Complete concept document outlining the game design, mechanics,
+                and vision for Lamport General Systems.
+              </p>
+            </a>
           </div>
-          <p class="project-item-description">
-            Complete concept document outlining the game design, mechanics, and vision for Lamport General Systems.
-          </p>
-        </a>
-      </div>
 
-      <div class="project-item">
-        <a href="../static/deliverables/lgs_pitch.pdf" target="_blank">
-          <div class="project-item-header">
-            <h2>Pitch Deck</h2>
+          <div class="project-item">
+            <a href="../static/deliverables/lgs_pitch.pdf" target="_blank">
+              <div class="project-item-header">
+                <h2>Pitch Deck</h2>
+              </div>
+              <p class="project-item-description">
+                Presentation deck used to pitch Lamport General Systems at the
+                DNID Capstone Pitch event.
+              </p>
+            </a>
           </div>
-          <p class="project-item-description">
-            Presentation deck used to pitch Lamport General Systems at the DNID Capstone Pitch event.
-          </p>
-        </a>
-      </div>
 
-      <div class="project-item">
-        <a href="#game-macro">
-          <div class="project-item-header">
-            <h2>Game Macro (Coming Soon)</h2>
+          <div class="project-item">
+            <a href="#game-macro">
+              <div class="project-item-header">
+                <h2>Game Macro (Coming Soon)</h2>
+              </div>
+              <p class="project-item-description">
+                High-level overview and chart documenting the game's systems and
+                structure.
+              </p>
+            </a>
           </div>
-          <p class="project-item-description">
-            High-level overview and chart documenting the game's systems and structure.
-          </p>
-        </a>
-      </div>
 
-      <div class="project-item">
-        <a href="#retrospective">
-          <div class="project-item-header">
-            <h2>Retrospective Report (Coming Soon)</h2>
+          <div class="project-item">
+            <a href="#retrospective">
+              <div class="project-item-header">
+                <h2>Retrospective Report (Coming Soon)</h2>
+              </div>
+              <p class="project-item-description">
+                Final retrospective analyzing the development process, outcomes,
+                and lessons learned.
+              </p>
+            </a>
           </div>
-          <p class="project-item-description">
-            Final retrospective analyzing the development process, outcomes, and lessons learned.
-          </p>
-        </a>
-      </div>
         </div>
       </div>
     </div>
@@ -97,13 +96,16 @@
 
     <script>
       function toggleFont() {
-        document.body.classList.toggle('vt323-font');
-        localStorage.setItem('useVT323', document.body.classList.contains('vt323-font'));
+        document.body.classList.toggle("vt323-font");
+        localStorage.setItem(
+          "useVT323",
+          document.body.classList.contains("vt323-font")
+        );
       }
 
       // Load saved preference
-      if (localStorage.getItem('useVT323') === 'true') {
-        document.body.classList.add('vt323-font');
+      if (localStorage.getItem("useVT323") === "true") {
+        document.body.classList.add("vt323-font");
       }
     </script>
   </body>
