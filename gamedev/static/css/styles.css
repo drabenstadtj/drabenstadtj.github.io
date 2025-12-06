@@ -19,7 +19,6 @@ body {
   text-shadow: 0 0 4px rgba(255, 170, 0, 0.3);
   font-size: 1.1em;
   line-height: 1.6;
-  letter-spacing: 0.5px;
 }
 
 body.vt323-font {
@@ -438,4 +437,41 @@ a[href="../gamelog.html"] {
 
 .font-toggle:hover {
   background-color: rgba(255, 170, 0, 0.2);
+}
+
+/* Keyboard Navigation Cursor */
+.nav-item-cursor h2::before {
+  content: "> ";
+  animation: cursor-blink 1s step-start infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Highlight selected navigation item */
+.nav-selected {
+  background: rgba(255, 170, 0, 0.15) !important;
+}
+
+/* Don't highlight on index.html navigation */
+.nav .entry.nav-selected {
+  background: none !important;
+}
+
+/* Keyboard Help */
+.keyboard-help {
+  margin-top: 30px;
+  text-align: center;
+  opacity: 0.5;
+  font-size: 0.85em;
+}
+
+.keyboard-help p {
+  margin: 0;
 }
