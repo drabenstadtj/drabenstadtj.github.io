@@ -183,6 +183,24 @@ a {
   margin: 0;
 }
 
+.page-section-content h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.page-section-content h3:not(:first-child) {
+  margin-top: 30px;
+}
+
+.page-section-content p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.page-section-content p:not(:last-child) {
+  margin-bottom: 20px;
+}
+
 /* Full Log Entry (individual pages) */
 .log-entry {
   /* margin-top: 20px; */
