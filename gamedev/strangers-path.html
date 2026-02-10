@@ -74,21 +74,45 @@
       </p>
     </main>
     <script>
-      const navbar = document.getElementById("navbar");
-      const navbarLinks = document.querySelector(".navbar-links");
-      let lastScrollY = window.scrollY;
-      window.addEventListener("scroll", () => {
-        const currentScrollY = window.scrollY;
-        if (currentScrollY > lastScrollY) { navbarLinks.classList.add("hidden"); }
-        else { navbarLinks.classList.remove("hidden"); }
-        lastScrollY = currentScrollY;
-      });
-      function updateSpacer() {
-        const spacer = document.getElementById("navbar-spacer");
-        spacer.style.height = navbar.offsetHeight + "px";
+  const navbar = document.getElementById("navbar");
+  const navbarLinks = document.querySelector(".navbar-links");
+
+  let lastY = window.scrollY;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const y = window.scrollY;
+
+      // iOS bounce settles at/near 0; never allow hidden at the top
+      if (y <= 2) {
+        navbarLinks.classList.remove("hidden");
+        lastY = y;
+        return;
       }
-      updateSpacer();
-      window.addEventListener("resize", updateSpacer);
-    </script>
+
+      const dy = y - lastY;
+
+      // ignore tiny jitter that can flip the direction during bounce
+      if (Math.abs(dy) < 6) return;
+
+      // hide only when clearly scrolling down; show when clearly scrolling up
+      if (dy > 0) navbarLinks.classList.add("hidden");
+      else navbarLinks.classList.remove("hidden");
+
+      lastY = y;
+    },
+    { passive: true }
+  );
+
+  function updateSpacer() {
+    const spacer = document.getElementById("navbar-spacer");
+    spacer.style.height = navbar.offsetHeight + "px";
+  }
+
+  updateSpacer();
+  window.addEventListener("resize", updateSpacer);
+</script>
+
   </body>
 </html>
