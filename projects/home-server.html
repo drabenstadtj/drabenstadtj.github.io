@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -19,19 +22,30 @@
     <nav id="navbar">
       <div class="navbar-top">
         <span class="navbar-name">
-  <span class="name-full">Jack Drabenstadt</span>
-  <span class="name-short">JD</span>
-</span>
+          <span class="name-full">Jack Drabenstadt</span>
+          <span class="name-short">JD</span>
+        </span>
         <span class="navbar-page">Projects</span>
         <div class="navbar-socials">
           <div class="resume-dropdown">
             <span class="navbar-resume">Resume</span>
             <div class="resume-dropdown-menu">
-              <a href="../static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
-              <a href="../static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+              <a
+                href="../static/resumes/software_dev_resume.pdf"
+                target="_blank"
+                >Software Dev</a
+              >
+              <a href="../static/resumes/game_dev_resume.pdf" target="_blank"
+                >Game Design</a
+              >
             </div>
           </div>
-          <a href="/gamedev/pages/gamelog.html" target="_blank" class="navbar-resume">Dev Log</a>
+          <a
+            href="/gamedev/pages/gamelog.html"
+            target="_blank"
+            class="navbar-resume"
+            >Dev Log</a
+          >
           <a
             href="https://www.linkedin.com/in/jackdrabenstadt/"
             target="_blank"
@@ -65,7 +79,11 @@
     <main class="content-strip">
       <h1>Home Server</h1>
 
-      <img src="../static/images/wintermute-built.JPG" alt="Built server" class="img-strip" />
+      <img
+        src="../static/images/wintermute-built.JPG"
+        alt="Built server"
+        class="img-strip"
+      />
       <p>
         I started building my home server a few years ago after going down a
         rabbit hole of YouTube videos on self-hosting. At the time, I had
@@ -87,7 +105,11 @@
       </p>
     </main>
     <main class="content-strip">
-      <img src="../static/images/building-wintermute.JPG" alt="Building the server" class="img-strip" />
+      <img
+        src="../static/images/building-wintermute.JPG"
+        alt="Building the server"
+        class="img-strip"
+      />
       <p>
         As the number of applications grew, managing everything with bare-metal
         installations became unsustainable. I taught myself Docker and migrated
@@ -99,7 +121,11 @@
         maintenance.
       </p>
 
-      <img src="../static/images/power.png" alt="Power consumption meter" class="img-strip" />
+      <img
+        src="../static/images/power.png"
+        alt="Power consumption meter"
+        class="img-strip"
+      />
       <p>
         Over time, friends and family started relying on the server for media
         streaming and file sharing. That growing dependence pushed me to take
@@ -123,22 +149,57 @@
     <script>
       const navbar = document.getElementById("navbar");
       const navbarLinks = document.querySelector(".navbar-links");
-      let lastScrollY = window.scrollY;
-      window.addEventListener("scroll", () => {
-        const currentScrollY = window.scrollY;
-        if (currentScrollY > lastScrollY) {
-          navbarLinks.classList.add("hidden");
-        } else {
-          navbarLinks.classList.remove("hidden");
-        }
-        lastScrollY = currentScrollY;
-      });
+      const spacer = document.getElementById("navbar-spacer");
+
+      let lastY = window.scrollY;
+      let linksHidden = false;
+
       function updateSpacer() {
-        const spacer = document.getElementById("navbar-spacer");
-        spacer.style.height = navbar.offsetHeight + "px";
+        // Measure after CSS transitions/layout have applied
+        requestAnimationFrame(() => {
+          spacer.style.height = navbar.offsetHeight + "px";
+        });
       }
+
+      // initial
       updateSpacer();
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          const y = window.scrollY;
+
+          // always show at top
+          if (y <= 2) {
+            if (linksHidden) {
+              linksHidden = false;
+              navbarLinks.classList.remove("hidden");
+              updateSpacer();
+            }
+            lastY = y;
+            return;
+          }
+
+          const dy = y - lastY;
+          if (Math.abs(dy) < 6) return;
+
+          const shouldHide = dy > 0;
+
+          if (shouldHide !== linksHidden) {
+            linksHidden = shouldHide;
+            navbarLinks.classList.toggle("hidden", shouldHide);
+            updateSpacer();
+          }
+
+          lastY = y;
+        },
+        { passive: true },
+      );
+
       window.addEventListener("resize", updateSpacer);
-    </script>
+
+      // If your CSS transition changes height over 0.3s, this keeps spacer in sync mid-transition:
+      navbarLinks.addEventListener("transitionend", updateSpacer);
+    </script> 
   </body>
 </html>

@@ -51,10 +51,9 @@
 
       <h3>How It Works</h3>
 
-      <img src="../static/images/home-server.jpeg" alt="Home server" class="img-strip" />
       <p>The system is built on Snapcast, an open-source multi-room audio solution with a server-client architecture. The snapserver runs inside a Docker container on my home server, acting as the central audio source. Each room has a Raspberry Pi running a snapclient, which receives the audio stream over Wi-Fi and plays it through the connected speakers. To get clean analog output from the Pis, I soldered dedicated DAC boards onto each one, bypassing the Pi's built-in audio which is notoriously noisy.</p>
 
-      <img src="../static/images/rasp-pi.jpeg" alt="Raspberry Pi with DAC" class="img-strip" />
+      <img src="../static/images/rasp-pi.png" alt="Raspberry Pi with DAC" class="img-strip" />
       <p>I designed and 3D-printed custom cases to house each Raspberry Pi and its DAC cleanly. It took several iterations to get the fit, ventilation, and cable routing right, but the final versions are compact and tidy enough to sit next to speakers without being an eyesore. Snapcast handles all the synchronization between clients, compensating for network jitter to keep every room playing in lockstep. For music input, I use Librespot, which presents the system as a Spotify Connect device, so anyone on the network can cast music to the whole house directly from their phone. I am also experimenting with AirPlay support to allow seamless switching between sources.</p>
 
       <h3>The Inspiration</h3>
@@ -69,43 +68,59 @@
     <script>
   const navbar = document.getElementById("navbar");
   const navbarLinks = document.querySelector(".navbar-links");
+  const spacer = document.getElementById("navbar-spacer");
 
   let lastY = window.scrollY;
+  let linksHidden = false;
+
+  function updateSpacer() {
+    // Measure after CSS transitions/layout have applied
+    requestAnimationFrame(() => {
+      spacer.style.height = navbar.offsetHeight + "px";
+    });
+  }
+
+  // initial
+  updateSpacer();
 
   window.addEventListener(
     "scroll",
     () => {
       const y = window.scrollY;
 
-      // iOS bounce settles at/near 0; never allow hidden at the top
+      // always show at top
       if (y <= 2) {
-        navbarLinks.classList.remove("hidden");
+        if (linksHidden) {
+          linksHidden = false;
+          navbarLinks.classList.remove("hidden");
+          updateSpacer();
+        }
         lastY = y;
         return;
       }
 
       const dy = y - lastY;
-
-      // ignore tiny jitter that can flip the direction during bounce
       if (Math.abs(dy) < 6) return;
 
-      // hide only when clearly scrolling down; show when clearly scrolling up
-      if (dy > 0) navbarLinks.classList.add("hidden");
-      else navbarLinks.classList.remove("hidden");
+      const shouldHide = dy > 0;
+
+      if (shouldHide !== linksHidden) {
+        linksHidden = shouldHide;
+        navbarLinks.classList.toggle("hidden", shouldHide);
+        updateSpacer();
+      }
 
       lastY = y;
     },
     { passive: true }
   );
 
-  function updateSpacer() {
-    const spacer = document.getElementById("navbar-spacer");
-    spacer.style.height = navbar.offsetHeight + "px";
-  }
-
-  updateSpacer();
   window.addEventListener("resize", updateSpacer);
+
+  // If your CSS transition changes height over 0.3s, this keeps spacer in sync mid-transition:
+  navbarLinks.addEventListener("transitionend", updateSpacer);
 </script>
+
 
   </body>
 </html>

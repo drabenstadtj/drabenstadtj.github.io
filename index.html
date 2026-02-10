@@ -150,43 +150,59 @@
     <script>
   const navbar = document.getElementById("navbar");
   const navbarLinks = document.querySelector(".navbar-links");
+  const spacer = document.getElementById("navbar-spacer");
 
   let lastY = window.scrollY;
+  let linksHidden = false;
+
+  function updateSpacer() {
+    // Measure after CSS transitions/layout have applied
+    requestAnimationFrame(() => {
+      spacer.style.height = navbar.offsetHeight + "px";
+    });
+  }
+
+  // initial
+  updateSpacer();
 
   window.addEventListener(
     "scroll",
     () => {
       const y = window.scrollY;
 
-      // iOS bounce settles at/near 0; never allow hidden at the top
+      // always show at top
       if (y <= 2) {
-        navbarLinks.classList.remove("hidden");
+        if (linksHidden) {
+          linksHidden = false;
+          navbarLinks.classList.remove("hidden");
+          updateSpacer();
+        }
         lastY = y;
         return;
       }
 
       const dy = y - lastY;
-
-      // ignore tiny jitter that can flip the direction during bounce
       if (Math.abs(dy) < 6) return;
 
-      // hide only when clearly scrolling down; show when clearly scrolling up
-      if (dy > 0) navbarLinks.classList.add("hidden");
-      else navbarLinks.classList.remove("hidden");
+      const shouldHide = dy > 0;
+
+      if (shouldHide !== linksHidden) {
+        linksHidden = shouldHide;
+        navbarLinks.classList.toggle("hidden", shouldHide);
+        updateSpacer();
+      }
 
       lastY = y;
     },
     { passive: true }
   );
 
-  function updateSpacer() {
-    const spacer = document.getElementById("navbar-spacer");
-    spacer.style.height = navbar.offsetHeight + "px";
-  }
-
-  updateSpacer();
   window.addEventListener("resize", updateSpacer);
+
+  // If your CSS transition changes height over 0.3s, this keeps spacer in sync mid-transition:
+  navbarLinks.addEventListener("transitionend", updateSpacer);
 </script>
+
 
   </body>
 </html>
