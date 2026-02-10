@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <title>Game Dev - Jack Drabenstadt</title>
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="navbar-top">
+        <span class="navbar-name">
+          <span class="name-full">Jack Drabenstadt</span>
+          <span class="name-short">JD</span>
+        </span>
+        <span class="navbar-page">Game Dev</span>
+        <div class="navbar-socials">
+          <div class="resume-dropdown">
+            <span class="navbar-resume">Resume</span>
+            <div class="resume-dropdown-menu">
+              <a href="static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
+              <a href="static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+            </div>
+          </div>
+          <a href="/gamedev/pages/gamelog.html" target="_blank" class="navbar-resume">Dev Log</a>
+          <a
+            href="https://www.linkedin.com/in/jackdrabenstadt/"
+            target="_blank"
+            aria-label="LinkedIn"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/drabenstadtj"
+            target="_blank"
+            aria-label="GitHub"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a
+            href="https://drabenstadtj.itch.io/"
+            target="_blank"
+            aria-label="Itch.io"
+            ><i class="fa-brands fa-itch-io"></i
+          ></a>
+        </div>
+      </div>
+      <div class="navbar-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="gamedev.html" class="active">Game Dev</a></li>
+          <li><a href="writing.html">Writing</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="navbar-spacer"></div>
+    <main class="content-strip">
+      <div class="card-list">
+        <a href="gamedev/lamport.html" class="card">
+          <img src="static/images/lgs_thumbnail.png" alt="Description" />
+          <h2>Lamport General Systems</h2>
+          <p>
+            A first-person immersive sim where you manipulate hostile Byzantine
+            fault-tolerant networks through message interception, code
+            injection, and physical sabotage.
+          </p>
+        </a>
+        <a href="gamedev/discards.html" class="card">
+          <img src="static/images/discards_thumbnail.png" alt="Description" />
+          <h2>Discards</h2>
+          <p>
+            A first-person narrative game built in Godot exploring identity,
+            digital consciousness, and moral responsibility.
+          </p>
+        </a>
+        <a href="gamedev/strangers-path.html" class="card">
+          <img src="static/images/sp_thumbnail.png" alt="Description" />
+          <h2>Stranger's Path</h2>
+          <p>
+            A short 3D first-person game built in Unity about a stranger
+            arriving in an unfamiliar town.
+          </p>
+        </a>
+        <a href="gamedev/index.html" class="card">
+          <img src="static/images/devlog_thumbnail.png" alt="Game Design Log" />
+          <h2>Dev Log</h2>
+          <p>
+            Ongoing game design journal documenting ideation, prototyping, and
+            development progress.
+          </p>
+        </a>
+      </div>
+    </main>
+    <script>
+      const navbar = document.getElementById("navbar");
+      const navbarLinks = document.querySelector(".navbar-links");
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY) {
+          navbarLinks.classList.add("hidden");
+        } else {
+          navbarLinks.classList.remove("hidden");
+        }
+        lastScrollY = currentScrollY;
+      });
+
+      function updateSpacer() {
+        const spacer = document.getElementById("navbar-spacer");
+        spacer.style.height = navbar.offsetHeight + "px";
+      }
+      updateSpacer();
+      window.addEventListener("resize", updateSpacer);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <title>Discards - Jack Drabenstadt</title>
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="navbar-top">
+        <span class="navbar-name">
+  <span class="name-full">Jack Drabenstadt</span>
+  <span class="name-short">JD</span>
+</span>
+        <span class="navbar-page">Game Dev</span>
+        <div class="navbar-socials">
+          <div class="resume-dropdown">
+            <span class="navbar-resume">Resume</span>
+            <div class="resume-dropdown-menu">
+              <a href="../static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
+              <a href="../static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+            </div>
+          </div>
+          <a href="/gamedev/pages/gamelog.html" target="_blank" class="navbar-resume">Dev Log</a>
+          <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" target="_blank" aria-label="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
+        </div>
+      </div>
+      <div class="navbar-links">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../gamedev.html" class="active">Game Dev</a></li>
+          <li><a href="../writing.html">Writing</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="navbar-spacer"></div>
+    <main class="content-strip">
+      <h1>Discards</h1>
+
+      <p>
+        Discards is a first-person narrative game built in Godot that explores themes of identity, digital consciousness, and moral responsibility. The player enters a liminal city and is given the ability to clone their consciousness into a "discard" — a duplicate that will exist independently. The central choice asks whether the player is willing to endure pain themselves or create a clone who will bear it instead. The outcome is deliberately ambiguous, leaving the player to sit with the consequences of their decision.
+      </p>
+
+      <p>
+        I made Discards for my Narrative and Technology class, where we studied the theoretical foundations of interactive storytelling. Key readings included Janet Murray's work on the properties of digital environments, Henry Jenkins' theories of environmental and embedded narrative, and Espen Aarseth's framework for ergodic literature and cybertext.
+      </p>
+
+      <h3>Design Principles</h3>
+
+      <img src="../static/images/discards-smoking.png" alt="Discards - smoking scene" class="img-strip" />
+      <p>
+        Discards is structured around Janet Murray's four properties of digital environments: procedural, participatory, spatial, and encyclopedic. The procedural property is realized through programmed rules that simulate the consequences of the player's choices — the systems enforce outcomes rather than simply narrating them. The participatory property is expressed through meaningful choice; the player's decisions are not cosmetic but reshape the trajectory of the experience. The spatial property drives the storytelling through movement and exploration, with the liminal city serving as both setting and narrative mechanism, guiding the player through space to encounter the story.
+      </p>
+
+      <h3>Narrative and Storytelling</h3>
+
+      <img src="../static/images/discards-bar.png" alt="Discards - bar scene" class="img-strip" />
+      <p>
+        The narrative design draws on Henry Jenkins' concepts of embedded and evocative storytelling. Clues and context are distributed throughout the environment, rewarding attentive exploration rather than delivering exposition through dialogue or cutscenes. The game is influenced by Mouthwashing and Arctic Eggs, both of which use environmental detail and tonal ambiguity to build narrative meaning. Espen Aarseth's concepts of ergodic structure and aporia are central to the game's design — the player has one chance to create the clone, and once that decision is made, the outcome is locked in. There is no reversal, no second attempt, only the weight of the choice.
+      </p>
+
+      <h3>Influences</h3>
+
+      <p>
+        The primary influence for Discards is SOMA (Frictional Games, 2015), which interrogates what it means to transfer consciousness and whether a copy is the same as the original. Where SOMA presents these transfers as events that happen to the player, Discards gives the player direct agency over whether to create a version of themselves that will suffer. The distinction shifts the moral weight from observation to participation.
+      </p>
+
+      <p class="works-cited">
+        Aarseth, Espen. <em>Cybertext: Perspectives on Ergodic Literature</em>. Johns Hopkins University Press, 1997. Arctic Eggs. Developer Digital, 2024. <em>SOMA</em>. Frictional Games, 2015. Jenkins, Henry. "Game Design as Narrative Architecture." <em>First Person: New Media as Story, Performance, and Game</em>, edited by Noah Wardrip-Fruin and Pat Harrigan, MIT Press, 2004. <em>MOUTHWASHING</em>. Wrong Organ, 2024. Murray, Janet H. <em>Hamlet on the Holodeck: The Future of Narrative in Cyberspace</em>. MIT Press, 1997.
+      </p>
+    </main>
+    <script>
+      const navbar = document.getElementById("navbar");
+      const navbarLinks = document.querySelector(".navbar-links");
+      let lastScrollY = window.scrollY;
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY) { navbarLinks.classList.add("hidden"); }
+        else { navbarLinks.classList.remove("hidden"); }
+        lastScrollY = currentScrollY;
+      });
+      function updateSpacer() {
+        const spacer = document.getElementById("navbar-spacer");
+        spacer.style.height = navbar.offsetHeight + "px";
+      }
+      updateSpacer();
+      window.addEventListener("resize", updateSpacer);
+    </script>
+  </body>
+</html>

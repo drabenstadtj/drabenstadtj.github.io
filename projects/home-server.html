@@ -1,94 +1,144 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jack Drabenstadt - Projects</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap" rel="stylesheet">
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="../static/css/styles.css" />
-    <style>
-      p {
-        text-indent: 30px;
-        margin-bottom: 1.5rem;
-      }
-      
-    </style>
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <title>Home Server - Jack Drabenstadt</title>
   </head>
   <body>
-    <h1><a href="../index.html">Home</a> > Home Server</h1>
+    <nav id="navbar">
+      <div class="navbar-top">
+        <span class="navbar-name">
+  <span class="name-full">Jack Drabenstadt</span>
+  <span class="name-short">JD</span>
+</span>
+        <span class="navbar-page">Projects</span>
+        <div class="navbar-socials">
+          <div class="resume-dropdown">
+            <span class="navbar-resume">Resume</span>
+            <div class="resume-dropdown-menu">
+              <a href="../static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
+              <a href="../static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+            </div>
+          </div>
+          <a href="/gamedev/pages/gamelog.html" target="_blank" class="navbar-resume">Dev Log</a>
+          <a
+            href="https://www.linkedin.com/in/jackdrabenstadt/"
+            target="_blank"
+            aria-label="LinkedIn"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/drabenstadtj"
+            target="_blank"
+            aria-label="GitHub"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a
+            href="https://drabenstadtj.itch.io/"
+            target="_blank"
+            aria-label="Itch.io"
+            ><i class="fa-brands fa-itch-io"></i
+          ></a>
+        </div>
+      </div>
+      <div class="navbar-links">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html" class="active">Projects</a></li>
+          <li><a href="../gamedev.html">Game Dev</a></li>
+          <li><a href="../writing.html">Writing</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="navbar-spacer"></div>
+    <main class="content-strip">
+      <h1>Home Server</h1>
 
-    <div style="overflow: auto; margin-bottom: 20px">
-      <img
-        src="../static/images/building-wintermute.JPG"
-        alt="Building the server"
-        style="float: right; width: 300px; margin-left: 20px; margin-bottom: 10px;"
-      />
+      <img src="../static/images/wintermute-built.JPG" alt="Built server" class="img-strip" />
       <p>
-        I began building my home server a few years ago after watching YouTube
-        videos on self-hosting. At the time, my networking experience was limited
-        to port-forwarding for a Minecraft server, but as a PC enthusiast with
-        spare computer parts, I decided to assemble a server of my own to
-        experiment and learn.
+        I started building my home server a few years ago after going down a
+        rabbit hole of YouTube videos on self-hosting. At the time, I had
+        limited networking experience but was a longtime PC enthusiast with
+        spare parts sitting around. The idea of running my own services instead
+        of relying on cloud providers was too appealing to pass up, so I
+        repurposed an old build and started experimenting.
       </p>
-    </div>
 
-    <div style="overflow: auto; margin-bottom: 20px">
-      <img
-        src="../static/images/wintermute-built.JPG"
-        alt="Built server"
-        style="float: left; width: 300px; margin-right: 20px; margin-bottom: 10px;"
-      />
       <p>
-        Setting up my first applications required extensive research and hands-on
-        problem solving. I spent entire evenings reading technical documentation
-        and forum posts, learning to configure firewalls, manage DNS, implement
-        reverse proxies, and troubleshoot networking and application issues. The
-        process, although time-consuming, was immensely rewarding and sparked a
-        deep passion for systems administration and self-hosting.
+        Setting up the first few applications required extensive research into
+        areas I had little prior exposure to. I had to learn how firewalls
+        actually work, how DNS resolution chains together, and how reverse
+        proxies sit in front of services to handle routing and SSL termination.
+        Every new application I wanted to run came with its own set of
+        troubleshooting challenges, from port conflicts to permission issues,
+        and each one taught me something new about how Linux systems and
+        networking actually operate under the hood.
       </p>
-    </div>
-
-    <p>
-      As my collection of applications grew, managing them directly on the host
-      system became increasingly complex and error-prone. I researched
-      containerization and taught myself Docker, migrating all applications into
-      containers. This improved system organization, simplified updates, and
-      allowed me to scale more efficiently. I also prioritized security from the
-      start, carefully evaluating which ports to expose and forwarding only what
-      was necessary, while implementing protective measures such as reverse
-      proxies and fail2ban to safeguard the server from attacks.
-    </p>
-
-    <div style="overflow: auto; margin-bottom: 20px">
-      <img
-        src="../static/images/power.png"
-        alt="Power meter"
-        style="float: right; width: 250px; margin-left: 20px; margin-bottom: 10px;"
-      />
+    </main>
+    <main class="content-strip">
+      <img src="../static/images/building-wintermute.JPG" alt="Building the server" class="img-strip" />
       <p>
-        Over time, my server began serving more than just my own needs. Friends
-        and family started relying on it for media access, which added a layer of
-        responsibility and motivated me to ensure uptime and reliability. I
-        upgraded my storage from a few terabytes to nearly 50TB and implemented
-        RAID for redundancy. Additionally, I replaced a power-hungry graphics card
-        with a more efficient integrated GPU, cutting electricity usage nearly in
-        half while future-proofing storage capacity.
+        As the number of applications grew, managing everything with bare-metal
+        installations became unsustainable. I taught myself Docker and migrated
+        my services into containers, which made deployment, updates, and
+        isolation dramatically easier. Security became a priority early on. I
+        set up reverse proxies to avoid exposing services directly, configured
+        fail2ban to block brute-force attempts, and developed a habit of
+        auditing access logs and hardening configurations as part of routine
+        maintenance.
       </p>
-    </div>
 
-    <p>
-      Since these upgrades, my focus has shifted to expanding capabilities,
-      experimenting with popular applications, and maintaining the server’s
-      stability and security. This project has been an ongoing, hands-on
-      education in networking, system administration, security, and
-      containerization. Through this project, I have developed hands-on
-      experience in managing complex systems, strengthened my technical skills,
-      and cultivated a proactive approach to independent learning, which I
-      continue to use today.
-    </p>
+      <img src="../static/images/power.png" alt="Power consumption meter" class="img-strip" />
+      <p>
+        Over time, friends and family started relying on the server for media
+        streaming and file sharing. That growing dependence pushed me to take
+        reliability and storage seriously. I upgraded to nearly 50TB of storage
+        with RAID redundancy to protect against drive failures. I also replaced
+        the power-hungry dedicated GPU with a CPU that has capable integrated
+        graphics, which cut the server's electricity consumption nearly in half
+        while still handling hardware transcoding for media streaming.
+      </p>
+
+      <p>
+        Today, my focus has shifted from just getting things running to
+        expanding capabilities, experimenting with new tools, and maintaining
+        long-term stability and security. The home server has become an ongoing
+        education in networking, system administration, security hardening, and
+        containerization. Every problem I solve on it deepens my understanding
+        of the infrastructure that underpins modern computing, and I continue to
+        treat it as both a practical tool and a hands-on learning environment.
+      </p>
+    </main>
+    <script>
+      const navbar = document.getElementById("navbar");
+      const navbarLinks = document.querySelector(".navbar-links");
+      let lastScrollY = window.scrollY;
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY) {
+          navbarLinks.classList.add("hidden");
+        } else {
+          navbarLinks.classList.remove("hidden");
+        }
+        lastScrollY = currentScrollY;
+      });
+      function updateSpacer() {
+        const spacer = document.getElementById("navbar-spacer");
+        spacer.style.height = navbar.offsetHeight + "px";
+      }
+      updateSpacer();
+      window.addEventListener("resize", updateSpacer);
+    </script>
   </body>
 </html>

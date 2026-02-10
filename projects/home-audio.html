@@ -1,138 +1,87 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jack Drabenstadt - Projects</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../static/css/styles.css" />
-    <style>
-      p {
-        text-indent: 30px;
-      }
-      
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <title>Whole Home Audio - Jack Drabenstadt</title>
   </head>
   <body>
-    <h1><a href="../index.html">Home</a> > DIY Multi-Room Home Audio System</h1>
+    <nav id="navbar">
+      <div class="navbar-top">
+        <span class="navbar-name">
+  <span class="name-full">Jack Drabenstadt</span>
+  <span class="name-short">JD</span>
+</span>
+        <span class="navbar-page">Projects</span>
+        <div class="navbar-socials">
+          <div class="resume-dropdown">
+            <span class="navbar-resume">Resume</span>
+            <div class="resume-dropdown-menu">
+              <a href="../static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
+              <a href="../static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+            </div>
+          </div>
+          <a href="/gamedev/pages/gamelog.html" target="_blank" class="navbar-resume">Dev Log</a>
+          <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" target="_blank" aria-label="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
+        </div>
+      </div>
+      <div class="navbar-links">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html" class="active">Projects</a></li>
+          <li><a href="../gamedev.html">Game Dev</a></li>
+          <li><a href="../writing.html">Writing</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div id="navbar-spacer"></div>
+    <main class="content-strip">
+      <h1>Whole Home Audio</h1>
 
-    <p>
-      I'm a bit obsessive about audio quality and have accrued a lot of speakers
-      and equipment over the years. My most recent addition includes a 5.2
-      surround receiver and two surround speakers, which ended up freeing an
-      existing amplifier and speakers. I wanted to use them all together so that
-      wherever you are in the house, the sound is clear and balanced. I was
-      inspired by legendary club sound systems like Paradise Garage and by
-      visiting Nowadays club in New York, where speakers are placed
-      strategically around the room for even coverage. The initial idea for this
-      project came from my roommate: we wanted to be able to walk around the
-      house and listen to music without having to swith which speaker or device
-      was playing. I decided to build a custom system that streams Spotify to
-      multiple rooms at once.
-    </p>
+      <p>I have always been obsessive about audio quality. Over the years I accumulated a collection of speakers across different rooms, but they all operated independently. What I really wanted was seamless whole-home sound, where music could follow me from room to room in perfect sync. The inspiration came from two places: the legendary Paradise Garage in New York, where the entire space was designed around the sound system, and Nowadays, a club in NYC that treats audio as architecture rather than an afterthought.</p>
 
-    <h2>How It Works</h2>
+      <h3>How It Works</h3>
 
-    <div style="overflow: auto; margin-bottom: 20px">
-      <img
-        src="../static/images/home-server.jpeg"
-        alt="Home server"
-        style="
-          float: right;
-          width: 250px;
-          margin-left: 20px;
-          margin-bottom: 10px;
-        "
-      />
-      <p>
-        Over the past few years, I've learned a lot tinkering with my home
-        server, and I’ve also realized just how much amazing open-source
-        software exists. When I started looking for ways to make this multi-room
-        system, Snapcast immediately caught my attention. It works using a
-        <strong>snapserver</strong> that distributes the audio signal and
-        <strong>snapclients</strong> that receive the audio over Wi-Fi and play
-        it back. I already had a server running 24/7 for my other services, so
-        it made sense to use it as the snapserver. I spun up a Docker container
-        for it, configured my audio sources, and got it up and running.
-      </p>
-    </div>
+      <img src="../static/images/home-server.jpeg" alt="Home server" class="img-strip" />
+      <p>The system is built on Snapcast, an open-source multi-room audio solution with a server-client architecture. The snapserver runs inside a Docker container on my home server, acting as the central audio source. Each room has a Raspberry Pi running a snapclient, which receives the audio stream over Wi-Fi and plays it through the connected speakers. To get clean analog output from the Pis, I soldered dedicated DAC boards onto each one, bypassing the Pi's built-in audio which is notoriously noisy.</p>
 
-    <div style="overflow: auto; margin-bottom: 20px">
-      <img
-        src="../static/images/pi-case.png"
-        alt="Raspberry Pi custom case"
-        style="
-          float: left;
-          width: 300px;
-          margin-right: 20px;
-          margin-bottom: 10px;
-        "
-      />
-      <p>
-        For the clients, I went with Raspberry Pis. My home server hobby
-        actually started with a Pi years ago, and I like keeping power
-        consumption low, so they were perfect. I imaged some micro SD cards with
-        Pi OS and SSH’d into each one to install and configure the snapclient
-        software. Each room now has a Raspberry Pi with a DAC that I soldered on
-        for better audio quality, as the Raspberry Pis I was using only have
-        micro-USB output. To house everything neatly, I designed and 3D-printed
-        custom cases. I went through several iterations, testing the fit to make
-        sure the DACs and boards were secure and nothing would come loose.
-      </p>
-    </div>
+      <img src="../static/images/rasp-pi.jpeg" alt="Raspberry Pi with DAC" class="img-strip" />
+      <p>I designed and 3D-printed custom cases to house each Raspberry Pi and its DAC cleanly. It took several iterations to get the fit, ventilation, and cable routing right, but the final versions are compact and tidy enough to sit next to speakers without being an eyesore. Snapcast handles all the synchronization between clients, compensating for network jitter to keep every room playing in lockstep. For music input, I use Librespot, which presents the system as a Spotify Connect device, so anyone on the network can cast music to the whole house directly from their phone. I am also experimenting with AirPlay support to allow seamless switching between sources.</p>
 
-    <p>
-      The Pis connect over Wi-Fi, which means when playing from snapserver the
-      music plays from every source at once. Snapcast keeps everything in sync
-      and accounts for delay, so there’s no lag or echo between rooms. The
-      system uses
-      <strong>Librespot</strong> to stream music straight from Spotify, which
-      lets us control playback directly from the Spotify app on our phones.
-      Later on I also started experimenting with the Snapcast configuration to
-      eventually allow automatic switching between Spotify Connect and AirPlay.
-    </p>
+      <h3>The Inspiration</h3>
 
-    <h2>The Inspiration</h2>
+      <img src="../static/images/paradise-garage.png" alt="Paradise Garage sound system" class="img-strip" />
+      <p>Paradise Garage was not just a club with a sound system. It was a space designed entirely around the experience of listening. Larry Levan and Richard Long built the system so that the music was not just heard but felt, with every corner of the room receiving the same quality of sound. That philosophy, of designing a space around its sound rather than bolting speakers on as an afterthought, is what I wanted to bring into my own home on a smaller scale.</p>
 
-    <div style="overflow: auto; margin-bottom: 20px">
-      <img
-        src="../static/images/paradise-garage.png"
-        alt="Paradise Garage sound system"
-        style="
-          float: left;
-          width: 200px;
-          margin-right: 20px;
-          margin-bottom: 10px;
-        "
-      />
-      <p>
-        A big part of this project was inspired by my love for high-quality
-        sound and legendary club systems. Clubs like Paradise Garage didn’t just
-        put speakers in a room but designed the space around the sound. I wanted
-        to bring a little bit of that philosophy into my own home. Combining
-        that inspiration with research I recently did concerning distributed systems and low-level
-        programming made this project really fun: managing synchronized audio
-        over Wi-Fi reminded me of working with Linux sockets, and ensuring
-        everything stayed in sync was reminiscent of a small-scale distributed
-        system.
-      </p>
-    </div>
+      <p>Building this system also ended up being a natural extension of my distributed systems experience. Managing synchronized audio streams over Wi-Fi, dealing with clock drift between independent clients, handling network interruptions gracefully, and coordinating a central server with multiple edge devices are all problems that are conceptually similar to working with Linux sockets and building small-scale distributed systems. The overlap between the audio project and my academic work was unexpected but made the technical challenges feel familiar and approachable.</p>
 
-    <h2>Final Thoughts</h2>
-
-    <p>
-      The system is now fully functional, streaming Spotify throughout the house
-      with clean, balanced sound. I'm always looking for projects to combine
-      hardware, software, and design and it’s been a lot of fun refining it
-      along the way. There’s still room to experiment with getting the volume
-      levels synchronized between rooms and other tweaks, but for now its been
-      very useful.
-    </p>
+      <p>The system is now fully functional, with synchronized playback running reliably across multiple rooms. I am always looking for projects that sit at the intersection of hardware, software, and design, and this one hits all three. Whether it is iterating on the 3D-printed enclosures, experimenting with new audio sources, or optimizing the network configuration for lower latency, there is always something to refine and improve.</p>
+    </main>
+    <script>
+      const navbar = document.getElementById("navbar");
+      const navbarLinks = document.querySelector(".navbar-links");
+      let lastScrollY = window.scrollY;
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY) { navbarLinks.classList.add("hidden"); }
+        else { navbarLinks.classList.remove("hidden"); }
+        lastScrollY = currentScrollY;
+      });
+      function updateSpacer() {
+        const spacer = document.getElementById("navbar-spacer");
+        spacer.style.height = navbar.offsetHeight + "px";
+      }
+      updateSpacer();
+      window.addEventListener("resize", updateSpacer);
+    </script>
   </body>
 </html>

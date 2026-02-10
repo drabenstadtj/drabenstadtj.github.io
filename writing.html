@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <title>Writing - Jack Drabenstadt</title>
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="navbar-top">
+        <span class="navbar-name">
+          <span class="name-full">Jack Drabenstadt</span>
+          <span class="name-short">JD</span>
+        </span>
+        <span class="navbar-page">Writing</span>
+        <div class="navbar-socials">
+          <div class="resume-dropdown">
+            <span class="navbar-resume">Resume</span>
+            <div class="resume-dropdown-menu">
+              <a href="static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
+              <a href="static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+            </div>
+          </div>
+          <a href="/gamedev/pages/gamelog.html" target="_blank" class="navbar-resume">Dev Log</a>
+          <a
+            href="https://www.linkedin.com/in/jackdrabenstadt/"
+            target="_blank"
+            aria-label="LinkedIn"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/drabenstadtj"
+            target="_blank"
+            aria-label="GitHub"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a
+            href="https://drabenstadtj.itch.io/"
+            target="_blank"
+            aria-label="Itch.io"
+            ><i class="fa-brands fa-itch-io"></i
+          ></a>
+        </div>
+      </div>
+      <div class="navbar-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="gamedev.html">Game Dev</a></li>
+          <li><a href="writing.html" class="active">Writing</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="navbar-spacer"></div>
+    <main class="content-strip">
+      <div class="card-list">
+        <a href="writing/embedded-emergent.html" class="card">
+          <img
+            src="static/images/narr_framework_thumbnail.png"
+            alt="Description"
+          />
+          <h2>
+            A Framework for Game Narrative Analysis
+          </h2>
+          <p>
+            A framework for analyzing video game narratives by examining both
+            embedded (authored) and emergent (player-created) storytelling,
+            using Papers, Please as a case study.
+          </p>
+        </a>
+        <a href="writing/lain.html" class="card">
+          <img src="static\images\lain_thumbnail.png" alt="Description" />
+          <h2>
+            Digital Boundaries and Human Autonomy in Serial Experiments Lain
+          </h2>
+          <p>
+            An analysis of how digital systems blur identity, erode autonomy,
+            and enforce surveillance-driven control.
+          </p>
+        </a>
+        <a href="writing/mouthwashing.html" class="card">
+          <img src="static\images\mw_thumbnail.png" alt="Description" />
+          <h2>Complicity and Collapse in MOUTHWASHING</h2>
+          <p>
+            An exploration of how MOUTHWASHING denies agency, implicating the
+            player in cycles of guilt, helplessness, and moral collapse.
+          </p>
+        </a>
+        <a href="writing/ouat.html" class="card">
+          <img src="static\images\ouat_thumbnail.png" alt="Description" />
+          <h2>When Rules Write the Story: Exploring Once Upon a Time</h2>
+          <p>
+            A study of how players, rules, and social dynamics shape narratives
+            in the collaborative card game Once Upon a Time.
+          </p>
+        </a>
+      </div>
+    </main>
+    <script>
+      const navbar = document.getElementById("navbar");
+      const navbarLinks = document.querySelector(".navbar-links");
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY) {
+          navbarLinks.classList.add("hidden");
+        } else {
+          navbarLinks.classList.remove("hidden");
+        }
+        lastScrollY = currentScrollY;
+      });
+
+      function updateSpacer() {
+        const spacer = document.getElementById("navbar-spacer");
+        spacer.style.height = navbar.offsetHeight + "px";
+      }
+      updateSpacer();
+      window.addEventListener("resize", updateSpacer);
+    </script>
+  </body>
+</html>

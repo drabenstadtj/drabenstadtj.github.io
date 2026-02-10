@@ -1,0 +1,567 @@
+/* =========================
+   Base
+   ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+  background: #d9c964;
+  overflow-x: hidden;
+}
+
+/* =========================
+   Navbar
+   ========================= */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #d9c964;
+}
+
+/* Top bar: name left, current page centered, socials right */
+.navbar-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid #000;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+.navbar-name {
+  font-family: "Rubik Broken Fax", system-ui;
+  font-weight: 400;
+  font-size: 2rem;
+  white-space: nowrap;
+}
+
+/* Name abbreviation defaults */
+.name-short {
+  display: none;
+}
+
+.navbar-page {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 500;
+  font-size: 1.35rem;
+  white-space: nowrap;
+}
+
+/* Social icons (top right) */
+.navbar-socials {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  white-space: nowrap;
+}
+
+.navbar-socials a {
+  color: #000;
+  font-size: 1.25rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navbar-resume {
+  font-size: 1rem !important;
+}
+
+/* Resume dropdown */
+.resume-dropdown {
+  position: relative;
+}
+
+.resume-dropdown > .navbar-resume {
+  cursor: pointer;
+}
+
+.resume-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #d9c964;
+  border: 1px solid #000;
+  border-radius: 8px;
+  padding: 0.25rem 0;
+  min-width: 150px;
+  z-index: 1001;
+  flex-direction: column;
+}
+
+.resume-dropdown:hover .resume-dropdown-menu {
+  display: flex;
+}
+
+.resume-dropdown-menu a {
+  padding: 0.45rem 0.75rem;
+  text-decoration: none;
+  color: #000;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.resume-dropdown-menu a:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.resume-dropdown-menu a:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.resume-dropdown-menu a:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+/* Links bar (second row) */
+.navbar-links {
+  border-bottom: 1px solid #000;
+  overflow: hidden;
+  max-height: 3rem;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.3s ease;
+  opacity: 1;
+}
+
+.navbar-links.hidden {
+  max-height: 0;
+  opacity: 0;
+}
+
+.navbar-links ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0.75rem 1.5rem;
+  white-space: nowrap;
+
+  /* horizontal scroll only for link row */
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2rem;
+}
+
+/* Minimal scrollbar styling for links row */
+.navbar-links ul::-webkit-scrollbar {
+  height: 6px;
+}
+
+.navbar-links ul::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 999px;
+}
+
+/* =========================
+   Page content
+   ========================= */
+.content-strip {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.content-strip section {
+  margin-bottom: 2.5rem;
+}
+
+.content-strip h1 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.content-strip h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.content-strip h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.content-strip p {
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.content-strip ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.content-strip li {
+  line-height: 1.5;
+}
+
+.content-strip a {
+  color: #000;
+}
+
+/* =========================
+   Cards
+   ========================= */
+.card-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 25% 1.5fr 2fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.25rem 1.25rem 2rem;
+  text-decoration: none;
+  color: #000;
+  transition: background 0.15s;
+  border-bottom: 1px solid #000;
+}
+
+.card:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* =========================
+   Hero
+   ========================= */
+.hero h1 {
+  font-size: 2rem;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.hero-cta {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   Proof
+   ========================= */
+.proof {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.proof-item {
+  border: 1px solid #000;
+  padding: 0.9rem;
+}
+
+.proof-k {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.proof-v {
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* =========================
+   Buttons
+   ========================= */
+.btn {
+  display: inline-block;
+  padding: 0.65rem 0.95rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  width: 100%;
+  text-align: center;
+}
+
+.btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.btn-outline {
+  background: transparent;
+}
+
+.cta-resume-dropdown .btn {
+  cursor: pointer;
+  animation: fresnel-glow 3s ease-in-out infinite;
+}
+
+.cta-resume-dropdown .btn:hover {
+  animation: none;
+  box-shadow:
+    0 0 8px rgba(0, 0, 0, 0.3),
+    inset 0 0 8px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes fresnel-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 4px rgba(0, 0, 0, 0.15),
+      inset 0 0 4px rgba(0, 0, 0, 0.04);
+  }
+  50% {
+    box-shadow:
+      0 0 12px rgba(0, 0, 0, 0.3),
+      inset 0 0 8px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.cta-resume-dropdown .resume-dropdown-menu {
+  left: 0;
+  right: 0;
+}
+
+/* =========================
+   Featured
+   ========================= */
+/* --- Featured layout normalization --- */
+.feature-card {
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 1rem;
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: background 0.15s;
+}
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.feature-card:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.feature-card h3,
+.feature-card p {
+  margin: 0;
+}
+
+/* Header (title + tags) takes a consistent height */
+.feature-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-height: 4.6rem; /* tune this */
+}
+
+/* Title clamps to 2 lines so header height is consistent */
+.feature-top h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.2;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Tags: allow 1 line (or 2, if you prefer) */
+.feature-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+
+  /* optional: keep tags to one row for perfect consistency */
+  max-height: 1.55rem;
+  overflow: hidden;
+}
+
+.tag {
+  border: 1px solid #000;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.feature-card p {
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Pin link to bottom */
+.feature-link {
+  margin-top: auto;
+  font-weight: 600;
+}
+
+/* =========================
+   Article Images
+   ========================= */
+.img-full {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  display: block;
+  height: auto;
+}
+
+.img-strip {
+  width: 100%;
+  display: block;
+  height: auto;
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+/* =========================
+   Deliverables
+   ========================= */
+.deliverables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.deliverable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background 0.15s;
+}
+
+.deliverable:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* =========================
+   Works Cited
+   ========================= */
+.works-cited {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #000;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 1000px) {
+  .name-full {
+    display: none;
+  }
+  .name-short {
+    display: inline;
+  }
+}
+
+@media (max-width: 900px) {
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .proof {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .card h2,
+  .card p {
+    overflow-wrap: anywhere;
+  }
+
+  .navbar-page {
+    display: none;
+  }
+
+  .navbar-top {
+    position: static;
+    gap: 0.75rem;
+  }
+
+  .navbar-name {
+    font-size: 1.05rem;
+  }
+
+  .navbar-socials a {
+    font-size: 1.1rem;
+  }
+
+  .navbar-resume {
+    font-size: 0.95rem !important;
+  }
+
+  .resume-dropdown-menu {
+    right: auto;
+    left: 0;
+  }
+}

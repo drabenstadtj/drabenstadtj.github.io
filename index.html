@@ -1,199 +1,170 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jack Drabenstadt</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap" rel="stylesheet">
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="static/css/styles.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <title>Home - Jack Drabenstadt</title>
   </head>
+
   <body>
-    <header>
-      <div id="hero">
-        <h1><span id="name"></span><span class="cursor"></span></h1>
-        <p>Programmer · Game Designer · Sysadmin (kinda)</p>
-      </div>
+    <nav id="navbar">
+      <div class="navbar-top">
+        <span class="navbar-name">
+          <span class="name-full">Jack Drabenstadt</span>
+          <span class="name-short">JD</span>
+        </span>
 
-      <style>
-        /* Cursor animation */
-        .cursor {
-          display: inline-block;
-          width: 0.6ch;
-          height: 1.2em;
-          background: currentColor;
-          margin-left: 4px;
-          vertical-align: bottom;
-          animation: blink 1s steps(1) infinite;
-        }
+        <span class="navbar-page">Home</span>
 
-        @keyframes blink {
-          50% {
-            opacity: 0;
-          }
-        }
-      </style>
-
-      <!-- <div id="nav">
-        <nav>
-          <ul>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#writing">Writing</a></li>
-          </ul>
-        </nav>
-      </div> -->
-    </header>
-    <div id="main-content">
-      <div id="profile">
-        <div id="headshot">
-          <img src="static/images/jack.png" />
-        </div>
-        <div id="socials">
-          <ul>
-            <li>
-              <a target="_blank" href="static/files/Jack_Drabenstadt_Resume.pdf"
-                >Resume</a
-              >
-            </li>
-            <li>
-              <a target="_blank" href="https://github.com/drabenstadtj/"
-                >Github</a
-              >
-            </li>
-            <li>
-              <a
-                target="_blank"
-                href="https://www.linkedin.com/in/jack-drabenstadt-71b01a296"
-                >LinkedIn</a
-              >
-            </li>
-            <li>
-              <a target="_blank" href="https://drabenstadtj.itch.io">itch.io</a>
-            </li>
-            <li>
-              <a target="_blank" href="/gamedev/index.html"
-                >Game Dev Portfolio</a
-              >
-            </li>
-            <li>
-              <a target="_blank" href="mailto:jackdrabenstadt@gmail.com"
-                >Email Me</a
-              >
-            </li>
-          </ul>
+        <div class="navbar-socials">
+          <div class="resume-dropdown">
+            <span class="navbar-resume">Resume</span>
+            <div class="resume-dropdown-menu">
+              <a href="static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
+              <a href="static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+            </div>
+          </div>
+          <a href="/gamedev/pages/gamelog.html" target="_blank" class="navbar-resume">Dev Log</a>
+          <a
+            href="https://www.linkedin.com/in/jackdrabenstadt/"
+            target="_blank"
+            aria-label="LinkedIn"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/drabenstadtj"
+            target="_blank"
+            aria-label="GitHub"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a
+            href="https://drabenstadtj.itch.io/"
+            target="_blank"
+            aria-label="Itch.io"
+          >
+            <i class="fa-brands fa-itch-io"></i>
+          </a>
         </div>
       </div>
-      <div class="container" id="about">
-        <h3>About Me</h3>
-        <p>
-          I’m a Computer Science and Digital Narrative & Interactive Design
-          student at the University of Pittsburgh, focused on game design. I
-          previously conducted research at Pitt, writing C code for
-          intrusion-tolerant distributed systems, and I enjoy exploring
-          storytelling and interactive systems through games and media.
-          Currently, I’m working on an independent study to design and develop
-          my own game.
+
+      <div class="navbar-links">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="gamedev.html">Game Dev</a></li>
+          <li><a href="writing.html">Writing</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Spacer so content isn't hidden behind the navbar -->
+    <div id="navbar-spacer"></div>
+
+    <main class="content-strip">
+      <header class="hero">
+        <h1>Software engineer + game developer.</h1>
+
+        <p class="hero-sub">
+          I build software systems and games.
+          <br /><br />
+          My work focuses on turning complex technical systems into things
+          people can interact with and understand. I’ve built runtime
+          configuration systems for distributed software, deployed and
+          maintained self-hosted infrastructure, and developed games where
+          network protocols and system rules are the core mechanics.
+          <br /><br />
+          I’m currently building a first-person game where players manipulate a
+          hostile fault-tolerant network through terminals, message
+          interception, and physical sabotage.
         </p>
-      </div>
-    </div>
 
-    <div class="container" id="projects">
-      <h3>Projects</h3>
-      <p>Some info about my projects...</p>
-      <ul>
-        <li>
-          <a href="projects/discards.html">Discards</a> - A narrative game about identity
-          and moral choice.
-        </li>
-        <li>
-          <a href="projects/strangers-path.html">Strangers Path</a> - A short
-          first-person Unity game about a stranger navigating an unfamiliar
-          town.
-        </li>
-        <li>
-          <a href="projects/home-server.html">Home Server</a> - Built and managed a
-          self-hosted, containerized server for learning and experimentation
-        </li>
-        <li>
-          <a href="projects/home-audio.html">Whole Home Audio</a> - A custom-built system
-          for seamless whole-home audio.
-        </li>
-        <li>
-          <a href="projects/dist-systems-research.html"
-            >Designing and Implementing Dynamic Reconfiguration in Spire</a
-          >
-          - Designed and implemented runtime configuration and key management
-          for a distributed system.
-        </li>
-      </ul>
-    </div>
+        <div class="hero-cta">
+          <div class="resume-dropdown cta-resume-dropdown">
+            <span class="btn btn-outline">Resume</span>
+            <div class="resume-dropdown-menu">
+              <a href="static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
+              <a href="static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+            </div>
+          </div>
+        </div>
+      </header>
 
-    <div class="container" id="writing">
-      <h3>Writing</h3>
-      <p>Some info about my writing...</p>
-      <ul>
-        <li>
-          <a href="writing/embedded-emergent.html"
-            >Embedded and Emergent: A Framework for Game Narrative Analysis</a
-          >
-          - A framework for analyzing video game narratives by examining both
-          embedded (authored) and emergent (player-created) storytelling, using
-          Papers, Please as a case study.
-        </li>
-        <li>
-          <a href="writing/lain-analysis.html"
-            >Digital Boundaries and Human Autonomy in Serial Experiments Lain</a
-          >
-          - An analysis of Serial Experiments Lain as a critique of how digital
-          systems blur identity, erode autonomy, and enforce surveillance-driven
-          control.
-        </li>
-        <li>
-          <a href="writing/mouthwashing-analysis.html"
-            >Complicity and Collapse in MOUTHWASHING</a
-          >
-          - An exploration of MOUTHWASHING as a narrative game that denies
-          agency, implicating the player in cycles of guilt, helplessness, and
-          moral collapse.
-        </li>
-        <li>
-          <a href="writing/ouat-analysis.html"
-            >When Rules Write the Story: Exploring Once Upon a Time</a
-          >
-          - A study of how players, rules, and social dynamics shape narratives
-          in the collaborative card game Once Upon a Time.
-        </li>
-      </ul>
-    </div>
-    <script src="static/js/name-writer.js"></script>
+      <section>
+        <h2>Currently Working On</h2>
+        <p>
+          <a href="gamedev/lamport.html">Lamport General Systems</a> — A
+          first-person immersive sim where you manipulate hostile Byzantine
+          fault-tolerant networks through message interception, code injection,
+          and physical sabotage.
+        </p>
+      </section>
+
+      <section>
+        <h2>Featured</h2>
+
+        <div class="card-list featured-list">
+          <a href="projects/spire.html" class="card featured-card">
+            <img src="static\images\reconfig_thumbnail.png" alt="Dynamic Reconfiguration in Spire" />
+            <h2>Dynamic Reconfiguration in Spire</h2>
+            <p>
+              Researched, designed and implemented runtime configuration + key
+              management for an intrusion-tolerant distributed system.
+            </p>
+          </a>
+
+          <a href="projects/home-server.html" class="card featured-card">
+            <img src="static\images\wintermute_thumbnail.png" alt="Home Server" />
+            <h2>Home Server</h2>
+            <p>
+              Built and maintained self-hosted infrastructure with reverse proxy
+              + fail2ban, containerized services, and reliability-focused
+              storage.
+            </p>
+          </a>
+
+          <a href="gamedev/lamport.html" class="card featured-card">
+            <img src="static\images\lgs_thumbnail.png" alt="Lamport General Systems" />
+            <h2>Lamport General Systems</h2>
+            <p>
+              Developing a first-person immersive sim about manipulating hostile
+              Byzantine fault-tolerant networks through interception, injection,
+              and sabotage.
+            </p>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const navbar = document.getElementById("navbar");
+      const navbarLinks = document.querySelector(".navbar-links");
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        navbarLinks.classList.toggle("hidden", currentScrollY > lastScrollY);
+        lastScrollY = currentScrollY;
+      });
+
+      function updateSpacer() {
+        const spacer = document.getElementById("navbar-spacer");
+        spacer.style.height = navbar.offsetHeight + "px";
+      }
+
+      updateSpacer();
+      window.addEventListener("resize", updateSpacer);
+    </script>
   </body>
-  <footer class="button-bar">
-    <a href="#">
-      <img src="static/buttons/cs.gif" alt="CS Button" />
-    </a>
-    <a href="#">
-      <img src="static/buttons/linux-p.gif" alt="Linux Button" />
-    </a>
-    <a href="#">
-      <img src="static/buttons/neo-fedi.gif" alt="Neo Fedi Button" />
-    </a>
-    <a href="#">
-      <img src="static/buttons/neovim.gif" alt="Neovim Button" />
-    </a>
-    <a href="#">
-      <img src="static/buttons/pride.gif" alt="Rainbow Bev Button" />
-    </a>
-    <a href="#">
-      <img
-        src="static/buttons/vim.vialle.love.anim.gif"
-        alt="Vim Love Button"
-      />
-    </a>
-  </footer>
 </html>

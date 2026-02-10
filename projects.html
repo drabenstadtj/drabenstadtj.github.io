@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <title>Projects - Jack Drabenstadt</title>
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="navbar-top">
+        <span class="navbar-name">
+          <span class="name-full">Jack Drabenstadt</span>
+          <span class="name-short">JD</span>
+        </span>
+        <span class="navbar-page">Projects</span>
+        <div class="navbar-socials">
+          <div class="resume-dropdown">
+            <span class="navbar-resume">Resume</span>
+            <div class="resume-dropdown-menu">
+              <a href="static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
+              <a href="static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+            </div>
+          </div>
+          <a href="/gamedev/pages/gamelog.html" target="_blank" class="navbar-resume">Dev Log</a>
+          <a
+            href="https://www.linkedin.com/in/jackdrabenstadt/"
+            target="_blank"
+            aria-label="LinkedIn"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/drabenstadtj"
+            target="_blank"
+            aria-label="GitHub"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a
+            href="https://drabenstadtj.itch.io/"
+            target="_blank"
+            aria-label="Itch.io"
+            ><i class="fa-brands fa-itch-io"></i
+          ></a>
+        </div>
+      </div>
+      <div class="navbar-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html" class="active">Projects</a></li>
+          <li><a href="gamedev.html">Game Dev</a></li>
+          <li><a href="writing.html">Writing</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="navbar-spacer"></div>
+    <main class="content-strip">
+      <div class="card-list">
+        <a href="projects/spire.html" class="card">
+          <img src="static/images/reconfig_thumbnail.png" alt="Description" />
+          <h2>Dynamic Reconfiguration in Spire</h2>
+          <p>
+            Designed and implemented runtime configuration and key management
+            for a multi-site intrusion-tolerant distributed system with Dr. Amy
+            Babay.
+          </p>
+        </a>
+        <a href="projects/home-server.html" class="card">
+          <img src="static/images/wintermute_thumbnail.png" alt="Description" />
+          <h2>Home Server</h2>
+          <p>
+            Built and managed a self-hosted, containerized server with nearly
+            50TB of storage, reverse proxies, and fail2ban.
+          </p>
+        </a>
+        <a href="projects/home-audio.html" class="card">
+          <img src="static/images/pi-case_thumbnail.png" alt="Description" />
+          <h2>Whole Home Audio</h2>
+          <p>
+            A custom-built multi-room Spotify streaming system using Snapcast,
+            Raspberry Pis, and 3D-printed cases.
+          </p>
+        </a>
+      </div>
+    </main>
+    <script>
+      const navbar = document.getElementById("navbar");
+      const navbarLinks = document.querySelector(".navbar-links");
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY) {
+          navbarLinks.classList.add("hidden");
+        } else {
+          navbarLinks.classList.remove("hidden");
+        }
+        lastScrollY = currentScrollY;
+      });
+
+      function updateSpacer() {
+        const spacer = document.getElementById("navbar-spacer");
+        spacer.style.height = navbar.offsetHeight + "px";
+      }
+      updateSpacer();
+      window.addEventListener("resize", updateSpacer);
+    </script>
+  </body>
+</html>
