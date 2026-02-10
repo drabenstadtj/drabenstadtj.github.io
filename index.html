@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -30,11 +33,20 @@
           <div class="resume-dropdown">
             <span class="navbar-resume">Resume</span>
             <div class="resume-dropdown-menu">
-              <a href="static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
-              <a href="static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+              <a href="static/resumes/software_dev_resume.pdf" target="_blank"
+                >Software Dev</a
+              >
+              <a href="static/resumes/game_dev_resume.pdf" target="_blank"
+                >Game Design</a
+              >
             </div>
           </div>
-          <a href="/gamedev/pages/gamelog.html" target="_blank" class="navbar-resume">Dev Log</a>
+          <a
+            href="/gamedev/pages/gamelog.html"
+            target="_blank"
+            class="navbar-resume"
+            >Dev Log</a
+          >
           <a
             href="https://www.linkedin.com/in/jackdrabenstadt/"
             target="_blank"
@@ -94,8 +106,12 @@
           <div class="resume-dropdown cta-resume-dropdown">
             <span class="btn btn-outline">Resume</span>
             <div class="resume-dropdown-menu">
-              <a href="static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
-              <a href="static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+              <a href="static/resumes/software_dev_resume.pdf" target="_blank"
+                >Software Dev</a
+              >
+              <a href="static/resumes/game_dev_resume.pdf" target="_blank"
+                >Game Design</a
+              >
             </div>
           </div>
         </div>
@@ -115,8 +131,23 @@
         <h2>Featured</h2>
 
         <div class="card-list featured-list">
+          <a href="gamedev/lamport.html" class="card featured-card">
+            <img
+              src="static\images\lgs_thumbnail.png"
+              alt="Lamport General Systems"
+            />
+            <h2>Lamport General Systems</h2>
+            <p>
+              Developing a first-person immersive sim about manipulating hostile
+              Byzantine fault-tolerant networks through interception, injection,
+              and sabotage.
+            </p>
+          </a>
           <a href="projects/spire.html" class="card featured-card">
-            <img src="static\images\reconfig_thumbnail.png" alt="Dynamic Reconfiguration in Spire" />
+            <img
+              src="static\images\reconfig_thumbnail.png"
+              alt="Dynamic Reconfiguration in Spire"
+            />
             <h2>Dynamic Reconfiguration in Spire</h2>
             <p>
               Researched, designed and implemented runtime configuration + key
@@ -125,7 +156,10 @@
           </a>
 
           <a href="projects/home-server.html" class="card featured-card">
-            <img src="static\images\wintermute_thumbnail.png" alt="Home Server" />
+            <img
+              src="static\images\wintermute_thumbnail.png"
+              alt="Home Server"
+            />
             <h2>Home Server</h2>
             <p>
               Built and maintained self-hosted infrastructure with reverse proxy
@@ -133,76 +167,64 @@
               storage.
             </p>
           </a>
-
-          <a href="gamedev/lamport.html" class="card featured-card">
-            <img src="static\images\lgs_thumbnail.png" alt="Lamport General Systems" />
-            <h2>Lamport General Systems</h2>
-            <p>
-              Developing a first-person immersive sim about manipulating hostile
-              Byzantine fault-tolerant networks through interception, injection,
-              and sabotage.
-            </p>
-          </a>
         </div>
       </section>
     </main>
 
     <script>
-  const navbar = document.getElementById("navbar");
-  const navbarLinks = document.querySelector(".navbar-links");
-  const spacer = document.getElementById("navbar-spacer");
+      const navbar = document.getElementById("navbar");
+      const navbarLinks = document.querySelector(".navbar-links");
+      const spacer = document.getElementById("navbar-spacer");
 
-  let lastY = window.scrollY;
-  let linksHidden = false;
+      let lastY = window.scrollY;
+      let linksHidden = false;
 
-  function updateSpacer() {
-    // Measure after CSS transitions/layout have applied
-    requestAnimationFrame(() => {
-      spacer.style.height = navbar.offsetHeight + "px";
-    });
-  }
-
-  // initial
-  updateSpacer();
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      const y = window.scrollY;
-
-      // always show at top
-      if (y <= 2) {
-        if (linksHidden) {
-          linksHidden = false;
-          navbarLinks.classList.remove("hidden");
-          updateSpacer();
-        }
-        lastY = y;
-        return;
+      function updateSpacer() {
+        // Measure after CSS transitions/layout have applied
+        requestAnimationFrame(() => {
+          spacer.style.height = navbar.offsetHeight + "px";
+        });
       }
 
-      const dy = y - lastY;
-      if (Math.abs(dy) < 6) return;
+      // initial
+      updateSpacer();
 
-      const shouldHide = dy > 0;
+      window.addEventListener(
+        "scroll",
+        () => {
+          const y = window.scrollY;
 
-      if (shouldHide !== linksHidden) {
-        linksHidden = shouldHide;
-        navbarLinks.classList.toggle("hidden", shouldHide);
-        updateSpacer();
-      }
+          // always show at top
+          if (y <= 2) {
+            if (linksHidden) {
+              linksHidden = false;
+              navbarLinks.classList.remove("hidden");
+              updateSpacer();
+            }
+            lastY = y;
+            return;
+          }
 
-      lastY = y;
-    },
-    { passive: true }
-  );
+          const dy = y - lastY;
+          if (Math.abs(dy) < 6) return;
 
-  window.addEventListener("resize", updateSpacer);
+          const shouldHide = dy > 0;
 
-  // If your CSS transition changes height over 0.3s, this keeps spacer in sync mid-transition:
-  navbarLinks.addEventListener("transitionend", updateSpacer);
-</script>
+          if (shouldHide !== linksHidden) {
+            linksHidden = shouldHide;
+            navbarLinks.classList.toggle("hidden", shouldHide);
+            updateSpacer();
+          }
 
+          lastY = y;
+        },
+        { passive: true },
+      );
 
+      window.addEventListener("resize", updateSpacer);
+
+      // If your CSS transition changes height over 0.3s, this keeps spacer in sync mid-transition:
+      navbarLinks.addEventListener("transitionend", updateSpacer);
+    </script>
   </body>
 </html>
