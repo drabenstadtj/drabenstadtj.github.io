@@ -9,7 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <link rel="stylesheet" href="../static/css/style.css" />
     <title>Whole Home Audio - Jack Drabenstadt</title>
   </head>
@@ -17,22 +20,39 @@
     <nav id="navbar">
       <div class="navbar-top">
         <span class="navbar-name">
-  <span class="name-full">Jack Drabenstadt</span>
-  <span class="name-short">JD</span>
-</span>
+          <span class="name-full">Jack Drabenstadt</span>
+          <span class="name-short">JD</span>
+        </span>
         <span class="navbar-page">Projects</span>
         <div class="navbar-socials">
           <div class="resume-dropdown">
             <span class="navbar-resume">Resume</span>
             <div class="resume-dropdown-menu">
-              <a href="../static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
-              <a href="../static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+              <a
+                href="../static/resumes/software_dev_resume.pdf"
+                target="_blank"
+                >Software Dev</a
+              >
+              <a href="../static/resumes/game_dev_resume.pdf" target="_blank"
+                >Game Design</a
+              >
             </div>
           </div>
-          <a href="/gamedev/pages/gamelog.html" target="_blank" class="navbar-resume">Dev Log</a>
-          <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="#" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="#" target="_blank" aria-label="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
+          <a
+            href="/gamedev/pages/gamelog.html"
+            target="_blank"
+            class="navbar-resume"
+            >Dev Log</a
+          >
+          <a href="#" target="_blank" aria-label="LinkedIn"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a href="#" target="_blank" aria-label="GitHub"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a href="#" target="_blank" aria-label="Itch.io"
+            ><i class="fa-brands fa-itch-io"></i
+          ></a>
         </div>
       </div>
       <div class="navbar-links">
@@ -48,26 +68,97 @@
     <main class="content-strip">
       <h1>Whole Home Audio</h1>
 
-      <p>I have always been obsessive about audio quality. Over the years I accumulated a collection of speakers across different rooms, but they all operated independently. What I really wanted was seamless whole-home sound, where music could follow me from room to room in perfect sync. The inspiration came from two places: the legendary Paradise Garage in New York, where the entire space was designed around the sound system, and Nowadays, a club in NYC that treats audio as architecture rather than an afterthought.</p>
+      <p>
+        I have always been obsessive about audio quality. Over the years I
+        accumulated a collection of speakers across different rooms, but they
+        all operated independently. What I really wanted was seamless whole-home
+        sound, where music could follow me from room to room in perfect sync.
+        The inspiration came from two places: the legendary Paradise Garage in
+        New York, where the entire space was designed around the sound system,
+        and Nowadays, a club in NYC that treats audio as an integral part of the
+        clubgoing experience.
+      </p>
 
       <h3>How It Works</h3>
 
-      <p>The system is built on Snapcast, an open-source multi-room audio solution with a server-client architecture. The snapserver runs inside a Docker container on my home server, acting as the central audio source. Each room has a Raspberry Pi running a snapclient, which receives the audio stream over Wi-Fi and plays it through the connected speakers. To get clean analog output from the Pis, I soldered dedicated DAC boards onto each one, bypassing the Pi's built-in audio which is notoriously noisy.</p>
+      <p>
+        The system is built on Snapcast, an open-source multi-room audio
+        solution with a server-client architecture. The snapserver runs inside a
+        Docker container on my home server, acting as the central audio source.
+        Each room has a Raspberry Pi running a snapclient, which receives the
+        audio stream over Wi-Fi and plays it through the connected speakers. To
+        get clean analog output from the Pis, I soldered dedicated DAC boards
+        onto each one, bypassing the Pi's built-in audio which is notoriously
+        noisy.
+      </p>
 
-      <img src="../static/images/rasp-pi.png" alt="Raspberry Pi with DAC" class="img-strip" />
-      <p>I designed and 3D-printed custom cases to house each Raspberry Pi and its DAC cleanly. It took several iterations to get the fit, ventilation, and cable routing right, but the final versions are compact and tidy enough to sit next to speakers without being an eyesore. Snapcast handles all the synchronization between clients, compensating for network jitter to keep every room playing in lockstep. For music input, I use Librespot, which presents the system as a Spotify Connect device, so anyone on the network can cast music to the whole house directly from their phone. I am also experimenting with AirPlay support to allow seamless switching between sources.</p>
+      <figure class="demo-figure">
+        <img
+          src="../static/images/rasp-pi.png"
+          alt="Raspberry Pi with DAC"
+          class="img-strip"
+        />
+        <figcaption>
+          Raspberry Pi with soldered DAC board and custom 3D-printed enclosure
+        </figcaption>
+      </figure>
+      <p>
+        I designed and 3D-printed custom cases to house each Raspberry Pi and
+        its DAC cleanly. It took several iterations to get the fit, ventilation,
+        and cable routing right, but the final versions are compact and tidy
+        enough to sit next to speakers without being an eyesore. Snapcast
+        handles all the synchronization between clients, compensating for
+        network jitter to keep every room playing in lockstep. For music input,
+        I use Librespot, which presents the system as a Spotify Connect device,
+        so anyone on the network can cast music to the whole house directly from
+        their phone. I am also experimenting with AirPlay support to allow
+        seamless switching between sources.
+      </p>
 
       <h3>The Inspiration</h3>
 
-      <img src="../static/images/paradise-garage.png" alt="Paradise Garage sound system" class="img-strip" />
-      <p>Paradise Garage was not just a club with a sound system. It was a space designed entirely around the experience of listening. Larry Levan and Richard Long built the system so that the music was not just heard but felt, with every corner of the room receiving the same quality of sound. That philosophy, of designing a space around its sound rather than bolting speakers on as an afterthought, is what I wanted to bring into my own home on a smaller scale.</p>
+      <p>
+        Paradise Garage was a space designed almost entirely around the
+        experience of listening. Larry Levan and Richard Long built the system
+        so that the music was not just heard but felt, with every corner of the
+        room receiving the same quality of sound. That philosophy, of designing
+        a space around its sound rather than bolting speakers on as an
+        afterthought, is what I wanted to bring into my own home on a smaller
+        scale.
+      </p>
+      <figure class="demo-figure">
+        <img
+          src="../static/images/paradise-garage.png"
+          alt="Paradise Garage sound system"
+          class="img-strip"
+        />
+        <figcaption>
+          Paradise Garage, NYC — the sound system was designed as an integral
+          part of the space, not an afterthought
+        </figcaption>
+      </figure>
+      <p>
+        Building this system also ended up being a natural extension of my
+        distributed systems experience. Managing synchronized audio streams over
+        Wi-Fi, dealing with clock drift between independent clients, handling
+        network interruptions gracefully, and coordinating a central server with
+        multiple edge devices are all problems that are conceptually similar to
+        working with Linux sockets and building small-scale distributed systems.
+        The overlap between the audio project and my academic work was
+        unexpected but made the technical challenges feel familiar and
+        approachable.
+      </p>
 
-      <p>Building this system also ended up being a natural extension of my distributed systems experience. Managing synchronized audio streams over Wi-Fi, dealing with clock drift between independent clients, handling network interruptions gracefully, and coordinating a central server with multiple edge devices are all problems that are conceptually similar to working with Linux sockets and building small-scale distributed systems. The overlap between the audio project and my academic work was unexpected but made the technical challenges feel familiar and approachable.</p>
-
-      <p>The system is now fully functional, with synchronized playback running reliably across multiple rooms. I am always looking for projects that sit at the intersection of hardware, software, and design, and this one hits all three. Whether it is iterating on the 3D-printed enclosures, experimenting with new audio sources, or optimizing the network configuration for lower latency, there is always something to refine and improve.</p>
+      <p>
+        The system is now fully functional, with synchronized playback running
+        reliably across multiple rooms. I am always looking for projects that
+        sit at the intersection of hardware, software, and design, and this one
+        hits all three. Whether it is iterating on the 3D-printed enclosures,
+        experimenting with new audio sources, or optimizing the network
+        configuration for lower latency, there is always something to refine and
+        improve.
+      </p>
     </main>
     <script src="../static/js/navbar.js"></script>
-
-
   </body>
 </html>

@@ -9,7 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <link rel="stylesheet" href="../static/css/style.css" />
     <title>Dynamic Reconfiguration in Spire - Jack Drabenstadt</title>
   </head>
@@ -17,22 +20,39 @@
     <nav id="navbar">
       <div class="navbar-top">
         <span class="navbar-name">
-  <span class="name-full">Jack Drabenstadt</span>
-  <span class="name-short">JD</span>
-</span>
+          <span class="name-full">Jack Drabenstadt</span>
+          <span class="name-short">JD</span>
+        </span>
         <span class="navbar-page">Projects</span>
         <div class="navbar-socials">
           <div class="resume-dropdown">
             <span class="navbar-resume">Resume</span>
             <div class="resume-dropdown-menu">
-              <a href="../static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
-              <a href="../static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+              <a
+                href="../static/resumes/software_dev_resume.pdf"
+                target="_blank"
+                >Software Dev</a
+              >
+              <a href="../static/resumes/game_dev_resume.pdf" target="_blank"
+                >Game Design</a
+              >
             </div>
           </div>
-          <a href="/gamedev/pages/gamelog.html" target="_blank" class="navbar-resume">Dev Log</a>
-          <a href="#" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="#" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="#" target="_blank" aria-label="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
+          <a
+            href="/gamedev/pages/gamelog.html"
+            target="_blank"
+            class="navbar-resume"
+            >Dev Log</a
+          >
+          <a href="#" target="_blank" aria-label="LinkedIn"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a href="#" target="_blank" aria-label="GitHub"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a href="#" target="_blank" aria-label="Itch.io"
+            ><i class="fa-brands fa-itch-io"></i
+          ></a>
         </div>
       </div>
       <div class="navbar-links">
@@ -48,50 +68,167 @@
     <main class="content-strip">
       <h1>Dynamic Reconfiguration in Spire</h1>
 
-      <p>I worked closely with Dr. Amy Babay on the design and implementation of a fully dynamic reconfiguration system for a multi-site distributed network system called Spire. The system allows runtime updates to topology, cryptographic keys, and component roles without downtime, enabling robust response to failures and temporary deployments like mobile control centers.</p>
+      <p>
+        I designed and implemented a fully dynamic reconfiguration system for
+        Spire, a multi-site distributed network platform, enabling runtime
+        updates to topology, cryptographic keys, and component roles without
+        downtime. This work eliminated compile-time configuration assumptions
+        and introduced secure, system-wide live transitions across a 26-node
+        deployment.
+      </p>
+      <figure class="demo-figure">
+        <img
+          src="../static/images/spire_demo_explain.jpg"
+          alt="Control center failure and restoration scenario"
+        />
+        <figcaption>
+          A screenshot explaining the demonstration including control center
+          failure, mobile replacement, and full system restoration via live
+          reconfiguration.
+        </figcaption>
+      </figure>
 
-      <h3>Workflow</h3>
-
-      <p><strong>Config Manager:</strong> The Config Manager serves as the central authority for generating and validating new system configurations. When an operator needs to update the network topology, rotate cryptographic keys, or reassign component roles, they interact with the Config Manager. It produces a signed configuration package that includes all the information each node in the system needs to transition to the new state, ensuring consistency and authenticity across the entire deployment.</p>
-
-      <p><strong>Config Disseminator:</strong> The Config Disseminator is responsible for reliably distributing the new configuration package to every node in the network. It uses a reliable multicast protocol with fragmentation support to handle large configuration payloads across potentially unreliable network links. The disseminator ensures that all nodes receive the complete configuration before any transition begins, preventing partial updates that could leave the system in an inconsistent state.</p>
-
-      <p><strong>Config Agent:</strong> The Config Agent runs on each individual node and is responsible for applying the received configuration locally. When a new configuration arrives, the agent validates it, stages the necessary changes, and coordinates the local transition of all Spire components running on that node. It handles restarting services, loading new keys, and updating runtime parameters, all while minimizing disruption to ongoing operations.</p>
-
-      <h3>Technical Achievements</h3>
+      <h3>What I Built</h3>
 
       <ul>
-        <li>Replaced hard-coded system constants with YAML-based configuration files, enabling flexible runtime parameterization across the entire system</li>
-        <li>Designed a hybrid cryptographic scheme using AES-256 for bulk encryption and RSA-OAEP for key wrapping, securing configuration payloads in transit and at rest</li>
-        <li>Refactored core application components to support dynamic loading of configuration, eliminating the need for recompilation when system parameters change</li>
-        <li>Implemented a reliable multicast protocol with fragmentation to distribute large configuration packages across multi-site network links</li>
-        <li>Validated the complete reconfiguration system in a 26-node Docker environment simulating a realistic multi-site deployment</li>
+        <li>
+          Architected a complete runtime reconfiguration pipeline spanning
+          configuration generation, secure dissemination, and coordinated
+          node-level transitions
+        </li>
+        <li>
+          Replaced deeply embedded compile-time constants with dynamically
+          loaded YAML configuration across the entire codebase
+        </li>
+        <li>
+          Designed and implemented a hybrid cryptographic scheme (AES-256 +
+          RSA-OAEP) supporting secure key rotation and per-node configuration
+          access
+        </li>
+        <li>
+          Built a custom reliable multicast protocol with fragmentation,
+          acknowledgment tracking, and retransmission logic
+        </li>
+        <li>
+          Refactored core C/C++ components to support safe reinitialization
+          during live configuration transitions
+        </li>
       </ul>
+
+      <h3>System Architecture</h3>
+
+      <p>
+        <strong>Config Manager:</strong> Generates and signs new system
+        configurations, validating topology, roles, and key material before
+        release.
+      </p>
+
+      <p>
+        <strong>Config Disseminator:</strong> Reliably distributes configuration
+        packages across unreliable multi-site links using a custom multicast
+        protocol.
+      </p>
+
+      <p>
+        <strong>Config Agent:</strong> Runs on every node, validates
+        configuration authenticity, stages changes, rotates keys, and
+        coordinates local service transitions without disrupting active
+        operations.
+      </p>
+
+      <h3>Reproducible 26-Node Demonstration Infrastructure</h3>
+
+      <p>
+        To validate the system under realistic conditions, I engineered a fully
+        reproducible multi-site deployment environment.
+      </p>
+
+      <figure class="demo-figure">
+        <img
+          src="../static/images/spire_demo_label.jpg"
+          alt="Live 26-node deployment with control centers and data center logs"
+        />
+        <figcaption>
+          A screenshot of the demonstration explaining the content of each
+          terminal view.
+        </figcaption>
+      </figure>
+
+      <video controls width="100%">
+        <source src="../static/videos/spire_demo.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <ul>
+        <li>
+          Created a custom AlmaLinux-based Docker image compiling the full Spire
+          stack from source (Spines, Prime, SCADA Master, benchmarks)
+        </li>
+        <li>
+          Automated dependency installation, configuration setup, build steps,
+          and cryptographic key generation
+        </li>
+        <li>
+          Designed a Docker Compose topology launching 26 containers on a
+          deterministic bridged subnet with static IP addressing
+        </li>
+        <li>
+          Developed orchestration scripts to start replicas, clients, and
+          benchmark workloads across containers
+        </li>
+        <li>
+          Enabled network control capabilities for realistic distributed
+          behavior testing
+        </li>
+      </ul>
+
+      <p>
+        This environment allowed live demonstrations of topology changes, key
+        rotation, and coordinated system transitions across all nodes with zero
+        downtime.
+      </p>
 
       <h3>Key Technical Challenges</h3>
 
-      <p><strong>Legacy Static Config Dependencies:</strong> The original Spire codebase relied heavily on compile-time constants and header-defined values for system parameters like the number of sites, replica counts, and network addresses. These were woven deeply into initialization logic, memory allocation, and protocol behavior. The resolution involved systematically identifying every static dependency, replacing them with dynamically loaded values from YAML configuration files, and ensuring that all dependent logic could safely re-initialize when parameters changed at runtime.</p>
+      <p>
+        <strong>Eliminating Static Assumptions:</strong> The original system
+        relied on compile-time constants for site counts, replica numbers, and
+        network parameters. I systematically removed these dependencies and
+        redesigned initialization logic to safely support runtime parameter
+        changes.
+      </p>
 
-      <p><strong>Cryptographic Key Management:</strong> Introducing runtime key rotation meant that nodes needed to handle multiple active key sets during transitions, decrypt payloads with the correct key version, and securely discard old material. The resolution was designing a key versioning scheme embedded in the configuration package, combined with the hybrid AES-256 and RSA-OAEP approach. Each configuration is encrypted with a fresh symmetric key, which is itself wrapped with each recipient's public key, ensuring forward secrecy and per-node access control.</p>
+      <p>
+        <strong>Secure Key Rotation:</strong> Implemented key versioning and
+        hybrid encryption to allow nodes to handle overlapping key sets during
+        transitions while securely discarding deprecated material.
+      </p>
 
-      <p><strong>Reliable Network Dissemination:</strong> Distributing large configuration packages across unreliable wide-area links posed significant challenges. Packets could be lost, reordered, or duplicated, and the system needed to guarantee complete delivery before any node began transitioning. The resolution was implementing a custom reliable multicast protocol with configurable fragmentation, acknowledgment tracking, and retransmission logic, ensuring every node received the full configuration even under adverse network conditions.</p>
+      <p>
+        <strong>Reliable Multi-Site Delivery:</strong> Designed fragmentation
+        and retransmission mechanisms ensuring complete configuration delivery
+        before any node transitioned state.
+      </p>
 
-      <p><strong>Integration Bugs from Extensive Refactoring:</strong> The scope of the refactoring touched nearly every component in the Spire system, introducing subtle integration bugs where updated modules interacted with legacy code paths. Race conditions during configuration transitions, memory management issues from dynamically sized structures, and protocol mismatches between updated and non-updated components all surfaced during testing. The resolution involved building a comprehensive 26-node Docker test environment, systematic integration testing of each component pair, and careful use of logging and debugging tools to trace issues across the distributed system.</p>
-
-      <h3>Skills Developed</h3>
+      <h3>Technologies</h3>
 
       <ul>
-        <li>C/C++ systems programming</li>
-        <li>Cryptography with OpenSSL</li>
-        <li>Distributed system design</li>
-        <li>Configuration management</li>
-        <li>Research-driven problem solving</li>
+        <li>C / C++</li>
+        <li>OpenSSL</li>
+        <li>Docker & Docker Compose</li>
+        <li>Python orchestration tooling</li>
+        <li>Distributed systems design</li>
       </ul>
 
-      <p>This project had a meaningful impact on the Spire system's operational flexibility. By enabling fully dynamic reconfiguration, the system can now adapt to failures, incorporate temporary deployments like mobile control centers, and rotate security credentials without any downtime. The work demonstrated that even deeply embedded static assumptions in a complex distributed system can be systematically replaced with dynamic alternatives, given careful design and thorough validation.</p>
+      <h3>Impact</h3>
+
+      <p>
+        Improved system usability and resilience by enabling dynamic
+        reconfiguration and automated key generation, reducing manual setup and
+        simplifying deployment.
+      </p>
     </main>
+
     <script src="../static/js/navbar.js"></script>
-
-
   </body>
 </html>

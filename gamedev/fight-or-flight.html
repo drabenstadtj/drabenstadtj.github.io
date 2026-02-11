@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <title>Game Dev - Jack Drabenstadt</title>
+  </head>
+  <body>
+    <nav id="navbar">
+      <div class="navbar-top">
+        <span class="navbar-name">
+          <span class="name-full">Jack Drabenstadt</span>
+          <span class="name-short">JD</span>
+        </span>
+        <span class="navbar-page">Game Dev</span>
+        <div class="navbar-socials">
+          <div class="resume-dropdown">
+            <span class="navbar-resume">Resume</span>
+            <div class="resume-dropdown-menu">
+              <a href="static/resumes/software_dev_resume.pdf" target="_blank"
+                >Software Dev</a
+              >
+              <a href="static/resumes/game_dev_resume.pdf" target="_blank"
+                >Game Design</a
+              >
+            </div>
+          </div>
+          <a
+            href="/gamedev/pages/gamelog.html"
+            target="_blank"
+            class="navbar-resume"
+            >Dev Log</a
+          >
+          <a
+            href="https://www.linkedin.com/in/jackdrabenstadt/"
+            target="_blank"
+            aria-label="LinkedIn"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/drabenstadtj"
+            target="_blank"
+            aria-label="GitHub"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a
+            href="https://drabenstadtj.itch.io/"
+            target="_blank"
+            aria-label="Itch.io"
+            ><i class="fa-brands fa-itch-io"></i
+          ></a>
+        </div>
+      </div>
+      <div class="navbar-links">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../gamedev.html" class="active">Game Dev</a></li>
+          <li><a href="../writing.html">Writing</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="navbar-spacer"></div>
+    <script src="../static/js/navbar.js"></script>
+    <main class="content-strip">
+      <h1>Fight or Flight</h1>
+
+      <p>
+        <strong>Team:</strong> Jack Drabenstadt, Sagid Saleh, Gleb Ksianevich,
+        Matthew Kindja<br />
+        <strong>Role:</strong> Designer, Dialogue System, Asset Creation, Git
+        Management, Programming<br />
+        <strong>Event:</strong> Pitt Games 4 Social Impact Game Jam 2025
+      </p>
+
+      <p>
+        Fight or Flight is a 2.5D platformer built in Godot over 48 hours. You
+        play as Peng, a penguin fleeing its melting iceberg home. Unlike the
+        other birds you encounter, you cannot fly — only waddle, slide, and
+        jump. The game explores themes of climate displacement and environmental
+        injustice through mechanical constraint: the birds who can fly migrate
+        easily; you must survive.
+      </p>
+
+      <figure class="demo-figure">
+        <img
+          src="../static/images/fight_or_flight_gameplay.gif"
+          alt="Fight or Flight gameplay"
+          class="img-strip"
+        />
+        <figcaption>Peng navigating collapsing platforms and sharks</figcaption>
+      </figure>
+
+      <h3>My Contributions</h3>
+
+      <p>
+        <strong>Dialogue System:</strong> I built a text display system for NPC
+        conversations. Each bird has unique text speed and sound pitch. This
+        allowed us to impart more personality into a character without voice
+        acting.
+      </p>
+      <video controls width="100%">
+        <source
+          src="../static/videos/fight_or_flight_dialogue.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+
+      <p>
+        <strong>Art & Assets:</strong> In an unusual shift from my typical
+        programming-heavy role, I created environment assets including icebergs
+        and boulders. The 2.5D perspective required careful attention to scale
+        and placement.
+      </p>
+
+      <p>
+        <strong>Git Management:</strong> I served as the team's resident Git
+        expert, handling all merge conflicts and repository organization. This
+        kept us moving fast without stepping on each other's work.
+      </p>
+
+      <h3>Process & Iteration</h3>
+
+      <p>
+        After last year's "First Penguin Award" (aim high, fail spectacularly),
+        I came in with a plan. We started with tight player experience goals,
+        which kept scope reasonable and focused. The core mechanics — movement,
+        dialogue, levels — were solid by the end of day one. Day two was
+        integration and polish.
+      </p>
+
+      <p>
+        I was initially worried our gameplay wasn't "novel" enough. I learned
+        that's the wrong metric. A familiar genre executed with clarity and
+        purpose is worth more than a half-baked innovative idea.
+      </p>
+
+      <h3>Outcome</h3>
+
+      <p>
+        Fight or Flight won the <strong>Technical Achievement Award</strong>.
+        The game came together with relatively few major issues — we fixed the
+        ones that appeared — and the structured approach I brought to the team
+        made the difference.
+      </p>
+
+      <figure class="demo-figure">
+        <img
+          src="../static/images/gamejam_award.jpg"
+          alt="Technical Achievement Award"
+          class="img-strip"
+        />
+        <figcaption>
+          Fight or Flight — Technical Achievement Award, Pitt Games 4 Social
+          Impact 2025
+        </figcaption>
+      </figure>
+
+      <h3>Technologies</h3>
+      <ul>
+        <li>Godot Engine</li>
+        <li>GDScript</li>
+        <li>Blender</li>
+        <li>Git / GitHub</li>
+        <li>Gimp</li>
+      </ul>
+
+      <h3>Play It</h3>
+      <p>
+        <iframe
+          frameborder="0"
+          src="https://itch.io/embed/4046816?bg_color=34495e&amp;fg_color=ffffff&amp;link_color=5be1fa"
+          width="552"
+          height="167"
+          ><a href="https://drabenstadtj.itch.io/fight-or-flight"
+            >Fight or Flight by drabenstadtj</a
+          ></iframe
+        >
+      </p>
+    </main>
+  </body>
+</html>

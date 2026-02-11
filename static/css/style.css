@@ -97,7 +97,7 @@ body {
   background: #d9c964;
   border: 1px solid #000;
   border-radius: 8px;
-  padding:  0;
+  padding: 0;
   min-width: 150px;
   z-index: 1001;
   flex-direction: column;
@@ -229,6 +229,22 @@ body {
   color: #000;
 }
 
+.demo-figure {
+  margin: auto;
+  max-width: 67%;
+}
+
+.demo-figure img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.demo-figure figcaption {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0.5rem 0 1rem;
+}
+
 /* =========================
    Cards
    ========================= */
@@ -254,7 +270,7 @@ body {
 
 .card:hover {
   box-shadow: 6px 6px 0 #00000077;
-} 
+}
 
 .card img {
   width: 100%;
@@ -499,7 +515,7 @@ body {
    ========================= */
 .deliverables-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 0.75rem;
   margin-top: 0.5rem;
 }
