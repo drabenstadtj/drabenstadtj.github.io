@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&family=Space+Grotesk:wght@300..700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -89,6 +87,7 @@
         <h1>Software engineer + game developer.</h1>
 
         <p class="hero-sub">
+          <br />
           I build software systems and games.
           <br /><br />
           My work focuses on turning complex technical systems into things
@@ -114,6 +113,7 @@
               >
             </div>
           </div>
+          <a href="#featured" class="btn btn-outline">View My Work</a>
         </div>
       </header>
 
@@ -128,7 +128,7 @@
       </section>
 
       <section>
-        <h2>Featured</h2>
+        <h2 id="featured">Featured</h2>
 
         <div class="card-list featured-list">
           <a href="gamedev/lamport.html" class="card featured-card">
@@ -171,29 +171,6 @@
       </section>
     </main>
 
-    <script>
-      const navbar = document.getElementById("navbar");
-      const navbarLinks = document.querySelector(".navbar-links");
-
-      let lastScrollY = window.scrollY;
-
-      window.addEventListener("scroll", () => {
-        const currentScrollY = window.scrollY;
-
-        if (currentScrollY > lastScrollY) {
-          navbarLinks.classList.add("hidden");
-        } else {
-          navbarLinks.classList.remove("hidden");
-        }
-
-        lastScrollY = currentScrollY;
-      });
-      function updateSpacer() {
-        const spacer = document.getElementById("navbar-spacer");
-        spacer.style.height = navbar.offsetHeight + "px";
-      }
-      updateSpacer();
-      window.addEventListener("resize", updateSpacer);
-    </script>
+    <script src="static/js/navbar.js"></script>
   </body>
 </html>

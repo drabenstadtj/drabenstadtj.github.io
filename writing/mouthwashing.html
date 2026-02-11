@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="../static/css/style.css" />
     <title>Complicity and Collapse in MOUTHWASHING - Jack Drabenstadt</title>
@@ -95,61 +96,7 @@
         Aarseth, Espen J. <em>Cybertext: Perspectives on Ergodic Literature</em>. Johns Hopkins University Press, 1997.<br />
         Park, Gene. "'MOUTHWASHING': A Repugnant, Tragic Play That Wants to Hurt You." <em>The Washington Post</em>, 2024.</p>
     </main>
-    <script>
-  const navbar = document.getElementById("navbar");
-  const navbarLinks = document.querySelector(".navbar-links");
-  const spacer = document.getElementById("navbar-spacer");
-
-  let lastY = window.scrollY;
-  let linksHidden = false;
-
-  function updateSpacer() {
-    // Measure after CSS transitions/layout have applied
-    requestAnimationFrame(() => {
-      spacer.style.height = navbar.offsetHeight + "px";
-    });
-  }
-
-  // initial
-  updateSpacer();
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      const y = window.scrollY;
-
-      // always show at top
-      if (y <= 2) {
-        if (linksHidden) {
-          linksHidden = false;
-          navbarLinks.classList.remove("hidden");
-          updateSpacer();
-        }
-        lastY = y;
-        return;
-      }
-
-      const dy = y - lastY;
-      if (Math.abs(dy) < 6) return;
-
-      const shouldHide = dy > 0;
-
-      if (shouldHide !== linksHidden) {
-        linksHidden = shouldHide;
-        navbarLinks.classList.toggle("hidden", shouldHide);
-        updateSpacer();
-      }
-
-      lastY = y;
-    },
-    { passive: true }
-  );
-
-  window.addEventListener("resize", updateSpacer);
-
-  // If your CSS transition changes height over 0.3s, this keeps spacer in sync mid-transition:
-  navbarLinks.addEventListener("transitionend", updateSpacer);
-</script>
+    <script src="../static/js/navbar.js"></script>
 
 
   </body>

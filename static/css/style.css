@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   background: #d9c964;
   overflow-x: hidden;
 }
@@ -48,10 +48,8 @@ body {
   transform: translateX(-50%);
   left: 50%;
   position: absolute;
-
 }
 
-/* Name abbreviation defaults */
 .name-short {
   display: none;
 }
@@ -99,7 +97,7 @@ body {
   background: #d9c964;
   border: 1px solid #000;
   border-radius: 8px;
-  padding: 0.25rem 0;
+  padding:  0;
   min-width: 150px;
   z-index: 1001;
   flex-direction: column;
@@ -157,7 +155,6 @@ body {
   /* horizontal scroll only for link row */
   overflow-x: auto;
   overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
 }
 
@@ -192,19 +189,19 @@ body {
 
 .content-strip h1 {
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 800;
   margin-bottom: 1.25rem;
 }
 
 .content-strip h2 {
   font-size: 1.3rem;
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 0.75rem;
 }
 
 .content-strip h3 {
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   padding-top: 1rem;
@@ -215,7 +212,6 @@ body {
   line-height: 1.6;
   margin-bottom: 0.75rem;
   font-size: 1.1rem;
-
 }
 
 .content-strip ul {
@@ -249,13 +245,16 @@ body {
   padding: 1.25rem 1.25rem 2rem;
   text-decoration: none;
   color: #000;
-  transition: background 0.15s;
-  border-bottom: 1px solid #000;
+  transition:
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+  /* border-bottom: 1px solid #000; */
+  border-radius: 5px;
 }
 
 .card:hover {
-  background: rgba(0, 0, 0, 0.05);
-}
+  box-shadow: 6px 6px 0 #00000077;
+} 
 
 .card img {
   width: 100%;
@@ -265,14 +264,26 @@ body {
 
 .card h2 {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 0;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .card p {
   font-size: 1.1rem;
   line-height: 1.5;
   margin-bottom: 0;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* =========================
@@ -281,6 +292,7 @@ body {
 .hero h1 {
   font-size: 2rem;
   line-height: 1.1;
+  font-weight: 900;
   margin-bottom: 0.75rem;
 }
 
@@ -292,7 +304,15 @@ body {
 
 .hero-cta {
   display: flex;
-  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.hero-cta > * {
+  flex: 1;
+}
+
+.hero {
+  margin-bottom: 2.5rem;
 }
 
 /* =========================
@@ -389,6 +409,7 @@ body {
   gap: 0.75rem;
   transition: background 0.15s;
 }
+
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -410,13 +431,13 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  min-height: 4.6rem; /* tune this */
+  min-height: 4.6rem;
 }
 
 /* Title clamps to 2 lines so header height is consistent */
 .feature-top h3 {
   font-size: 1.15rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
 
   display: -webkit-box;
@@ -431,7 +452,6 @@ body {
   flex-wrap: wrap;
   gap: 0.4rem;
 
-  /* optional: keep tags to one row for perfect consistency */
   max-height: 1.55rem;
   overflow: hidden;
 }
@@ -518,11 +538,8 @@ body {
    Responsive
    ========================= */
 @media (max-width: 1000px) {
-  .name-full {
-    display: none;
-  }
-  .name-short {
-    display: inline;
+  .navbar-name {
+    font-size: clamp(1.8rem, 4vw, 3rem);
   }
 }
 
@@ -552,12 +569,23 @@ body {
   }
 
   .navbar-top {
-    position: static;
-    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
   }
 
   .navbar-name {
-    font-size: 1.1rem;
+    position: static;
+    transform: none;
+    width: 100%;
+    text-align: center;
+    font-size: 2.2rem;
+    order: -1;
+  }
+
+  .navbar-socials {
+    width: 100%;
+    justify-content: center;
   }
 
   .navbar-socials a {
