@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Rubik+Broken+Fax&family=Sixtyfour&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -27,11 +30,20 @@
           <div class="resume-dropdown">
             <span class="navbar-resume">Resume</span>
             <div class="resume-dropdown-menu">
-              <a href="static/resumes/software_dev_resume.pdf" target="_blank">Software Dev</a>
-              <a href="static/resumes/game_dev_resume.pdf" target="_blank">Game Design</a>
+              <a href="static/resumes/software_dev_resume.pdf" target="_blank"
+                >Software Dev</a
+              >
+              <a href="static/resumes/game_dev_resume.pdf" target="_blank"
+                >Game Design</a
+              >
             </div>
           </div>
-          <a href="/gamedev/pages/gamelog.html" target="_blank" class="navbar-resume">Dev Log</a>
+          <a
+            href="/gamedev/pages/gamelog.html"
+            target="_blank"
+            class="navbar-resume"
+            >Dev Log</a
+          >
           <a
             href="https://www.linkedin.com/in/jackdrabenstadt/"
             target="_blank"
@@ -74,6 +86,28 @@
             injection, and physical sabotage.
           </p>
         </a>
+        <a href="gamedev/index.html" class="card">
+          <img
+            src="static/images/under_construction_thumbnail.png"
+            alt="Game Design Log"
+          />
+          <h2>Caterpillar Quest</h2>
+          <p>
+            A top-down video game adaptation of The Very Hungry Caterpillar by
+            Eric Carle
+          </p>
+        </a>
+        <a href="#" class="card">
+          <img
+            src="static/images/under_construction_thumbnail.png"
+            alt="Description"
+          />
+          <h2>Fight or Flight</h2>
+          <p>
+            a 2.5D platformer created for the University of Pittsburgh's 2025
+            Games for Social Impact Game Jam winning for Technical Achievement
+          </p>
+        </a>
         <a href="gamedev/discards.html" class="card">
           <img src="static/images/discards_thumbnail.png" alt="Description" />
           <h2>Discards</h2>
@@ -101,61 +135,59 @@
       </div>
     </main>
     <script>
-  const navbar = document.getElementById("navbar");
-  const navbarLinks = document.querySelector(".navbar-links");
-  const spacer = document.getElementById("navbar-spacer");
+      const navbar = document.getElementById("navbar");
+      const navbarLinks = document.querySelector(".navbar-links");
+      const spacer = document.getElementById("navbar-spacer");
 
-  let lastY = window.scrollY;
-  let linksHidden = false;
+      let lastY = window.scrollY;
+      let linksHidden = false;
 
-  function updateSpacer() {
-    // Measure after CSS transitions/layout have applied
-    requestAnimationFrame(() => {
-      spacer.style.height = navbar.offsetHeight + "px";
-    });
-  }
-
-  // initial
-  updateSpacer();
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      const y = window.scrollY;
-
-      // always show at top
-      if (y <= 2) {
-        if (linksHidden) {
-          linksHidden = false;
-          navbarLinks.classList.remove("hidden");
-          updateSpacer();
-        }
-        lastY = y;
-        return;
+      function updateSpacer() {
+        // Measure after CSS transitions/layout have applied
+        requestAnimationFrame(() => {
+          spacer.style.height = navbar.offsetHeight + "px";
+        });
       }
 
-      const dy = y - lastY;
-      if (Math.abs(dy) < 6) return;
+      // initial
+      updateSpacer();
 
-      const shouldHide = dy > 0;
+      window.addEventListener(
+        "scroll",
+        () => {
+          const y = window.scrollY;
 
-      if (shouldHide !== linksHidden) {
-        linksHidden = shouldHide;
-        navbarLinks.classList.toggle("hidden", shouldHide);
-        updateSpacer();
-      }
+          // always show at top
+          if (y <= 2) {
+            if (linksHidden) {
+              linksHidden = false;
+              navbarLinks.classList.remove("hidden");
+              updateSpacer();
+            }
+            lastY = y;
+            return;
+          }
 
-      lastY = y;
-    },
-    { passive: true }
-  );
+          const dy = y - lastY;
+          if (Math.abs(dy) < 6) return;
 
-  window.addEventListener("resize", updateSpacer);
+          const shouldHide = dy > 0;
 
-  // If your CSS transition changes height over 0.3s, this keeps spacer in sync mid-transition:
-  navbarLinks.addEventListener("transitionend", updateSpacer);
-</script>
+          if (shouldHide !== linksHidden) {
+            linksHidden = shouldHide;
+            navbarLinks.classList.toggle("hidden", shouldHide);
+            updateSpacer();
+          }
 
+          lastY = y;
+        },
+        { passive: true },
+      );
 
+      window.addEventListener("resize", updateSpacer);
+
+      // If your CSS transition changes height over 0.3s, this keeps spacer in sync mid-transition:
+      navbarLinks.addEventListener("transitionend", updateSpacer);
+    </script>
   </body>
 </html>

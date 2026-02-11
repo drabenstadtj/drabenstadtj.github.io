@@ -22,12 +22,12 @@
   <body>
     <nav id="navbar">
       <div class="navbar-top">
+        <span class="navbar-page">Home</span>
+
         <span class="navbar-name">
           <span class="name-full">Jack Drabenstadt</span>
           <span class="name-short">JD</span>
         </span>
-
-        <span class="navbar-page">Home</span>
 
         <div class="navbar-socials">
           <div class="resume-dropdown">
@@ -174,57 +174,26 @@
     <script>
       const navbar = document.getElementById("navbar");
       const navbarLinks = document.querySelector(".navbar-links");
-      const spacer = document.getElementById("navbar-spacer");
 
-      let lastY = window.scrollY;
-      let linksHidden = false;
+      let lastScrollY = window.scrollY;
 
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY > lastScrollY) {
+          navbarLinks.classList.add("hidden");
+        } else {
+          navbarLinks.classList.remove("hidden");
+        }
+
+        lastScrollY = currentScrollY;
+      });
       function updateSpacer() {
-        // Measure after CSS transitions/layout have applied
-        requestAnimationFrame(() => {
-          spacer.style.height = navbar.offsetHeight + "px";
-        });
+        const spacer = document.getElementById("navbar-spacer");
+        spacer.style.height = navbar.offsetHeight + "px";
       }
-
-      // initial
       updateSpacer();
-
-      window.addEventListener(
-        "scroll",
-        () => {
-          const y = window.scrollY;
-
-          // always show at top
-          if (y <= 2) {
-            if (linksHidden) {
-              linksHidden = false;
-              navbarLinks.classList.remove("hidden");
-              updateSpacer();
-            }
-            lastY = y;
-            return;
-          }
-
-          const dy = y - lastY;
-          if (Math.abs(dy) < 6) return;
-
-          const shouldHide = dy > 0;
-
-          if (shouldHide !== linksHidden) {
-            linksHidden = shouldHide;
-            navbarLinks.classList.toggle("hidden", shouldHide);
-            updateSpacer();
-          }
-
-          lastY = y;
-        },
-        { passive: true },
-      );
-
       window.addEventListener("resize", updateSpacer);
-
-      // If your CSS transition changes height over 0.3s, this keeps spacer in sync mid-transition:
-      navbarLinks.addEventListener("transitionend", updateSpacer);
     </script>
   </body>
 </html>

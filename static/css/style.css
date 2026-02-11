@@ -43,8 +43,12 @@ body {
 .navbar-name {
   font-family: "Rubik Broken Fax", system-ui;
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 3rem;
   white-space: nowrap;
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+
 }
 
 /* Name abbreviation defaults */
@@ -53,9 +57,6 @@ body {
 }
 
 .navbar-page {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   font-weight: 500;
   font-size: 1.35rem;
   white-space: nowrap;
@@ -202,7 +203,7 @@ body {
 }
 
 .content-strip h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
@@ -213,6 +214,8 @@ body {
 .content-strip p {
   line-height: 1.6;
   margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+
 }
 
 .content-strip ul {
@@ -267,7 +270,7 @@ body {
 }
 
 .card p {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   line-height: 1.5;
   margin-bottom: 0;
 }
@@ -282,7 +285,7 @@ body {
 }
 
 .hero-sub {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -554,7 +557,7 @@ body {
   }
 
   .navbar-name {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
 
   .navbar-socials a {
