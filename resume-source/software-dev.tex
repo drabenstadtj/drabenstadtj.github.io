@@ -1,0 +1,179 @@
+%-------------------------
+% Resume in Latex
+% Author : Sourabh Bajaj
+% Website: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[pdftex]{hyperref}
+\usepackage{fancyhdr}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.375in}
+\addtolength{\evensidemargin}{-0.375in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[2]{
+  \item\small{
+    \textbf{#1}{: #2 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[6]{
+  \vspace{-1pt}\item[]
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      {\small#3} & {\small #4} \\
+      {\small#5} & {\small #6} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubheadingSimple}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[2]{%
+  \item[]\small
+  \parbox[t]{\linewidth}{%
+    \hangindent=2em\hangafter=1
+    \textbf{#1}: #2%
+  }\vspace{-4pt}
+}
+
+\renewcommand{\labelitemii}{$\circ$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  CV STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING-----------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\href{https://jackdrab.dev/}{\Large Jack Drabenstadt}} &
+  \href{mailto:jackdrabenstadt@gmail.com}{jackdrabenstadt@gmail.com} \textbar{} 614-531-1818 \\
+  \href{https://jackdrab.dev/}{jackdrab.dev} & \href{https://www.linkedin.com/in/jackdrabenstadt/}{linkedin.com/in/jackdrabenstadt} \textbar{} \href{https://github.com/drabenstadtj}{github.com/drabenstadtj} \\
+\end{tabular*}
+\vspace{4pt}
+
+Full-stack Software Engineer graduating Spring 2026 with dual B.S. degrees in Computer Science and Digital Narrative \& Interactive Design. Experienced in building and deploying production web applications, contributing to distributed systems research, and maintaining self-hosted server infrastructure serving multiple users.
+% \vspace{4pt}
+
+%-----------EDUCATION-----------------
+\section{Education}
+  \resumeSubHeadingListStart
+\resumeSubheading
+  {University of Pittsburgh}{Pittsburgh, PA}
+  {B.S. Computer Science; B.S. Digital Narrative \& Interactive Design}{Expected Spring 2026}
+  {Minor in Information Science}{GPA: 3.386}
+  \resumeSubHeadingListEnd
+
+%--------PROGRAMMING SKILLS------------
+\section{Technical Skills}
+\resumeSubHeadingListStart
+\item{
+\textbf{Languages}{: Python \textbar{} C \textbar{} HTML/CSS \textbar{} Java \textbar{} JavaScript \textbar{} C\#}
+}
+\item{
+\textbf{Frameworks}{: React \textbar{} Flask \textbar{} Node.js}
+}
+\item{
+\textbf{Tools \& Infrastructure}{: Docker \textbar{} Git \textbar{} Linux \textbar{} Bash \textbar{} SQLite \textbar{} DNS}
+}
+\resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+\resumeSubheadingSimple
+  {University of Pittsburgh}{Pittsburgh, PA}
+  {Undergraduate Research Assistant}{December 2024 - August 2025}
+
+      \resumeItemListStart
+  \resumeItem{Dynamic Reconfiguration System}
+    {Designed and implemented YAML-based runtime configuration system for Spire, a Byzantine fault-tolerant distributed system, enabling live configuration updates without recompilation. Developed parsing, network transmission, and application components in C, replacing static compiled constants with dynamic reconfiguration capabilities.}
+  \resumeItem{Distributed Systems}
+    {Collaborated with research team on implementation and testing protocols for intrusion-tolerant system security and fault tolerance.}
+\resumeItemListEnd
+
+
+\resumeSubheadingSimple
+  {University of Pittsburgh}{Pittsburgh, PA}
+  {Student Technical Consultant}{February 2024 - December 2024}
+      \resumeItemListStart
+  \resumeItem{Diagnostics \& Repair}
+    {Resolved hardware, software, and networking issues across Windows, macOS, Linux, iOS, and Android with limited supervision, including malware removal, OS repair, and data recovery.}
+  \resumeItem{Documentation}
+    {Maintained team knowledge base for complex technical issues, improving resolution efficiency for recurring issues across 10--20 hours of weekly support.}
+\resumeItemListEnd
+      
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------------
+\section{Projects}
+  \resumeSubHeadingListStart
+
+    \resumeSubItem{Pittsburgh Food Access Map}
+      {Main developer for full-stack web application mapping food resources across Pittsburgh for Pittsburgh Policy Initiative. Built interactive React frontend with Leaflet map integration, filtering by resource type and neighborhood. Designed and implemented responsive interface for web and mobile. Developed Flask REST API backend with SQLite database. Created admin dashboard for content management and user reporting system. Cleaned and validated large-scale datasets for deployment.}
+    
+    \resumeSubItem{Home Server Infrastructure}
+      {Designed and maintained self-hosted server with 50TB RAID storage running containerized services for personal media management, game servers, and file management. Migrated all applications to Docker for improved organization and scalability. Configured reverse proxies, DNS management, and security hardening (firewall rules, intrusion prevention). Implemented automated backup system for configuration files. Reduced power consumption 50\% through hardware optimization while serving multiple users.}
+    
+    \resumeSubItem{DIY Multi-Room Audio System}
+      {Built synchronized whole-home audio streaming system using Snapcast and Docker containerization. Designed and 3D-printed custom enclosures. Integrated Librespot for Spotify Connect functionality across entire home network.}
+
+  \resumeSubHeadingListEnd
+
+%--------RELEVANT COURSEWORK------------
+\section{Relevant Coursework}
+  \resumeSubHeadingListStart
+    \item[]{
+      Software Engineering, Algorithms \& Data Structures, Software Quality Assurance, Introduction to Systems Software, Programming Languages for Web Applications, Computer Organization \& Assembly Language
+    }
+  \resumeSubHeadingListEnd
+
+
+%-------------------------------------------
+\end{document}
