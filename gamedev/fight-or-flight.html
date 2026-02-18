@@ -109,20 +109,57 @@
         constraint: the birds who can fly migrate easily; you must survive.
       </p>
 
-      <div class="game-wrapper">
+      <div class="game-wrapper" id="play-it">
+        <div class="game-placeholder" id="game-placeholder">
+          <img src="../static/images/fight_flight_thumbnail.png" alt="Fight or Flight" />
+          <button class="game-play-btn" onclick="startGame()" aria-label="Play game">
+            <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
         <iframe
-          id="play-it"
-          src="../static/games/fight-or-flight/Fight%20Or%20Flight.html"
+          id="game-frame"
+          data-src="../static/games/fight-or-flight/Fight%20Or%20Flight.html"
           width="100%"
           frameborder="0"
           scrolling="no"
           allowfullscreen
-          style="border-radius: 10px; aspect-ratio: 16/9; height: auto;"
+          style="display: none; border-radius: 10px; aspect-ratio: 16/9; height: auto;"
         ></iframe>
-        <button class="game-fullscreen-btn" onclick="this.previousElementSibling.requestFullscreen()" title="Fullscreen">
+        <button class="game-fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen" style="display: none;">
           <i class="fa-solid fa-expand"></i>
         </button>
       </div>
+      <script>
+        function startGame() {
+          document.getElementById('game-placeholder').remove();
+          var iframe = document.getElementById('game-frame');
+          iframe.src = iframe.dataset.src;
+          iframe.style.display = 'block';
+          document.getElementById('fullscreen-btn').style.display = 'block';
+        }
+        function toggleFullscreen() {
+          var wrapper = document.getElementById('play-it');
+          var btn = document.getElementById('fullscreen-btn');
+          if (document.fullscreenElement) {
+            document.exitFullscreen();
+          } else if (wrapper.requestFullscreen) {
+            wrapper.requestFullscreen().catch(function () {
+              wrapper.classList.toggle('game-fullscreen-mobile');
+              updateFsIcon(wrapper.classList.contains('game-fullscreen-mobile'));
+            });
+          } else {
+            wrapper.classList.toggle('game-fullscreen-mobile');
+            updateFsIcon(wrapper.classList.contains('game-fullscreen-mobile'));
+          }
+        }
+        function updateFsIcon(isFs) {
+          document.getElementById('fullscreen-btn').querySelector('i').className =
+            isFs ? 'fa-solid fa-compress' : 'fa-solid fa-expand';
+        }
+        document.addEventListener('fullscreenchange', function () {
+          updateFsIcon(!!document.fullscreenElement);
+        });
+      </script>
 
       <h3>My Contributions</h3>
       <p>

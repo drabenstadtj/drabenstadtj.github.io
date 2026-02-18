@@ -94,20 +94,56 @@
         paired with a custom Arduino glove controller built from scratch.
       </p>
 
-      <div class="game-wrapper">
+      <div class="game-wrapper" id="play-it">
+        <div class="game-placeholder" id="game-placeholder">
+          <img src="../static/images/caterpillar_thumbnail.png" alt="Caterpillar Quest" />
+          <button class="game-play-btn" onclick="startGame()" aria-label="Play game">
+            <i class="fa-solid fa-play"></i>
+          </button>
+        </div>
         <iframe
-          id="play-it"
-          src="../static/games/caterpillar-quest/index.html"
+          id="game-frame"
+          data-src="../static/games/caterpillar-quest/index.html"
           width="100%"
           frameborder="0"
           scrolling="no"
           allowfullscreen
-          style="border-radius: 10px; aspect-ratio: 960/600; height: auto;"
+          style="display: none; border-radius: 10px; aspect-ratio: 960/600; height: auto;"
         ></iframe>
-        <button class="game-fullscreen-btn" onclick="this.previousElementSibling.requestFullscreen()" title="Fullscreen">
+        <button class="game-fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen" style="display: none;">
           <i class="fa-solid fa-expand"></i>
         </button>
       </div>
+      <script>
+        function startGame() {
+          document.getElementById('game-placeholder').remove();
+          var iframe = document.getElementById('game-frame');
+          iframe.src = iframe.dataset.src;
+          iframe.style.display = 'block';
+          document.getElementById('fullscreen-btn').style.display = 'block';
+        }
+        function toggleFullscreen() {
+          var wrapper = document.getElementById('play-it');
+          if (document.fullscreenElement) {
+            document.exitFullscreen();
+          } else if (wrapper.requestFullscreen) {
+            wrapper.requestFullscreen().catch(function () {
+              wrapper.classList.toggle('game-fullscreen-mobile');
+              updateFsIcon(wrapper.classList.contains('game-fullscreen-mobile'));
+            });
+          } else {
+            wrapper.classList.toggle('game-fullscreen-mobile');
+            updateFsIcon(wrapper.classList.contains('game-fullscreen-mobile'));
+          }
+        }
+        function updateFsIcon(isFs) {
+          document.getElementById('fullscreen-btn').querySelector('i').className =
+            isFs ? 'fa-solid fa-compress' : 'fa-solid fa-expand';
+        }
+        document.addEventListener('fullscreenchange', function () {
+          updateFsIcon(!!document.fullscreenElement);
+        });
+      </script>
 
       <h3>The Game</h3>
       <p>

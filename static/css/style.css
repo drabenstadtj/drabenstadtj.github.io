@@ -605,6 +605,73 @@ a.tag:hover {
   background: rgba(0, 0, 0, 0.85);
 }
 
+.game-placeholder {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.game-placeholder img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.game-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  color: #fff;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.game-play-btn:hover {
+  background: rgba(0, 0, 0, 0.88);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.game-wrapper:fullscreen,
+.game-wrapper:-webkit-full-screen {
+  background: #000;
+}
+
+.game-wrapper:fullscreen iframe,
+.game-wrapper:-webkit-full-screen iframe {
+  width: 100% !important;
+  height: 100vh !important;
+  aspect-ratio: unset;
+  border-radius: 0 !important;
+}
+
+.game-wrapper.game-fullscreen-mobile {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  margin: 0;
+  background: #000;
+}
+
+.game-wrapper.game-fullscreen-mobile iframe {
+  width: 100vw !important;
+  height: 100vh !important;
+  aspect-ratio: unset;
+  border-radius: 0 !important;
+}
+
 /* =========================
    Deliverables
    ========================= */
@@ -665,6 +732,10 @@ a.tag:hover {
     grid-template-columns: 1fr;
   }
 
+  .card-list {
+    grid-auto-rows: auto;
+  }
+
   .card {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
@@ -674,6 +745,9 @@ a.tag:hover {
   .card img {
     grid-column: 1;
     grid-row: auto;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    order: -1;
   }
 
   .card-title {
@@ -706,7 +780,7 @@ a.tag:hover {
     transform: none;
     width: 100%;
     text-align: center;
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     order: -1;
   }
 
