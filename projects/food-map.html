@@ -14,6 +14,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="icon" type="image/png" href="../favicon.png" />
     <title>Pittsburgh Food Access Map - Jack Drabenstadt</title>
   </head>
   <body>
@@ -44,13 +45,13 @@
             class="navbar-resume"
             >Dev Log</a
           >
-          <a href="#" target="_blank" aria-label="LinkedIn"
+          <a href="https://www.linkedin.com/in/jackdrabenstadt/" target="_blank" aria-label="LinkedIn"
             ><i class="fa-brands fa-linkedin"></i
           ></a>
-          <a href="#" target="_blank" aria-label="GitHub"
+          <a href="https://github.com/drabenstadtj" target="_blank" aria-label="GitHub"
             ><i class="fa-brands fa-github"></i
           ></a>
-          <a href="#" target="_blank" aria-label="Itch.io"
+          <a href="https://drabenstadtj.itch.io/" target="_blank" aria-label="Itch.io"
             ><i class="fa-brands fa-itch-io"></i
           ></a>
         </div>
@@ -67,127 +68,94 @@
     <div id="navbar-spacer"></div>
 
     <main class="content-strip">
-      <h1>Pittsburgh Food Access Map</h1>
+      <h1>
+        <a href="https://map.jackdrab.dev" target="_blank" class="heading-link"
+          >Pittsburgh Food Access Map <i class="fa-solid fa-arrow-up-right-from-square heading-arrow"></i></a
+        >
+      </h1>
 
-      <p>
-        <strong>Capstone team:</strong> Jack Drabenstadt, Lucy Guo, Gleb
-        Ksianevich, Cole Swierczek<br />
-        <strong>Sponsors:</strong> Pittsburgh Policy Initiative (PPI)
-      </p>
-
-      <p>
-        Food insecurity is a persistent challenge in Pittsburgh. The 2019 food
-        access map developed by Code for Good Pittsburgh fell out of
-        maintenance. Our team partnered with the Pittsburgh Policy Initiative to
-        rebuild an extensible, community-first platform.
-      </p>
-
-      <p>
-        The system is a hybrid web/mobile map of food resources including
-        grocery stores, farmers' markets, food pantries, corner stores, and
-        mutual aid sites. Core features include filtering by type, neighborhood,
-        and hours of operation. An admin dashboard allows PPI partners to add
-        and edit resources. A reporting module lets users submit corrections.
-      </p>
-
-      <figure class="demo-figure">
-        <img
-          src="../static/images/pgh_food_map_arch.jpg"
-          alt="System architecture diagram"
-        />
-
-        <figcaption>
-          Frontend: React (web) + React Native (mobile). Backend: Python/Flask.
-          Database: SQLite/PostgreSQL.
-        </figcaption>
-      </figure>
-
-      <h3>What We Built</h3>
-      <ul>
-        <li>
-          <strong>Interactive map:</strong> Leaflet.js with filtering by type,
-          neighborhood, and hours
-        </li>
-        <li>
-          <strong>Admin dashboard:</strong> Add, edit, remove food resources —
-          no coding required
-        </li>
-        <li>
-          <strong>Community reporting:</strong> Users submit corrections; admins
-          review and publish
-        </li>
-        <li>
-          <strong>Cross-platform:</strong> Shared React codebase for web and
-          mobile
-        </li>
-        <li>
-          <strong>Data migration:</strong> Legacy 2019 dataset transferred to
-          new implementation for verification.
-        </li>
-      </ul>
-
-      <h3>Architecture</h3>
-      <p>
-        <strong>Frontend:</strong> ReactJS (web) and React Native (mobile) with
-        Leaflet.js. Unified component logic, platform-specific map renderers.
-      </p>
-      <p>
-        <strong>Backend:</strong> Python/Flask REST API. Serves GeoJSON, handles
-        admin write operations, processes user reports.
-      </p>
-      <p>
-        <strong>Database:</strong> SQLite for development, PostgreSQL for
-        production. Schema includes resources, neighborhoods, hours, reports.
-      </p>
-      <p>
-        <strong>DevOps:</strong> Docker containerization, GitHub,
-        documentation-first approach for maintainability.
-      </p>
-
-      <h3>Technical Challenges</h3>
-      <p>
-        <strong>Legacy data:</strong> 2019 dataset contained outdated entries
-        and missing geometries. We built data transfer tools and transferred
-        2019 data to allow PPI staff to alter and verify data.
-      </p>
-      <p>
-        <strong>Accessibility:</strong> Leaflet maps are not inherently
-        accessible. Added ARIA live regions, focus management, high-contrast
-        tiles, and 44×44px touch targets.
-      </p>
-      <p>
-        <strong>Cross-platform React:</strong> Abstracted map renderers (Leaflet
-        vs react-native-maps) while preserving shared filter logic and state.
-      </p>
-      <p>
-        <strong>Handover:</strong> Dockerized dev environment, API
-        documentation, and admin user guides ensure PPI can maintain the system
-        post-delivery.
-      </p>
-
-      <h3>Technologies</h3>
-      <ul>
-        <li>Javascript</li>
-        <li>React / React Native</li>
-        <li>Leaflet.js</li>
-        <li>Python / Flask</li>
-        <li>SQLite / PostgreSQL</li>
-        <li>Docker</li>
-        <li>Pytest</li>
-      </ul>
-
-      <h3>Impact</h3>
-      <p></p>
-
-      <h3>Code</h3>
-      <p>
+      <div class="project-meta">
         <a
           href="https://github.com/drabenstadtj/PittsburghFoodAccessMap"
           target="_blank"
-          >github.com/drabenstadtj/PittsburghFoodAccessMap</a
+          class="meta-link"
+          ><i class="fa-brands fa-github"></i> GitHub</a
         >
-        - The project is pending deployment as of Spring 2026.
+        <span class="project-meta-divider"></span>
+        <span class="tag">React</span>
+        <span class="tag">Flask</span>
+        <span class="tag">Docker</span>
+        <span class="tag">SQLite</span>
+      </div>
+
+      <p>
+        Built for and currently being deployed in partnership with the
+        Pittsburgh Policy Initiative — helping Pittsburgh residents find food
+        assistance across nearly 800 locations citywide. No account required:
+        search, filter by type or distance, check what's open right now, and
+        get directions. PPI staff manage the full dataset through a role-gated
+        admin dashboard.
       </p>
+
+      <figure>
+        <img
+          src="../static/images/foodmapdemo.gif"
+          alt="Pittsburgh Food Access Map demo"
+          class="img-strip"
+        />
+      </figure>
+
+      <h3>The Problem</h3>
+      <p>
+        Food insecurity is a persistent challenge in Pittsburgh, with many
+        neighborhoods lacking consistent access to affordable, healthy food. A
+        2019 map by Code for Good Pittsburgh helped visualize food deserts and
+        resources, but it fell out of maintenance. The Pittsburgh Policy
+        Initiative set out to revitalize and expand it — building a sustainable
+        platform that supports both residents finding help today and policymakers
+        understanding the landscape long-term. PPI also needed staff tools to
+        maintain the data without a developer in the loop, and a way to accept
+        community tips without opening the database to the public.
+      </p>
+
+      <h3>My Role</h3>
+      <p>
+        Lead developer on a small team — full-stack architecture, deployment
+        infrastructure, and core feature implementation.
+      </p>
+
+      <h3>What I Built</h3>
+      <p>
+        <strong>Filtering by type, distance, and hours.</strong> Users can
+        narrow results by resource type (food pantry, food bank, community
+        fridge, and more), filter by distance from their location, and toggle to
+        show only currently open sites. Hours are stored as structured JSON per
+        day and checked client-side against the current time — the same data
+        structure also powers an admin hours editor for staff. Together these
+        filters address the most common frustration with resource finders:
+        wading through irrelevant or closed locations.
+      </p>
+      <p>
+        <strong>Community suggestion pipeline.</strong> Anyone can submit a new
+        resource location for review. Admins can approve, reject, geocode via
+        Nominatim, and promote a suggestion into a live map entry in a single
+        workflow — keeping the dataset accurate without requiring staff to do all
+        the legwork. The suggestion retains a link to the created resource for a
+        clean audit trail.
+      </p>
+      <p>
+        <strong>Containerized deployment.</strong> The full stack ships as two
+        Docker containers (Flask/Gunicorn + Nginx) behind an external reverse
+        proxy. The database is volume-mounted so data persists across rebuilds
+        with zero downtime — important when PPI staff depend on it daily.
+      </p>
+      <p>
+        <strong>Security model.</strong> Admin registration requires an existing
+        admin session, so there's no open self-registration endpoint exposed to
+        the public. Production uses HTTPS-only session cookies with secrets
+        injected via environment variables.
+      </p>
+
     </main>
 
     <script src="../static/js/navbar.js"></script>
