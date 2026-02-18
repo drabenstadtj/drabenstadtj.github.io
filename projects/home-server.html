@@ -78,76 +78,120 @@
     <main class="content-strip">
       <h1>Home Server</h1>
 
+      <div class="project-meta">
+        <span class="tag">Docker</span>
+        <span class="tag">Linux</span>
+        <span class="tag">Networking</span>
+        <span class="tag">Nginx</span>
+        <span class="tag">Grafana</span>
+      </div>
+
       <p>
-        I started building my home server a few years ago after going down a
-        rabbit hole of YouTube videos on self-hosting. At the time, I had
-        limited networking experience but was a longtime PC enthusiast with
-        spare parts sitting around. The idea of running my own services instead
-        of relying on cloud providers was too appealing to pass up, so I
-        repurposed an old build and started experimenting.
+        A self-hosted infrastructure running 20+ containerized services across
+        media, security, observability, and home automation.
       </p>
 
-      <figure class="demo-figure">
-        <img src="../static/images/wintermute-built.JPG" alt="Built server" />
-        <figcaption>My server after a 42TB RAID 5 upgrade</figcaption>
+      <figure>
+        <img
+          src="../static/images/wintermute-built.JPG"
+          alt="Home server build after 42TB RAID 5 upgrade"
+          class="img-strip"
+        />
+      </figure>
+
+      <h3>Origin</h3>
+      <p>
+        A few years ago I went down a rabbit hole of YouTube videos on
+        self-hosting and never really came back up. The idea of replacing
+        subscription services with software I actually control was too appealing
+        to ignore, so I repurposed an old PC build with spare parts and started
+        experimenting. At the time I had limited networking experience — just a
+        longtime PC enthusiast who knew how to build systems and had an interest
+        in how computer networks work.
+      </p>
+
+      <h3>How It Evolved</h3>
+      <p>
+        Getting the first few services running required learning things I'd
+        never had a reason to touch before — how firewalls actually work, how
+        DNS resolution chains together, how a reverse proxy sits in front of
+        your services to handle routing and SSL termination. With every new
+        application came its own troubleshooting rabbit hole: port conflicts,
+        permission errors, misconfigured environment variables. Each one taught
+        me something real about how Linux systems and networks operate under the
+        hood.
+      </p>
+      <p>
+        As the number of services grew, bare-metal installs became
+        unmanageable. I taught myself Docker and migrated everything into
+        containers, which made deployment, updates, and isolation dramatically
+        cleaner. Around that time security became a serious priority — I
+        configured NGINX Proxy Manager so nothing is exposed directly, set up
+        fail2ban against brute-force attempts, and developed habits around
+        reviewing access logs and locking down service configurations beyond
+        their defaults.
+      </p>
+      <p>
+        When friends and family started relying on the server, reliability
+        became far more important. I upgraded to nearly 50TB of storage with
+        RAID redundancy, and replaced a power-hungry dedicated GPU with a CPU
+        with capable integrated graphics, cutting electricity consumption nearly
+        in half while still handling hardware transcoding.
+      </p>
+
+      <figure>
+        <img
+          src="../static/images/power.png"
+          alt="Power meter showing reduced consumption after GPU swap"
+          class="img-strip"
+        />
+      </figure>
+
+      <h3>Current State</h3>
+      <figure>
+        <img
+          src="../static/images/wintermute_dashboard.png"
+          alt="Home server dashboard"
+          class="img-strip"
+        />
       </figure>
 
       <p>
-        Setting up the first few applications required extensive research into
-        areas I had little prior exposure to. I had to learn how firewalls
-        actually work, how DNS resolution chains together, and how reverse
-        proxies sit in front of services to handle routing and SSL termination.
-        Every new application I wanted to run came with its own set of
-        troubleshooting challenges, from port conflicts to permission issues,
-        and each one taught me something new about how Linux systems and
-        networking actually operate under the hood.
+        <strong>Media &amp; personal tools.</strong> Jellyfin handles media
+        streaming for friends and family. Immich manages 19,000+ personal
+        photos. Navidrome handles music streaming, Kavita and Calibre cover
+        ebooks and comics. Vaultwarden runs my personal password manager,
+        Miniflux handles RSS, and Home Assistant ties in home automation.
+      </p>
+      <p>
+        <strong>Observability.</strong> Grafana, Prometheus, and Node Exporter
+        provide real-time system monitoring and dashboards. Uptime Kuma tracks
+        service availability — currently 100% uptime across all monitored
+        endpoints.
+      </p>
+      <p>
+        <strong>Infrastructure.</strong> NGINX Proxy Manager routes and secures
+        all external-facing services behind a single reverse proxy. Dockge
+        provides a clean UI for managing the container stack.
       </p>
 
-      <figure class="demo-figure">
+      <figure>
         <img
           src="../static/images/building-wintermute.JPG"
-          alt="Built server"
+          alt="Server internals after integrated graphics upgrade"
+          class="img-strip"
         />
-        <figcaption>
-          My server after upgrading to integrated graphics
-        </figcaption>
       </figure>
-      <p>
-        As the number of applications grew, managing everything with bare-metal
-        installations became unsustainable. I taught myself Docker and migrated
-        my services into containers, which made deployment, updates, and
-        isolation dramatically easier. Security became a priority early on. I
-        set up reverse proxies to avoid exposing services directly, configured
-        fail2ban to block brute-force attempts, and developed a habit of
-        auditing access logs and hardening configurations as part of routine
-        maintenance.
-      </p>
 
-      <figure class="demo-figure">
-        <img src="../static/images/power.png" alt="Power Meter" />
-        <figcaption>
-          More than halved daily power consumption by moving to integrated
-          graphics
-        </figcaption>
-      </figure>
+      <h3>Ongoing</h3>
       <p>
-        Over time, friends and family started relying on the server for media
-        streaming and file sharing. That growing dependence pushed me to take
-        reliability and storage seriously. I upgraded to nearly 50TB of storage
-        with RAID redundancy to protect against drive failures. I also replaced
-        the power-hungry dedicated GPU with a CPU that has capable integrated
-        graphics, which cut the server's electricity consumption nearly in half
-        while still handling hardware transcoding for media streaming.
-      </p>
-
-      <p>
-        Today, my focus has shifted from just getting things running to
-        expanding capabilities, experimenting with new tools, and maintaining
-        long-term stability and security. The home server has become an ongoing
-        education in networking, system administration, security hardening, and
-        containerization. Every problem I solve on it deepens my understanding
-        of the infrastructure that underpins modern computing, and I continue to
-        treat it as both a practical tool and a hands-on learning environment.
+        The focus has shifted from getting things running to long-term
+        stability, security hardening, and expanding capabilities. Current
+        interests include improving the monitoring stack, tightening backup
+        strategy, and continuing to experiment with new self-hosted tools as
+        they mature. The concepts worked through here — containerization,
+        reverse proxies, network security, system monitoring — map directly to
+        the infrastructure layer of production software.
       </p>
     </main>
     <script src="../static/js/navbar.js"></script>

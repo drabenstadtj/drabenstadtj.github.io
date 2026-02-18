@@ -45,13 +45,13 @@
             class="navbar-resume"
             >Dev Log</a
           >
-          <a href="#" target="_blank" aria-label="LinkedIn"
+          <a href="https://www.linkedin.com/in/jackdrabenstadt/" target="_blank" aria-label="LinkedIn"
             ><i class="fa-brands fa-linkedin"></i
           ></a>
-          <a href="#" target="_blank" aria-label="GitHub"
+          <a href="https://github.com/drabenstadtj" target="_blank" aria-label="GitHub"
             ><i class="fa-brands fa-github"></i
           ></a>
-          <a href="#" target="_blank" aria-label="Itch.io"
+          <a href="https://drabenstadtj.itch.io/" target="_blank" aria-label="Itch.io"
             ><i class="fa-brands fa-itch-io"></i
           ></a>
         </div>
@@ -69,95 +69,99 @@
     <main class="content-strip">
       <h1>Whole Home Audio</h1>
 
-      <p>
-        I have always been obsessive about audio quality. Over the years I
-        accumulated a collection of speakers across different rooms, but they
-        all operated independently. What I really wanted was seamless whole-home
-        sound, where music could follow me from room to room in perfect sync.
-        The inspiration came from two places: the legendary Paradise Garage in
-        New York, where the entire space was designed around the sound system,
-        and Nowadays, a club in NYC that treats audio as an integral part of the
-        clubgoing experience.
-      </p>
-
-      <h3>How It Works</h3>
+      <div class="project-meta">
+        <span class="tag">Raspberry Pi</span>
+        <span class="tag">Snapcast</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Soldering</span>
+        <span class="tag">3D Printing</span>
+      </div>
 
       <p>
-        The system is built on Snapcast, an open-source multi-room audio
-        solution with a server-client architecture. The snapserver runs inside a
-        Docker container on my home server, acting as the central audio source.
-        Each room has a Raspberry Pi running a snapclient, which receives the
-        audio stream over Wi-Fi and plays it through the connected speakers. To
-        get clean analog output from the Pis, I soldered dedicated DAC boards
-        onto each one, bypassing the Pi's built-in audio which is notoriously
-        noisy.
+        A synchronized multi-room audio system built on Raspberry Pis, custom
+        hardware, and open-source software.
       </p>
 
-      <figure class="demo-figure">
+      <figure>
         <img
           src="../static/images/rasp-pi.png"
-          alt="Raspberry Pi with DAC"
+          alt="Raspberry Pi with soldered DAC and 3D-printed enclosure"
           class="img-strip"
         />
-        <figcaption>
-          Raspberry Pi with soldered DAC board and custom 3D-printed enclosure
-        </figcaption>
       </figure>
+
+      <h3>Origin</h3>
       <p>
-        I designed and 3D-printed custom cases to house each Raspberry Pi and
-        its DAC cleanly. It took several iterations to get the fit, ventilation,
-        and cable routing right, but the final versions are compact and tidy
-        enough to sit next to speakers without being an eyesore. Snapcast
-        handles all the synchronization between clients, compensating for
-        network jitter to keep every room playing in lockstep. For music input,
-        I use Librespot, which presents the system as a Spotify Connect device,
-        so anyone on the network can cast music to the whole house directly from
-        their phone. I am also experimenting with AirPlay support to allow
-        seamless switching between sources.
+        I have always been obsessive about audio quality. Over the years I
+        accumulated speakers across different rooms, but they all operated
+        independently. What I really wanted was seamless whole-home sound —
+        music that could follow me from room to room in perfect sync. Two places
+        crystallized the idea: the Paradise Garage in New York, where the entire
+        space was designed around the sound system, and Nowadays, a club in NYC
+        that treats audio as an integral part of the experience.
       </p>
 
       <h3>The Inspiration</h3>
-
       <p>
-        Paradise Garage was a space designed almost entirely around the
+        The Paradise Garage was a space designed almost entirely around the
         experience of listening. Larry Levan and Richard Long built the system
-        so that the music was not just heard but felt, with every corner of the
-        room receiving the same quality of sound. That philosophy, of designing
-        a space around its sound rather than bolting speakers on as an
-        afterthought, is what I wanted to bring into my own home on a smaller
-        scale.
+        so that the music was felt as much as heard, with every corner of the
+        room receiving the same quality of sound. That philosophy — designing a
+        space around its audio rather than treating it as an afterthought — is
+        what I wanted to bring into my own home on a smaller scale.
       </p>
-      <figure class="demo-figure">
+
+      <figure>
         <img
           src="../static/images/paradise-garage.png"
-          alt="Paradise Garage sound system"
+          alt="Paradise Garage, NYC"
           class="img-strip"
         />
-        <figcaption>
-          Paradise Garage, NYC — the sound system was designed as an integral
-          part of the space, not an afterthought
-        </figcaption>
       </figure>
+
+      <h3>How It Works</h3>
       <p>
-        Building this system also ended up being a natural extension of my
-        distributed systems experience. Managing synchronized audio streams over
-        Wi-Fi, dealing with clock drift between independent clients, handling
-        network interruptions gracefully, and coordinating a central server with
-        multiple edge devices are all problems that are conceptually similar to
-        working with Linux sockets and building small-scale distributed systems.
-        The overlap between the audio project and my academic work was
-        unexpected but made the technical challenges feel familiar and
-        approachable.
+        The system is built on Snapcast, an open-source multi-room audio
+        solution with a server-client architecture. The snapserver runs in a
+        Docker container on my home server, acting as the central audio source.
+        Each room has a Raspberry Pi running a snapclient, which receives the
+        audio stream over Wi-Fi and plays it through the connected speakers.
+        Snapcast handles synchronization between all clients, compensating for
+        network jitter to keep every room in lockstep.
+      </p>
+      <p>
+        To get clean analog output from the Pis, I soldered dedicated DAC boards
+        onto each one, bypassing the Pi's built-in audio which is notoriously
+        noisy. I designed and 3D-printed custom enclosures to house each Pi and
+        DAC — it took several iterations to get the fit, ventilation, and cable
+        routing right, but the final versions are compact enough to sit next to
+        speakers without being an eyesore.
+      </p>
+      <p>
+        For music input, Librespot presents the whole system as a Spotify
+        Connect device, so anyone on the network can cast to the whole house
+        directly from their phone. I'm also experimenting with AirPlay support
+        for seamless source switching.
       </p>
 
+      <h3>The Distributed Systems Connection</h3>
       <p>
-        The system is now fully functional, with synchronized playback running
-        reliably across multiple rooms. I am always looking for projects that
-        sit at the intersection of hardware, software, and design, and this one
-        hits all three. Whether it is iterating on the 3D-printed enclosures,
-        experimenting with new audio sources, or optimizing the network
-        configuration for lower latency, there is always something to refine and
-        improve.
+        Building this turned out to be a natural extension of concepts I'd
+        worked with elsewhere. Managing synchronized audio streams over Wi-Fi,
+        dealing with clock drift between independent clients, handling network
+        interruptions, and coordinating a central server with multiple edge
+        devices all map closely onto distributed systems problems. The overlap
+        made the technical challenges feel familiar and the solutions more
+        principled.
+      </p>
+
+      <h3>What's Next</h3>
+      <p>
+        The system runs reliably across multiple rooms with consistent
+        synchronized playback. Current focus is adding AirPlay as a second input
+        source and refining the enclosure design. Longer term I want to add
+        per-room volume control through a unified interface rather than managing
+        each client independently.
       </p>
     </main>
     <script src="../static/js/navbar.js"></script>

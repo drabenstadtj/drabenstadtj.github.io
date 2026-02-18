@@ -15,7 +15,7 @@
     />
     <link rel="stylesheet" href="../static/css/style.css" />
     <link rel="icon" type="image/png" href="../favicon.png" />
-    <title>Game Dev - Jack Drabenstadt</title>
+    <title>Caterpillar Quest - Jack Drabenstadt</title>
   </head>
   <body>
     <nav id="navbar">
@@ -29,10 +29,10 @@
           <div class="resume-dropdown">
             <span class="navbar-resume">Resume</span>
             <div class="resume-dropdown-menu">
-              <a href="static/resumes/software_dev_resume.pdf" target="_blank"
+              <a href="../static/resumes/software_dev_resume.pdf" target="_blank"
                 >Software Dev</a
               >
-              <a href="static/resumes/game_dev_resume.pdf" target="_blank"
+              <a href="../static/resumes/game_dev_resume.pdf" target="_blank"
                 >Game Design</a
               >
             </div>
@@ -74,125 +74,115 @@
     </nav>
 
     <div id="navbar-spacer"></div>
-    <script src="../static/js/navbar.js"></script>
     <main class="content-strip">
       <h1>Caterpillar Quest</h1>
 
-      <p>
-        <strong>Team:</strong> Jack Drabenstadt, Matthew Kindja<br />
-        <strong>Role:</strong> Game Designer, Hardware Engineer
-      </p>
+      <div class="project-meta">
+        <a href="#play-it" class="tag tag-live"
+          ><i class="fa-solid fa-gamepad"></i> Playable</a
+        >
+        <span class="project-meta-divider"></span>
+        <span class="tag">Unity</span>
+        <span class="tag">C#</span>
+        <span class="tag">Arduino</span>
+        <span class="tag">Python</span>
+        <span class="tag">Blender</span>
+      </div>
 
       <p>
-        Caterpillar Quest is a casual exploration game inspired by
-        <em>The Very Hungry Caterpillar</em>. Players control a caterpillar that
-        eats its way through a colorful world, grows through stages of life, and
-        eventually transforms into a butterfly. The game combines exploration,
-        light puzzles, and a visible progression system where size directly
-        reflects player growth. We developed a minimum viable product over two
-        months, then built a custom Arduino glove controller to pair with it.
+        A casual exploration game inspired by <em>The Very Hungry Caterpillar</em>,
+        paired with a custom Arduino glove controller built from scratch.
       </p>
 
-      <figure class="demo-figure">
+      <div class="game-wrapper">
+        <iframe
+          id="play-it"
+          src="../static/games/caterpillar-quest/index.html"
+          width="100%"
+          frameborder="0"
+          scrolling="no"
+          allowfullscreen
+          style="border-radius: 10px; aspect-ratio: 960/600; height: auto;"
+        ></iframe>
+        <button class="game-fullscreen-btn" onclick="this.previousElementSibling.requestFullscreen()" title="Fullscreen">
+          <i class="fa-solid fa-expand"></i>
+        </button>
+      </div>
+
+      <h3>The Game</h3>
+      <p>
+        Players move the caterpillar toward the cursor and jump with right click.
+        Eating food increases size, unlocking larger foods and new areas — but
+        growing too large locks you out of smaller spaces you previously explored.
+        Three levels progress from morning to evening to night, each with unique
+        lighting and environmental challenges.
+      </p>
+      <p>
+        Food choices have strategic tradeoffs: blueberries grant a jump,
+        strawberries give a speed boost. NPC interactions with a slug early on
+        and a cat late game offer optional dialogue and perspective on the
+        caterpillar's metamorphosis. Size is simultaneously progression and
+        constraint — the central design tension.
+      </p>
+
+      <figure>
         <img
           src="../static/images/caterpillar.gif"
-          alt="Caterpillar Quest character design"
+          alt="Caterpillar Quest gameplay"
           class="img-strip"
         />
-        <figcaption>
-          Caterpillar character stylized after Eric Carle's original
-          illustrations
-        </figcaption>
       </figure>
-
-      <h3>Game Design</h3>
-
-      <p>
-        The player moves the caterpillar toward the cursor with left click and
-        jumps with right click. Eating food increases the caterpillar's size,
-        unlocking access to larger foods and new areas. As the caterpillar
-        grows, so does its obstacles. Three levels progress from morning to
-        evening to night, each with unique lighting and environmental
-        challenges.
-      </p>
-
-      <p>
-        NPC interactions with a slug (early game) and a cat (late game) provide
-        optional dialogue and perspective on the caterpillar's metamorphosis.
-        Food choices offer strategic tradeoffs: blueberries grant a single jump,
-        strawberries provide a speed boost — each opens new areas. Growing too
-        large, however, can lock you out of smaller spaces you previously
-        explored.
-      </p>
 
       <h3>Custom Hardware Controller</h3>
+      <p>
+        I built a custom Arduino glove controller to pair with the game. An
+        MPU6050 accelerometer tracks hand tilt and maps it directly to cursor
+        position — level hand centers the cursor, tilting moves it
+        proportionally. Penny buttons sewn into the glove fingers complete
+        circuits when touched to a thumb ground, emulating left and right mouse
+        clicks.
+      </p>
+      <p>
+        The first control scheme was velocity-based: the Arduino calculated
+        movement vectors and PyAutoGUI moved the mouse relative to its current
+        position. This produced choppy, drifting movement. Switching to pynput
+        fixed choppiness but not the underlying problem — accelerometers measure
+        force, not position, so velocity control was fundamentally mismatched to
+        the hardware.
+      </p>
+      <p>
+        The fix was joystick-style absolute positioning. Cursor position is now
+        mapped directly to tilt angle relative to a calibrated neutral. Hold
+        level, cursor stays centered; tilt left, cursor moves left. Immediately
+        more intuitive. The Python pipeline handles auto-detection, calibration,
+        deadzone filtering, and scaling.
+      </p>
+      <p>
+        The hardware iterated too. Planned 3D-printed finger buttons with tactile
+        switches were abandoned after impatient supergluing rendered both
+        prototypes non-functional. We switched to pennies: drilled, soldered, and
+        sewn into the glove. Not elegant, but it worked reliably through the
+        entire playtest.
+      </p>
 
-      <figure class="demo-figure">
+      <figure>
         <img
           src="../static/images/controller_glove_final.jpeg"
-          alt="Arduino glove controller"
+          alt="Finished Arduino glove controller"
           class="img-strip"
         />
-        <figcaption>
-          Arduino-based glove controller with MPU6050 tilt sensing and penny
-          touch buttons
-        </figcaption>
       </figure>
 
+      <h3>Playtesting</h3>
       <p>
-        I built a custom Arduino controller to pair with the game. An MPU6050
-        accelerometer tracks hand tilt, mapping directly to cursor position —
-        level hand centers the cursor, tilting moves it proportionally. Penny
-        buttons sewn into the glove fingers complete circuits when touched to a
-        thumb ground, emulating left and right mouse clicks.
+        A blind playtest with five users surfaced the key issues: food was hard
+        to spot against the environment, dialogue boxes blocked the view, and
+        players wanted zoom control. We added food contrast, a progress bar,
+        scroll-wheel zoom, and movement lock during dialogue. Players
+        consistently cited movement and jumping as the most enjoyable parts.
       </p>
 
-      <p>
-        The initial approach was velocity-based: the Arduino calculated movement
-        vectors and PyAutoGUI moved the mouse relative to its current position.
-        This produced choppy, drifting movement and never felt intuitive.
-        Switching the Python library to pynput fixed the choppiness but not the
-        underlying problem — accelerometers measure force, not position, so
-        velocity control was fundamentally mismatched.
-      </p>
-
-      <p>
-        We pivoted to joystick-style absolute positioning. The cursor position
-        is now mapped directly to the sensor's tilt angle relative to a
-        calibrated neutral position. Hold level, cursor stays centered. Tilt
-        left, cursor moves left. This was immediately more intuitive and paired
-        naturally with the game. The Python pipeline handles auto-detection,
-        calibration, deadzone filtering, scaling, and cursor control via pynput.
-      </p>
-
-      <p>
-        The hardware evolved alongside the software. We originally intended
-        3D-printed finger buttons with tactile switches, but impatient
-        supergluing rendered both prototypes non-functional. We pivoted to
-        pennies: drilled, soldered, and sewn directly into the glove fingers.
-        Touching a finger penny to the thumb penny completes the circuit. It's
-        not elegant, but it worked reliably for the entire playtest session.
-      </p>
-
-      <h3>Playtesting & Iteration</h3>
-
-      <p>
-        A blind playtest with five users revealed key issues: food was difficult
-        to spot against the environment, dialogue boxes obstructed the view, and
-        players wanted camera zoom controls. We responded by increasing food
-        contrast, adding a progress bar, implementing scroll-wheel zoom, and
-        locking player movement during dialogue. Players consistently cited
-        movement and jumping as the most enjoyable elements.
-      </p>
-
-      <h3>Technologies</h3>
-      <ul>
-        <li>Unity / C#</li>
-        <li>Arduino</li>
-        <li>Python</li>
-        <li>Blender</li>
-        <li>Adobe Substance Painter</li>
-      </ul>
     </main>
+    <script src="../static/js/navbar.js"></script>
   </body>
 </html>
