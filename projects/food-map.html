@@ -26,32 +26,28 @@
         </span>
         <span class="navbar-page">Projects</span>
         <div class="navbar-socials">
-          <div class="resume-dropdown">
-            <span class="navbar-resume">Resume</span>
-            <div class="resume-dropdown-menu">
-              <a
-                href="../static/resumes/software_dev_resume.pdf"
-                target="_blank"
-                >Software Dev</a
-              >
-              <a href="../static/resumes/game_dev_resume.pdf" target="_blank"
-                >Game Design</a
-              >
-            </div>
-          </div>
           <a
             href="/gamedev/pages/gamelog.html"
             target="_blank"
             class="navbar-resume"
             >Dev Log</a
           >
-          <a href="https://www.linkedin.com/in/jackdrabenstadt/" target="_blank" aria-label="LinkedIn"
+          <a
+            href="https://www.linkedin.com/in/jackdrabenstadt/"
+            target="_blank"
+            aria-label="LinkedIn"
             ><i class="fa-brands fa-linkedin"></i
           ></a>
-          <a href="https://github.com/drabenstadtj" target="_blank" aria-label="GitHub"
+          <a
+            href="https://github.com/drabenstadtj"
+            target="_blank"
+            aria-label="GitHub"
             ><i class="fa-brands fa-github"></i
           ></a>
-          <a href="https://drabenstadtj.itch.io/" target="_blank" aria-label="Itch.io"
+          <a
+            href="https://drabenstadtj.itch.io/"
+            target="_blank"
+            aria-label="Itch.io"
             ><i class="fa-brands fa-itch-io"></i
           ></a>
         </div>
@@ -60,8 +56,7 @@
         <ul>
           <li><a href="../index.html">Home</a></li>
           <li><a href="../projects.html" class="active">Projects</a></li>
-          <li><a href="../gamedev.html">Game Dev</a></li>
-          <li><a href="../writing.html">Writing</a></li>
+          <li><a href="../resume.html">Resume</a></li>
         </ul>
       </div>
     </nav>
@@ -70,8 +65,9 @@
     <main class="content-strip">
       <h1>
         <a href="https://map.jackdrab.dev" target="_blank" class="heading-link"
-          >Pittsburgh Food Access Map <i class="fa-solid fa-arrow-up-right-from-square heading-arrow"></i></a
-        >
+          >Pittsburgh Food Access Map
+          <i class="fa-solid fa-arrow-up-right-from-square heading-arrow"></i
+        ></a>
       </h1>
 
       <div class="project-meta">
@@ -92,9 +88,9 @@
         Built for and currently being deployed in partnership with the
         Pittsburgh Policy Initiative — helping Pittsburgh residents find food
         assistance across nearly 800 locations citywide. No account required:
-        search, filter by type or distance, check what's open right now, and
-        get directions. PPI staff manage the full dataset through a role-gated
-        admin dashboard.
+        search, filter by type or distance, check what's open right now, and get
+        directions. PPI staff manage the full dataset through a role-gated admin
+        dashboard.
       </p>
 
       <figure>
@@ -112,10 +108,10 @@
         2019 map by Code for Good Pittsburgh helped visualize food deserts and
         resources, but it fell out of maintenance. The Pittsburgh Policy
         Initiative set out to revitalize and expand it — building a sustainable
-        platform that supports both residents finding help today and policymakers
-        understanding the landscape long-term. PPI also needed staff tools to
-        maintain the data without a developer in the loop, and a way to accept
-        community tips without opening the database to the public.
+        platform that supports both residents finding help today and
+        policymakers understanding the landscape long-term. PPI also needed
+        staff tools to maintain the data without a developer in the loop, and a
+        way to accept community tips without opening the database to the public.
       </p>
 
       <h3>My Role</h3>
@@ -139,9 +135,9 @@
         <strong>Community suggestion pipeline.</strong> Anyone can submit a new
         resource location for review. Admins can approve, reject, geocode via
         Nominatim, and promote a suggestion into a live map entry in a single
-        workflow — keeping the dataset accurate without requiring staff to do all
-        the legwork. The suggestion retains a link to the created resource for a
-        clean audit trail.
+        workflow — keeping the dataset accurate without requiring staff to do
+        all the legwork. The suggestion retains a link to the created resource
+        for a clean audit trail.
       </p>
       <p>
         <strong>Containerized deployment.</strong> The full stack ships as two
@@ -155,11 +151,10 @@
         the public. Production uses HTTPS-only session cookies with secrets
         injected via environment variables.
       </p>
-
     </main>
 
     <script src="../static/js/navbar.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-    <script src="../static/js/sketch.js"></script>
+    <!-- <script src="../static/js/sketch.js"></script> -->
   </body>
 </html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>Home - Jack Drabenstadt</title>
+  </head>
+
+  <body>
+    <nav id="navbar">
+      <div class="navbar-top">
+        <span class="navbar-page">Home</span>
+
+        <span class="navbar-name">
+          <span class="name-full">Jack Drabenstadt</span>
+          <span class="name-short">JD</span>
+        </span>
+
+        <div class="navbar-socials">
+          <a
+            href="/gamedev/pages/gamelog.html"
+            target="_blank"
+            class="navbar-resume"
+            >Dev Log</a
+          >
+          <a
+            href="https://www.linkedin.com/in/jackdrabenstadt/"
+            target="_blank"
+            aria-label="LinkedIn"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/drabenstadtj"
+            target="_blank"
+            aria-label="GitHub"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a
+            href="https://drabenstadtj.itch.io/"
+            target="_blank"
+            aria-label="Itch.io"
+          >
+            <i class="fa-brands fa-itch-io"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="navbar-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="resume.html" class="active">Resume</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Spacer so content isn't hidden behind the navbar -->
+    <div id="navbar-spacer"></div>
+    <main class="content-strip page-resume">
+      <section>
+        <h1>Resume</h1>
+
+        <div class="resume-tabs">
+          <button class="resume-tab active" data-target="software">
+            Software
+          </button>
+          <button class="resume-tab" data-target="gamedev">Game Dev</button>
+        </div>
+
+        <div class="resume-viewer">
+          <img
+            id="resume-software"
+            class="resume-image active clickable-resume"
+            src="static/resumes/software_dev_resume.png"
+            alt="Software Resume"
+          />
+          <img
+            id="resume-gamedev"
+            class="resume-image clickable-resume"
+            src="static/resumes/game_dev_resume.png"
+            alt="Game Development Resume"
+          />
+        </div>
+      </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="resume-lightbox" class="lightbox">
+      <img id="lightbox-image" src="" alt="Expanded Resume" />
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const tabs = document.querySelectorAll(".resume-tab");
+        const images = document.querySelectorAll(".resume-image");
+
+        // Tab switching
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            tabs.forEach((t) => t.classList.remove("active"));
+            images.forEach((img) => img.classList.remove("active"));
+
+            tab.classList.add("active");
+            document
+              .getElementById("resume-" + tab.dataset.target)
+              .classList.add("active");
+          });
+        });
+
+        // Lightbox logic
+        const lightbox = document.getElementById("resume-lightbox");
+        const lightboxImg = document.getElementById("lightbox-image");
+
+        document.querySelectorAll(".clickable-resume").forEach((img) => {
+          img.addEventListener("click", () => {
+            lightboxImg.src = img.src;
+            lightbox.classList.add("active");
+            document.body.style.overflow = "hidden";
+          });
+        });
+
+        function closeLightbox() {
+          lightbox.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        lightbox.addEventListener("click", closeLightbox);
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeLightbox();
+        });
+      });
+    </script>
+    <script src="static/js/navbar.js"></script>
+  </body>
+</html>

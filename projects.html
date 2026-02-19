@@ -26,17 +26,6 @@
         </span>
         <span class="navbar-page">Projects</span>
         <div class="navbar-socials">
-          <div class="resume-dropdown">
-            <span class="navbar-resume">Resume</span>
-            <div class="resume-dropdown-menu">
-              <a href="static/resumes/software_dev_resume.pdf" target="_blank"
-                >Software Dev</a
-              >
-              <a href="static/resumes/game_dev_resume.pdf" target="_blank"
-                >Game Design</a
-              >
-            </div>
-          </div>
           <a
             href="/gamedev/pages/gamelog.html"
             target="_blank"
@@ -67,101 +56,295 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="projects.html" class="active">Projects</a></li>
-          <li><a href="gamedev.html">Game Dev</a></li>
-          <li><a href="writing.html">Writing</a></li>
+          <li><a href="resume.html">Resume</a></li>
         </ul>
       </div>
     </nav>
 
     <div id="navbar-spacer"></div>
-    <main class="content-strip">
-      <h1>Projects</h1>
-      <div class="card-list">
-        <a href="projects/spire.html" class="card">
-          <div class="card-title">
-            <h2>Dynamic Reconfiguration in Spire</h2>
-            <div class="card-tags">
-              <span class="tag">C / C++</span>
-              <span class="tag">OpenSSL</span>
-              <span class="tag">Docker</span>
-              <span class="tag">Python</span>
+    <main class="content-strip page-projects">
+      <div class="projects-layout">
+        <div class="projects-sidebar">
+          <h1>Projects</h1>
+          <nav class="projects-toc">
+            <a href="#software" class="toc-link">Software</a>
+            <a href="#gamedev" class="toc-link">Game Dev</a>
+            <a href="#writing" class="toc-link">Writing</a>
+          </nav>
+        </div>
+        <div class="projects-content">
+          <section id="software">
+            <h2 class="section-heading">Software</h2>
+            <p class="section-desc">
+              Systems, infrastructure, and applications.
+            </p>
+            <div class="card-list">
+              <a href="projects/spire.html" class="card">
+                <div class="card-title">
+                  <h2>Dynamic Reconfiguration in Spire</h2>
+                  <div class="card-tags">
+                    <span class="tag">C / C++</span>
+                    <span class="tag">OpenSSL</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Python</span>
+                  </div>
+                </div>
+                <img src="static/images/reconfig_thumbnail.png" alt="" />
+                <p>
+                  Designed and implemented runtime reconfiguration and key
+                  management for a multi-site intrusion-tolerant distributed
+                  system with Dr. Amy Babay.
+                </p>
+              </a>
+              <a href="projects/food-map.html" class="card">
+                <div class="card-title">
+                  <h2>Pittsburgh Food Access Map</h2>
+                  <div class="card-tags">
+                    <span class="tag">React</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">SQLite</span>
+                  </div>
+                </div>
+                <img src="static/images/food_map_thumbnail.png" alt="" />
+                <p>
+                  Rebuilt a community food access map with React, Flask, and
+                  PostgreSQL, featuring an admin dashboard, community reporting,
+                  and WCAG 2.1 accessibility.
+                </p>
+              </a>
+              <a href="projects/home-server.html" class="card">
+                <div class="card-title">
+                  <h2>Home Server</h2>
+                  <div class="card-tags">
+                    <span class="tag">Docker</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">Nginx</span>
+                    <span class="tag">Grafana</span>
+                  </div>
+                </div>
+                <img src="static/images/wintermute_thumbnail.png" alt="" />
+                <p>
+                  Self-hosted server with nearly 50TB of storage, running
+                  containerized services across media, security, observability,
+                  and home automation.
+                </p>
+              </a>
+              <a href="projects/home-audio.html" class="card">
+                <div class="card-title">
+                  <h2>Whole Home Audio</h2>
+                  <div class="card-tags">
+                    <span class="tag">Raspberry Pi</span>
+                    <span class="tag">Snapcast</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">3D Printing</span>
+                  </div>
+                </div>
+                <img src="static/images/pi-case_thumbnail.png" alt="" />
+                <p>
+                  Multi-room Spotify streaming system using Snapcast and
+                  Raspberry Pis, housed in custom 3D-printed enclosures.
+                </p>
+              </a>
+              <a href="#" class="card">
+                <div class="card-title">
+                  <h2>Raspberry Pi Music Player</h2>
+                </div>
+                <img
+                  src="static/images/under_construction_thumbnail.png"
+                  alt=""
+                />
+                <p>⚠️Under Construction⚠️</p>
+              </a>
+              <a href="#" class="card">
+                <div class="card-title">
+                  <h2>This Website!</h2>
+                </div>
+                <img src="static/images/website_thumbnail.png" alt="" />
+                <p>
+                  Designed and built from scratch using vanilla HTML, CSS, and
+                  JavaScript — no frameworks or build tools.
+                </p>
+              </a>
             </div>
-          </div>
-          <img src="static/images/reconfig_thumbnail.png" alt="" />
-          <p>
-            Designed and implemented runtime reconfiguration and key management
-            for a multi-site intrusion-tolerant distributed system with Dr. Amy Babay.
-          </p>
-        </a>
-        <a href="projects/food-map.html" class="card">
-          <div class="card-title">
-            <h2>Pittsburgh Food Access Map</h2>
-            <div class="card-tags">
-              <span class="tag">React</span>
-              <span class="tag">Flask</span>
-              <span class="tag">Docker</span>
-              <span class="tag">SQLite</span>
+          </section>
+
+          <section id="gamedev">
+            <h2 class="section-heading">Game Dev</h2>
+            <p class="section-desc">
+              Games built across game jams, coursework, and personal projects.
+            </p>
+            <div class="card-list">
+              <a href="gamedev/lamport.html" class="card">
+                <div class="card-title">
+                  <h2>Lamport General Systems</h2>
+                  <div class="card-tags">
+                    <span class="tag">Godot</span>
+                    <span class="tag">GDScript</span>
+                  </div>
+                </div>
+                <img src="static/images/lgs_thumbnail.png" alt="" />
+                <p>
+                  A first-person immersive sim — manipulate hostile Byzantine
+                  fault-tolerant networks through message interception, code
+                  injection, and physical sabotage.
+                </p>
+              </a>
+              <a href="gamedev/caterpillar-quest.html" class="card">
+                <div class="card-title">
+                  <h2>Caterpillar Quest</h2>
+                  <div class="card-tags">
+                    <span class="tag">Unity</span>
+                    <span class="tag">C#</span>
+                    <span class="tag">Arduino</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Blender</span>
+                  </div>
+                </div>
+                <img src="static/images/caterpillar_thumbnail.png" alt="" />
+                <p>
+                  A top-down video game adaptation of The Very Hungry
+                  Caterpillar, built with Unity, Blender, and custom Arduino
+                  hardware controllers.
+                </p>
+              </a>
+              <a href="gamedev/fight-or-flight.html" class="card">
+                <div class="card-title">
+                  <h2>Fight or Flight</h2>
+                  <div class="card-tags">
+                    <span class="tag">Godot</span>
+                    <span class="tag">GDScript</span>
+                    <span class="tag">Blender</span>
+                    <span class="tag">GIMP</span>
+                  </div>
+                </div>
+                <img src="static/images/fight_flight_thumbnail.png" alt="" />
+                <p>
+                  A 2.5D platformer built in Godot for Pitt's 2025 Games for
+                  Social Impact Game Jam, with original 3D assets and music.
+                </p>
+              </a>
+              <a href="gamedev/discards.html" class="card">
+                <div class="card-title">
+                  <h2>Discards</h2>
+                  <div class="card-tags">
+                    <span class="tag">Godot</span>
+                    <span class="tag">GDScript</span>
+                  </div>
+                </div>
+                <img src="static/images/discards_thumbnail.png" alt="" />
+                <p>
+                  A first-person narrative game built in Godot that explores
+                  identity, digital consciousness, and moral responsibility
+                  through environmental storytelling.
+                </p>
+              </a>
+              <a href="gamedev/strangers-path.html" class="card">
+                <div class="card-title">
+                  <h2>Stranger's Path</h2>
+                  <div class="card-tags">
+                    <span class="tag">Unity</span>
+                    <span class="tag">C#</span>
+                  </div>
+                </div>
+                <img src="static/images/sp_thumbnail.png" alt="" />
+                <p>
+                  A short first-person experience built in Unity following a
+                  stranger who arrives alone in an unfamiliar town.
+                </p>
+              </a>
+              <a href="gamedev/index.html" class="card">
+                <div class="card-title">
+                  <h2>Dev Log</h2>
+                </div>
+                <img src="static/images/devlog_thumbnail.png" alt="" />
+                <p>
+                  An ongoing game design journal covering ideation, rapid
+                  prototyping, and lessons learned across each project.
+                </p>
+              </a>
             </div>
-          </div>
-          <img src="static/images/food_map_thumbnail.png" alt="" />
-          <p>
-            Rebuilt a community food access map with React, Flask, and PostgreSQL,
-            featuring an admin dashboard, community reporting, and WCAG 2.1 accessibility.
-          </p>
-        </a>
-        <a href="projects/home-server.html" class="card">
-          <div class="card-title">
-            <h2>Home Server</h2>
-            <div class="card-tags">
-              <span class="tag">Docker</span>
-              <span class="tag">Linux</span>
-              <span class="tag">Nginx</span>
-              <span class="tag">Grafana</span>
+          </section>
+
+          <section id="writing">
+            <h2 class="section-heading">Writing</h2>
+            <p class="section-desc">
+              Essays on games, technology, and narrative.
+            </p>
+            <div class="card-list">
+              <a href="writing/embedded-emergent.html" class="card">
+                <div class="card-title">
+                  <h2>A Framework for Game Narrative Analysis</h2>
+                </div>
+                <img src="static/images/narr_framework_thumbnail.png" alt="" />
+                <p>
+                  An analysis of embedded and emergent storytelling in video
+                  games, using Papers, Please as a case study.
+                </p>
+              </a>
+              <a href="writing/lain.html" class="card">
+                <div class="card-title">
+                  <h2>
+                    Digital Boundaries and Human Autonomy in Serial Experiments
+                    Lain
+                  </h2>
+                </div>
+                <img src="static/images/lain_thumbnail.png" alt="" />
+                <p>
+                  An analysis of how digital systems blur identity, erode
+                  autonomy, and enforce surveillance-driven control.
+                </p>
+              </a>
+              <a href="writing/mouthwashing.html" class="card">
+                <div class="card-title">
+                  <h2>Complicity and Collapse in MOUTHWASHING</h2>
+                </div>
+                <img src="static/images/mw_thumbnail.png" alt="" />
+                <p>
+                  How MOUTHWASHING denies player agency, implicating them in
+                  cycles of guilt, helplessness, and moral collapse.
+                </p>
+              </a>
+              <a href="writing/ouat.html" class="card">
+                <div class="card-title">
+                  <h2>
+                    When Rules Write the Story: Exploring Once Upon a Time
+                  </h2>
+                </div>
+                <img src="static/images/ouat_thumbnail.png" alt="" />
+                <p>
+                  How players, rules, and social dynamics shape emergent
+                  narratives in the collaborative card game Once Upon a Time.
+                </p>
+              </a>
             </div>
-          </div>
-          <img src="static/images/wintermute_thumbnail.png" alt="Description" />
-          <p>
-            Self-hosted server with nearly 50TB of storage, running containerized
-            services across media, security, observability, and home automation.
-          </p>
-        </a>
-        <a href="projects/home-audio.html" class="card">
-          <div class="card-title">
-            <h2>Whole Home Audio</h2>
-            <div class="card-tags">
-              <span class="tag">Raspberry Pi</span>
-              <span class="tag">Snapcast</span>
-              <span class="tag">Docker</span>
-              <span class="tag">3D Printing</span>
-            </div>
-          </div>
-          <img src="static/images/pi-case_thumbnail.png" alt="Description" />
-          <p>
-            Multi-room Spotify streaming system using Snapcast and Raspberry Pis,
-            housed in custom 3D-printed enclosures.
-          </p>
-        </a>
-        <a href="#" class="card">
-          <div class="card-title">
-            <h2>Raspberry Pi Music Player</h2>
-          </div>
-          <img
-            src="static/images/under_construction_thumbnail.png"
-            alt="Description"
-          />
-          <p>⚠️Under Construction⚠️</p>
-        </a>
-        <a href="#" class="card">
-          <div class="card-title">
-            <h2>This Website!</h2>
-          </div>
-          <img src="static/images/website_thumbnail.png" alt="Description" />
-          <p>Designed and built from scratch using vanilla HTML, CSS, and JavaScript — no frameworks or build tools.</p>
-        </a>
+          </section>
+        </div>
+        <!-- /projects-content -->
       </div>
+      <!-- /projects-layout -->
     </main>
     <script src="static/js/navbar.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-    <script src="static/js/sketch.js"></script>
+    <script>
+      const tocLinks = document.querySelectorAll(".toc-link");
+      const sections = document.querySelectorAll("section[id]");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              tocLinks.forEach((l) => l.classList.remove("active"));
+              const active = document.querySelector(
+                `.toc-link[href="#${entry.target.id}"]`,
+              );
+              if (active) active.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-20% 0px -70% 0px" },
+      );
+
+      sections.forEach((s) => observer.observe(s));
+    </script>
   </body>
 </html>

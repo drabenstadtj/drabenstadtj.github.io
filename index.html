@@ -30,18 +30,6 @@
 
         <div class="navbar-socials">
           <a
-            href="static/resumes/software_dev_resume.pdf"
-            target="_blank"
-            class="navbar-resume"
-            >Software</a
-          >
-          <a
-            href="static/resumes/game_dev_resume.pdf"
-            target="_blank"
-            class="navbar-resume"
-            >Game Dev</a
-          >
-          <a
             href="/gamedev/pages/gamelog.html"
             target="_blank"
             class="navbar-resume"
@@ -75,8 +63,7 @@
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
           <li><a href="projects.html">Projects</a></li>
-          <li><a href="gamedev.html">Game Dev</a></li>
-          <li><a href="writing.html">Writing</a></li>
+          <li><a href="resume.html">Resume</a></li>
         </ul>
       </div>
     </nav>
@@ -111,8 +98,17 @@
         <div class="featured-header">
           <h2 id="featured">Featured Projects</h2>
           <div class="carousel-nav">
-            <button class="carousel-prev" aria-label="Previous">&#8592;</button>
-            <button class="carousel-next" aria-label="Next">&#8594;</button>
+            <button class="carousel-prev" aria-label="Previous">
+              <i class="fa-solid fa-arrow-left-long"></i>
+            </button>
+            <button class="carousel-next" aria-label="Next">
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+          </div>
+          <div class="featured-header-right">
+            <a href="projects.html" class="carousel-view-more"
+              >View all <i class="fa-solid fa-arrow-right-long"></i
+            ></a>
           </div>
         </div>
 
@@ -237,13 +233,6 @@
             </div>
           </a>
         </div>
-
-        <a
-          href="projects.html"
-          class="btn btn-outline"
-          style="margin-top: 1.25rem"
-          >View More</a
-        >
       </section>
     </main>
 
@@ -255,7 +244,7 @@
           const target = document.getElementById("hero-content");
           const navH = document.getElementById("navbar").offsetHeight;
           const top =
-            target.getBoundingClientRect().top + window.scrollY - navH;
+            target.getBoundingClientRect().top + window.scrollY - navH - 32;
           window.scrollTo({ top, behavior: "smooth" });
         });
 
@@ -293,7 +282,7 @@
         resetAutoAdvance();
       });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script> -->
     <!-- <script src="static/js/sketch.js"></script> -->
   </body>
 </html>

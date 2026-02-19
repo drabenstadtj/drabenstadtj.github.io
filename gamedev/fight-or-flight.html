@@ -26,17 +26,6 @@
         </span>
         <span class="navbar-page">Game Dev</span>
         <div class="navbar-socials">
-          <div class="resume-dropdown">
-            <span class="navbar-resume">Resume</span>
-            <div class="resume-dropdown-menu">
-              <a href="../static/resumes/software_dev_resume.pdf" target="_blank"
-                >Software Dev</a
-              >
-              <a href="../static/resumes/game_dev_resume.pdf" target="_blank"
-                >Game Design</a
-              >
-            </div>
-          </div>
           <a
             href="/gamedev/pages/gamelog.html"
             target="_blank"
@@ -66,9 +55,8 @@
       <div class="navbar-links">
         <ul>
           <li><a href="../index.html">Home</a></li>
-          <li><a href="../projects.html">Projects</a></li>
-          <li><a href="../gamedev.html" class="active">Game Dev</a></li>
-          <li><a href="../writing.html">Writing</a></li>
+          <li><a href="../projects.html" class="active">Projects</a></li>
+          <li><a href="../resume.html">Resume</a></li>
         </ul>
       </div>
     </nav>
@@ -80,8 +68,9 @@
           href="https://drabenstadtj.itch.io/fight-or-flight"
           target="_blank"
           class="heading-link"
-          >Fight or Flight <i class="fa-solid fa-arrow-up-right-from-square heading-arrow"></i></a
-        >
+          >Fight or Flight
+          <i class="fa-solid fa-arrow-up-right-from-square heading-arrow"></i
+        ></a>
       </h1>
 
       <div class="project-meta">
@@ -111,8 +100,15 @@
 
       <div class="game-wrapper" id="play-it">
         <div class="game-placeholder" id="game-placeholder">
-          <img src="../static/images/fight_flight_thumbnail.png" alt="Fight or Flight" />
-          <button class="game-play-btn" onclick="startGame()" aria-label="Play game">
+          <img
+            src="../static/images/fight_flight_thumbnail.png"
+            alt="Fight or Flight"
+          />
+          <button
+            class="game-play-btn"
+            onclick="startGame()"
+            aria-label="Play game"
+          >
             <i class="fa-solid fa-play"></i>
           </button>
         </div>
@@ -123,40 +119,56 @@
           frameborder="0"
           scrolling="no"
           allowfullscreen
-          style="display: none; border-radius: 10px; aspect-ratio: 16/9; height: auto;"
+          style="
+            display: none;
+            border-radius: 10px;
+            aspect-ratio: 16/9;
+            height: auto;
+          "
         ></iframe>
-        <button class="game-fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen" style="display: none;">
+        <button
+          class="game-fullscreen-btn"
+          id="fullscreen-btn"
+          onclick="toggleFullscreen()"
+          title="Fullscreen"
+          style="display: none"
+        >
           <i class="fa-solid fa-expand"></i>
         </button>
       </div>
       <script>
         function startGame() {
-          document.getElementById('game-placeholder').remove();
-          var iframe = document.getElementById('game-frame');
+          document.getElementById("game-placeholder").remove();
+          var iframe = document.getElementById("game-frame");
           iframe.src = iframe.dataset.src;
-          iframe.style.display = 'block';
-          document.getElementById('fullscreen-btn').style.display = 'block';
+          iframe.style.display = "block";
+          document.getElementById("fullscreen-btn").style.display = "block";
         }
         function toggleFullscreen() {
-          var wrapper = document.getElementById('play-it');
-          var btn = document.getElementById('fullscreen-btn');
+          var wrapper = document.getElementById("play-it");
+          var btn = document.getElementById("fullscreen-btn");
           if (document.fullscreenElement) {
             document.exitFullscreen();
           } else if (wrapper.requestFullscreen) {
             wrapper.requestFullscreen().catch(function () {
-              wrapper.classList.toggle('game-fullscreen-mobile');
-              updateFsIcon(wrapper.classList.contains('game-fullscreen-mobile'));
+              wrapper.classList.toggle("game-fullscreen-mobile");
+              updateFsIcon(
+                wrapper.classList.contains("game-fullscreen-mobile"),
+              );
             });
           } else {
-            wrapper.classList.toggle('game-fullscreen-mobile');
-            updateFsIcon(wrapper.classList.contains('game-fullscreen-mobile'));
+            wrapper.classList.toggle("game-fullscreen-mobile");
+            updateFsIcon(wrapper.classList.contains("game-fullscreen-mobile"));
           }
         }
         function updateFsIcon(isFs) {
-          document.getElementById('fullscreen-btn').querySelector('i').className =
-            isFs ? 'fa-solid fa-compress' : 'fa-solid fa-expand';
+          document
+            .getElementById("fullscreen-btn")
+            .querySelector("i").className = isFs
+            ? "fa-solid fa-compress"
+            : "fa-solid fa-expand";
         }
-        document.addEventListener('fullscreenchange', function () {
+        document.addEventListener("fullscreenchange", function () {
           updateFsIcon(!!document.fullscreenElement);
         });
       </script>
@@ -169,7 +181,7 @@
         different birds "speak" reinforces their characterization mechanically.
       </p>
 
-      <video controls class="img-strip" style="border-radius: 10px;">
+      <video controls class="img-strip" style="border-radius: 10px">
         <source
           src="../static/videos/fight_or_flight_dialogue.mp4"
           type="video/mp4"
@@ -196,8 +208,8 @@
         After last year's "First Penguin Award" (aim high, fail spectacularly),
         I came in with a plan. We started with tight player experience goals,
         which kept scope reasonable and focused. Core mechanics — movement,
-        dialogue, levels — were solid by end of day one. Day two was
-        integration and polish.
+        dialogue, levels — were solid by end of day one. Day two was integration
+        and polish.
       </p>
       <p>
         I was initially worried our gameplay wasn't "novel" enough. I learned
@@ -219,10 +231,9 @@
           class="img-strip"
         />
       </figure>
-
     </main>
     <script src="../static/js/navbar.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-    <script src="../static/js/sketch.js"></script>
+    <!-- <script src="../static/js/sketch.js"></script> -->
   </body>
 </html>

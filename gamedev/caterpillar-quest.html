@@ -26,17 +26,6 @@
         </span>
         <span class="navbar-page">Game Dev</span>
         <div class="navbar-socials">
-          <div class="resume-dropdown">
-            <span class="navbar-resume">Resume</span>
-            <div class="resume-dropdown-menu">
-              <a href="../static/resumes/software_dev_resume.pdf" target="_blank"
-                >Software Dev</a
-              >
-              <a href="../static/resumes/game_dev_resume.pdf" target="_blank"
-                >Game Design</a
-              >
-            </div>
-          </div>
           <a
             href="/gamedev/pages/gamelog.html"
             target="_blank"
@@ -66,9 +55,8 @@
       <div class="navbar-links">
         <ul>
           <li><a href="../index.html">Home</a></li>
-          <li><a href="../projects.html">Projects</a></li>
-          <li><a href="../gamedev.html" class="active">Game Dev</a></li>
-          <li><a href="../writing.html">Writing</a></li>
+          <li><a href="../projects.html" class="active">Projects</a></li>
+          <li><a href="../resume.html">Resume</a></li>
         </ul>
       </div>
     </nav>
@@ -90,14 +78,22 @@
       </div>
 
       <p>
-        A casual exploration game inspired by <em>The Very Hungry Caterpillar</em>,
-        paired with a custom Arduino glove controller built from scratch.
+        A casual exploration game inspired by
+        <em>The Very Hungry Caterpillar</em>, paired with a custom Arduino glove
+        controller built from scratch.
       </p>
 
       <div class="game-wrapper" id="play-it">
         <div class="game-placeholder" id="game-placeholder">
-          <img src="../static/images/caterpillar_thumbnail.png" alt="Caterpillar Quest" />
-          <button class="game-play-btn" onclick="startGame()" aria-label="Play game">
+          <img
+            src="../static/images/caterpillar_thumbnail.png"
+            alt="Caterpillar Quest"
+          />
+          <button
+            class="game-play-btn"
+            onclick="startGame()"
+            aria-label="Play game"
+          >
             <i class="fa-solid fa-play"></i>
           </button>
         </div>
@@ -108,50 +104,66 @@
           frameborder="0"
           scrolling="no"
           allowfullscreen
-          style="display: none; border-radius: 10px; aspect-ratio: 960/600; height: auto;"
+          style="
+            display: none;
+            border-radius: 10px;
+            aspect-ratio: 960/600;
+            height: auto;
+          "
         ></iframe>
-        <button class="game-fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen" style="display: none;">
+        <button
+          class="game-fullscreen-btn"
+          id="fullscreen-btn"
+          onclick="toggleFullscreen()"
+          title="Fullscreen"
+          style="display: none"
+        >
           <i class="fa-solid fa-expand"></i>
         </button>
       </div>
       <script>
         function startGame() {
-          document.getElementById('game-placeholder').remove();
-          var iframe = document.getElementById('game-frame');
+          document.getElementById("game-placeholder").remove();
+          var iframe = document.getElementById("game-frame");
           iframe.src = iframe.dataset.src;
-          iframe.style.display = 'block';
-          document.getElementById('fullscreen-btn').style.display = 'block';
+          iframe.style.display = "block";
+          document.getElementById("fullscreen-btn").style.display = "block";
         }
         function toggleFullscreen() {
-          var wrapper = document.getElementById('play-it');
+          var wrapper = document.getElementById("play-it");
           if (document.fullscreenElement) {
             document.exitFullscreen();
           } else if (wrapper.requestFullscreen) {
             wrapper.requestFullscreen().catch(function () {
-              wrapper.classList.toggle('game-fullscreen-mobile');
-              updateFsIcon(wrapper.classList.contains('game-fullscreen-mobile'));
+              wrapper.classList.toggle("game-fullscreen-mobile");
+              updateFsIcon(
+                wrapper.classList.contains("game-fullscreen-mobile"),
+              );
             });
           } else {
-            wrapper.classList.toggle('game-fullscreen-mobile');
-            updateFsIcon(wrapper.classList.contains('game-fullscreen-mobile'));
+            wrapper.classList.toggle("game-fullscreen-mobile");
+            updateFsIcon(wrapper.classList.contains("game-fullscreen-mobile"));
           }
         }
         function updateFsIcon(isFs) {
-          document.getElementById('fullscreen-btn').querySelector('i').className =
-            isFs ? 'fa-solid fa-compress' : 'fa-solid fa-expand';
+          document
+            .getElementById("fullscreen-btn")
+            .querySelector("i").className = isFs
+            ? "fa-solid fa-compress"
+            : "fa-solid fa-expand";
         }
-        document.addEventListener('fullscreenchange', function () {
+        document.addEventListener("fullscreenchange", function () {
           updateFsIcon(!!document.fullscreenElement);
         });
       </script>
 
       <h3>The Game</h3>
       <p>
-        Players move the caterpillar toward the cursor and jump with right click.
-        Eating food increases size, unlocking larger foods and new areas — but
-        growing too large locks you out of smaller spaces you previously explored.
-        Three levels progress from morning to evening to night, each with unique
-        lighting and environmental challenges.
+        Players move the caterpillar toward the cursor and jump with right
+        click. Eating food increases size, unlocking larger foods and new areas
+        — but growing too large locks you out of smaller spaces you previously
+        explored. Three levels progress from morning to evening to night, each
+        with unique lighting and environmental challenges.
       </p>
       <p>
         Food choices have strategic tradeoffs: blueberries grant a jump,
@@ -194,11 +206,11 @@
         deadzone filtering, and scaling.
       </p>
       <p>
-        The hardware iterated too. Planned 3D-printed finger buttons with tactile
-        switches were abandoned after impatient supergluing rendered both
-        prototypes non-functional. We switched to pennies: drilled, soldered, and
-        sewn into the glove. Not elegant, but it worked reliably through the
-        entire playtest.
+        The hardware iterated too. Planned 3D-printed finger buttons with
+        tactile switches were abandoned after impatient supergluing rendered
+        both prototypes non-functional. We switched to pennies: drilled,
+        soldered, and sewn into the glove. Not elegant, but it worked reliably
+        through the entire playtest.
       </p>
 
       <figure>
@@ -217,10 +229,9 @@
         scroll-wheel zoom, and movement lock during dialogue. Players
         consistently cited movement and jumping as the most enjoyable parts.
       </p>
-
     </main>
     <script src="../static/js/navbar.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-    <script src="../static/js/sketch.js"></script>
+    <!-- <script src="../static/js/sketch.js"></script> -->
   </body>
 </html>
