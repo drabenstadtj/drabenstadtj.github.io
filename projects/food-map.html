@@ -89,12 +89,11 @@
       </div>
 
       <p>
-        Built for and currently being deployed in partnership with the
-        Pittsburgh Policy Initiative — helping Pittsburgh residents find food
-        assistance across nearly 800 locations citywide. No account required:
-        search, filter by type or distance, check what's open right now, and get
-        directions. PPI staff manage the full dataset through a role-gated admin
-        dashboard.
+        A capstone project built for and currently deployed with the Pittsburgh
+        Policy Initiative — helping residents find food assistance across nearly
+        800 locations citywide. No account needed. Search, filter by type or
+        distance, check what's open right now, and get directions. PPI staff
+        manage the full dataset through a role-gated admin dashboard.
       </p>
 
       <figure>
@@ -103,25 +102,24 @@
           alt="Pittsburgh Food Access Map demo"
           class="img-strip"
         />
+        <figcaption>Searching and filtering food resources across Pittsburgh.</figcaption>
       </figure>
 
       <h3>The Problem</h3>
       <p>
         Food insecurity is a persistent challenge in Pittsburgh, with many
-        neighborhoods lacking consistent access to affordable, healthy food. A
-        2019 map by Code for Good Pittsburgh helped visualize food deserts and
+        neighborhoods lacking consistent access to affordable, healthy food. In
+        2019, Code for Good Pittsburgh built a map to visualize food deserts and
         resources, but it fell out of maintenance. The Pittsburgh Policy
-        Initiative set out to revitalize and expand it — building a sustainable
-        platform that supports both residents finding help today and
-        policymakers understanding the landscape long-term. PPI also needed
-        staff tools to maintain the data without a developer in the loop, and a
-        way to accept community tips without opening the database to the public.
+        Initiative set out to rebuild it — not just as a resident-facing tool,
+        but as a platform staff could maintain without a developer and where
+        community members could contribute updates directly.
       </p>
 
       <h3>My Role</h3>
       <p>
-        Lead developer on a small team — full-stack architecture, deployment
-        infrastructure, and core feature implementation.
+        Lead developer on a small team. Owned the full-stack architecture,
+        deployment infrastructure, and most of the feature work.
       </p>
 
       <h3>What I Built</h3>
@@ -130,30 +128,29 @@
         narrow results by resource type (food pantry, food bank, community
         fridge, and more), filter by distance from their location, and toggle to
         show only currently open sites. Hours are stored as structured JSON per
-        day and checked client-side against the current time — the same data
-        structure also powers an admin hours editor for staff. Together these
-        filters address the most common frustration with resource finders:
-        wading through irrelevant or closed locations.
+        day and checked client-side against the current time. That same data
+        structure powers an admin-facing hours editor — one schema serving both
+        the public UI and the management tool. These filters address the most
+        common frustration with resource finders: wading through irrelevant or
+        closed locations.
       </p>
       <p>
         <strong>Community suggestion pipeline.</strong> Anyone can submit a new
         resource location for review. Admins can approve, reject, geocode via
         Nominatim, and promote a suggestion into a live map entry in a single
-        workflow — keeping the dataset accurate without requiring staff to do
-        all the legwork. The suggestion retains a link to the created resource
-        for a clean audit trail.
+        workflow. The suggestion retains a link to the created resource for a
+        clean audit trail. This keeps the dataset accurate without requiring
+        staff to source every update themselves.
       </p>
       <p>
-        <strong>Containerized deployment.</strong> The full stack ships as two
-        Docker containers (Flask/Gunicorn + Nginx) behind an external reverse
-        proxy. The database is volume-mounted so data persists across rebuilds
-        with zero downtime — important when PPI staff depend on it daily.
-      </p>
-      <p>
-        <strong>Security model.</strong> Admin registration requires an existing
-        admin session, so there's no open self-registration endpoint exposed to
-        the public. Production uses HTTPS-only session cookies with secrets
-        injected via environment variables.
+        <strong>Containerized deployment with a closed security model.</strong>
+        The full stack ships as two Docker containers (Flask/Gunicorn + Nginx)
+        behind an external reverse proxy, with the database volume-mounted so
+        data persists across rebuilds. Admin registration requires an existing
+        admin session — there's no open self-registration endpoint. Production
+        uses HTTPS-only session cookies with secrets injected via environment
+        variables. PPI staff depend on this daily, so the deployment had to be
+        simple to maintain and hard to break.
       </p>
     </main>
 

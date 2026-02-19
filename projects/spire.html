@@ -75,10 +75,22 @@
       </div>
 
       <p>
-        I designed and implemented a fully dynamic reconfiguration system for
-        Spire, a fault-tolerant SCADA protection platform, enabling runtime
-        updates to topology, cryptographic keys, and component roles without
-        downtime across a 26-node deployment.
+        I collaborated with Professor Babay and a small team of graduate
+        students to design a dynamic reconfiguration system for Spire, a
+        fault-tolerant SCADA protection platform, and was solely responsible
+        for implementing it. The driving use case is crisis response: when a
+        control center goes offline due to a natural disaster or cyber attack,
+        a mobile replacement needs to be brought online without taking
+        protected infrastructure down.
+      </p>
+
+      <h3>The Problem</h3>
+      <p>
+        Spire's original codebase couldn't support this — compile-time
+        constants for site counts, replica numbers, and network parameters
+        meant any topology or key change required a full recompile and
+        redeployment. There was no way to rotate cryptographic keys or add
+        nodes without taking everything offline.
       </p>
 
       <figure>
@@ -87,24 +99,11 @@
           alt="Control center failure and restoration scenario"
           class="img-strip"
         />
+        <figcaption>
+          The scenario being demonstrated: a control center failure and
+          coordinated restoration across sites.
+        </figcaption>
       </figure>
-
-      <h3>The Problem</h3>
-      <p>
-        Spire's original codebase relied on compile-time constants for site
-        counts, replica numbers, and network parameters. Any topology or key
-        change required a full recompile and redeployment — making live updates
-        impossible and manual setup error-prone at scale. The system had no way
-        to rotate cryptographic keys or add nodes without taking everything
-        offline.
-      </p>
-
-      <h3>My Role</h3>
-      <p>
-        Sole designer and implementer of the reconfiguration system, working
-        across the full C/C++ codebase and building the supporting deployment
-        infrastructure from scratch.
-      </p>
 
       <h3>What I Built</h3>
       <p>
@@ -147,12 +146,21 @@
           alt="Live 26-node deployment with control centers and data center logs"
           class="img-strip"
         />
+        <figcaption>
+          Guide to the demo terminals: what each window shows during a live run.
+        </figcaption>
       </figure>
 
-      <video controls class="img-strip" style="border-radius: 10px">
-        <source src="../static/videos/spire_demo.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <h3>Demo</h3>
+      <figure>
+        <video controls class="img-strip" style="border-radius: 10px">
+          <source src="../static/videos/spire_demo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <figcaption>
+          A scenario running in real time across the 26-node demo environment.
+        </figcaption>
+      </figure>
     </main>
 
     <script src="../static/js/navbar.js"></script>
