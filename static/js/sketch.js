@@ -9,6 +9,24 @@ let goal_radius = 50;
 let trail = [];
 let max_age = 100;
 
+function getContentBounds() {
+  let contentWidth = min(860, windowWidth);
+  let leftEdge = (windowWidth - contentWidth) / 2;
+  let rightEdge = (windowWidth + contentWidth) / 2;
+  return { left: leftEdge, right: rightEdge };
+}
+
+function clampGoalToMargins(x, y) {
+  let b = getContentBounds();
+  if (b.left <= 20) return createVector(x, y);
+  if (x > b.left && x < b.right) {
+    let distLeft = x - b.left;
+    let distRight = b.right - x;
+    x = distLeft < distRight ? b.left - 10 : b.right + 10;
+  }
+  return createVector(x, y);
+}
+
 function setup() {
   let cnv = createCanvas(windowWidth, windowHeight);
   cnv.id("bg-sketch");
@@ -20,13 +38,13 @@ function setup() {
   cnv.style("z-index", "-1");
   cnv.style("pointer-events", "none");
   current_pos = createVector(0, 0);
-  goal_pos = createVector(width / 2, height / 2);
+  goal_pos = clampGoalToMargins(width / 2, height / 2);
   current_dir = 2;
 
   document.addEventListener("mousemove", function (e) {
     clearTimeout(mouse_timer);
     mouse_timer = setTimeout(() => {
-      goal_pos = createVector(e.clientX, e.clientY + window.scrollY);
+      goal_pos = clampGoalToMargins(e.clientX, e.clientY + window.scrollY);
     }, mouse_cooldown);
   });
 }
@@ -50,8 +68,20 @@ function draw() {
   noStroke();
   for (let i = 0; i < trail.length; i++) {
     let a = map(trail[i].age, 0, max_age, 40, 0);
-    fill(trail[i].hue, 60, 40, a);
+    fill(25, a);
     circle(trail[i].x, trail[i].y, 10);
+  }
+
+  // Deflect dot out of content strip
+  let b = getContentBounds();
+  if (b.left > 20 && current_pos.x > b.left && current_pos.x < b.right) {
+    if (current_dir == 2) { current_pos.x = b.left - 1; current_dir = 4; }
+    else if (current_dir == 4) { current_pos.x = b.right + 1; current_dir = 2; }
+    else {
+      let distLeft = current_pos.x - b.left;
+      let distRight = b.right - current_pos.x;
+      current_pos.x = distLeft < distRight ? b.left - 1 : b.right + 1;
+    }
   }
 
   near_goal =
