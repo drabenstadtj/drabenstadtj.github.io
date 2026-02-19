@@ -3,7 +3,7 @@ new p5(function (p) {
   const MAX_AGE = 40;
   const NUM_LANES = 9;
   const DOTS_PER_LANE = 8;
-  const OVERSHOOT = 15;
+  const OVERSHOOT = 6;
 
   let lanes = [];
   let trailDots = [];
