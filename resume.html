@@ -71,80 +71,418 @@
       </div>
     </nav>
 
-    <!-- Spacer so content isn't hidden behind the navbar -->
     <div id="navbar-spacer"></div>
     <main class="content-strip page-resume">
       <section>
         <h1>Resume</h1>
 
-        <div class="resume-tabs">
-          <button class="resume-tab active" data-target="software">
-            Software
-          </button>
-          <button class="resume-tab" data-target="gamedev">Game Dev</button>
+        <div class="resume-tab-row">
+          <div class="resume-tabs">
+            <button
+              class="resume-tab active"
+              data-target="software"
+              data-pdf="static/resumes/software_dev_resume.pdf"
+            >
+              Software
+            </button>
+            <button
+              class="resume-tab"
+              data-target="gamedev"
+              data-pdf="static/resumes/game_dev_resume.pdf"
+            >
+              Game Dev
+            </button>
+          </div>
+          <a
+            id="resume-download"
+            href="static/resumes/software_dev_resume.pdf"
+            download="software_dev_resume.pdf"
+            class="resume-action-link"
+          >
+            <i class="fa-solid fa-download"></i> Download PDF
+          </a>
         </div>
 
         <div class="resume-viewer">
-          <img
-            id="resume-software"
-            class="resume-image active clickable-resume"
-            src="static/resumes/software_dev_resume.png"
-            alt="Software Resume"
-          />
-          <img
-            id="resume-gamedev"
-            class="resume-image clickable-resume"
-            src="static/resumes/game_dev_resume.png"
-            alt="Game Development Resume"
-          />
+          <!-- ── Software Resume ── -->
+          <div id="resume-software" class="resume-doc active">
+            <header class="resume-doc-header">
+              <div class="resume-doc-name">Jack Drabenstadt</div>
+              <div class="resume-doc-contact">
+                <a href="index.html">jackdrab.dev</a>
+                <a href="mailto:jackdrabenstadt@gmail.com">jackdrabenstadt@gmail.com</a>
+                <a
+                  href="https://www.linkedin.com/in/jackdrabenstadt/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >linkedin.com/in/jackdrabenstadt</a
+                >
+                <a
+                  href="https://github.com/drabenstadtj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >github.com/drabenstadtj</a
+                >
+              </div>
+            </header>
+
+            <p>
+              Full-stack Software Engineer graduating Spring 2026 with dual B.S. degrees in
+              Computer Science and Digital Narrative &amp; Interactive Design. Experienced in
+              building and deploying production web applications, contributing to distributed
+              systems research, and maintaining self-hosted server infrastructure serving
+              multiple users.
+            </p>
+
+            <section class="resume-section">
+              <div class="resume-section-title">Education</div>
+              <div class="resume-entry">
+                <div class="resume-entry-header">
+                  <span class="resume-entry-org">University of Pittsburgh</span>
+                  <span class="resume-entry-location">Pittsburgh, PA</span>
+                </div>
+                <div class="resume-entry-sub">
+                  <span>B.S. Computer Science, B.S. Digital Narrative &amp; Interactive Design</span>
+                  <span class="resume-entry-date">Expected Spring 2026</span>
+                </div>
+                <div class="resume-entry-sub">
+                  <span>Minor in Information Science</span>
+                  <span class="resume-entry-date">GPA: 3.386</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="resume-section">
+              <div class="resume-section-title">Technical Skills</div>
+              <div class="resume-skills">
+                <div class="resume-skill-row">
+                  <span class="resume-skill-label">Languages:</span>
+                  <span>Python | C | HTML/CSS | Java | JavaScript | C#</span>
+                </div>
+                <div class="resume-skill-row">
+                  <span class="resume-skill-label">Frameworks:</span>
+                  <span>React | Flask | Node.js</span>
+                </div>
+                <div class="resume-skill-row">
+                  <span class="resume-skill-label">Tools &amp; Infrastructure:</span>
+                  <span>Docker | Git | Linux | Bash | SQLite | DNS</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="resume-section">
+              <div class="resume-section-title">Experience</div>
+
+              <div class="resume-entry">
+                <div class="resume-entry-header">
+                  <span class="resume-entry-org">University of Pittsburgh</span>
+                  <span class="resume-entry-location">Pittsburgh, PA</span>
+                </div>
+                <div class="resume-entry-sub">
+                  <span class="resume-entry-role">Undergraduate Research Assistant</span>
+                  <span class="resume-entry-date">December 2024 – August 2025</span>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Dynamic Reconfiguration System:</strong> Designed and implemented
+                    YAML-based routine configuration system for Spire, a Byzantine
+                    fault-tolerant distributed system, enabling live configuration updates
+                    without recompilation. Developed parsing, network transmission, and
+                    application components in C, replacing static compiled constants with
+                    dynamic reconfiguration capabilities.
+                  </li>
+                  <li>
+                    <strong>Distributed Systems:</strong> Collaborated with research team on
+                    implementation and testing protocols for intrusion-tolerant system
+                    security and fault tolerance.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="resume-entry">
+                <div class="resume-entry-header">
+                  <span class="resume-entry-org">University of Pittsburgh</span>
+                  <span class="resume-entry-location">Pittsburgh, PA</span>
+                </div>
+                <div class="resume-entry-sub">
+                  <span class="resume-entry-role">Student Technical Consultant</span>
+                  <span class="resume-entry-date">February 2021 – December 2024</span>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Diagnostics &amp; Repair:</strong> Resolved hardware, software, and
+                    networking issues across Windows, macOS, Linux, iOS, and Android with
+                    limited supervision, including malware removal, OS repair, and data
+                    recovery.
+                  </li>
+                  <li>
+                    <strong>Documentation:</strong> Maintained team knowledge base for complex
+                    technical issues, improving resolution efficiency for recurring issues
+                    across 10–20 hours of weekly support.
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="resume-section">
+              <div class="resume-section-title">Projects</div>
+              <div class="resume-entry">
+                <ul>
+                  <li>
+                    <span class="resume-project-name"
+                      ><a href="projects/food-map.html">Pittsburgh Food Access Map:</a></span
+                    >
+                    Main developer for full-stack web application mapping food resources across
+                    Pittsburgh for Pittsburgh Policy Initiative. Built interactive React frontend
+                    with Leaflet map integration, filtering by resource type and neighborhood.
+                    Designed and implemented responsive interface for web and mobile. Developed
+                    Flask REST API backend with SQLite database. Created admin dashboard for
+                    content management and user reporting system. Cleaned and validated
+                    large-scale datasets for deployment.
+                  </li>
+                  <li>
+                    <span class="resume-project-name"
+                      ><a href="projects/home-server.html">Home Server Infrastructure:</a></span
+                    >
+                    Designed and maintained self-hosted server with 50TB RAID storage running
+                    containerized services for personal media management, game servers, and file
+                    management. Migrated all applications to Docker for improved organization
+                    and scalability. Configured reverse proxies, DNS management, and security
+                    hardening (firewall rules, intrusion prevention). Implemented automated
+                    backup system for configuration files. Reduced power consumption 50% through
+                    hardware optimization while serving multiple users.
+                  </li>
+                  <li>
+                    <span class="resume-project-name"
+                      ><a href="projects/home-audio.html">DIY Multi-Room Audio System:</a></span
+                    >
+                    Built synchronized whole-home audio streaming system using Snapcast and
+                    Docker containerization. Designed and 3D-printed custom enclosures.
+                    Integrated Librespot for Spotify Connect functionality across entire home
+                    network.
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="resume-section">
+              <div class="resume-section-title">Relevant Coursework</div>
+              <p>
+                Software Engineering, Algorithms &amp; Data Structures, Software Quality
+                Assurance, Introduction to Systems Software, Programming Languages for Web
+                Applications, Computer Organization &amp; Assembly Language
+              </p>
+            </section>
+          </div>
+
+          <!-- ── Game Dev Resume ── -->
+          <div id="resume-gamedev" class="resume-doc">
+            <header class="resume-doc-header">
+              <div class="resume-doc-name">Jack Drabenstadt</div>
+              <div class="resume-doc-contact">
+                <a href="index.html">jackdrab.dev</a>
+                <a href="mailto:jackdrabenstadt@gmail.com">jackdrabenstadt@gmail.com</a>
+                <a
+                  href="https://www.linkedin.com/in/jackdrabenstadt/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >linkedin.com/in/jackdrabenstadt</a
+                >
+                <a
+                  href="https://github.com/drabenstadtj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >github.com/drabenstadtj</a
+                >
+              </div>
+            </header>
+
+            <p>
+              Game developer and designer graduating Spring 2026 with dual B.S. degrees in
+              Computer Science and Digital Narrative &amp; Interactive Design. Experienced in
+              building games in Godot and Unity, from systems programming to narrative design
+              and playtesting. Background in distributed systems research and server
+              infrastructure.
+            </p>
+
+            <section class="resume-section">
+              <div class="resume-section-title">Education</div>
+              <div class="resume-entry">
+                <div class="resume-entry-header">
+                  <span class="resume-entry-org">University of Pittsburgh</span>
+                  <span class="resume-entry-location">Pittsburgh, PA</span>
+                </div>
+                <div class="resume-entry-sub">
+                  <span>B.S. Computer Science, B.S. Digital Narrative &amp; Interactive Design</span>
+                  <span class="resume-entry-date">Expected Spring 2026</span>
+                </div>
+                <div class="resume-entry-sub">
+                  <span>Minor in Information Science</span>
+                  <span class="resume-entry-date">GPA: 3.386</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="resume-section">
+              <div class="resume-section-title">Experience</div>
+
+              <div class="resume-entry">
+                <div class="resume-entry-header">
+                  <span class="resume-entry-org"
+                    >University of Pittsburgh — Independent Study in Game Development</span
+                  >
+                  <span class="resume-entry-location">Pittsburgh, PA</span>
+                </div>
+                <div class="resume-entry-sub">
+                  <span class="resume-entry-role">Solo Game Designer &amp; Programmer</span>
+                  <span class="resume-entry-date">Fall 2021 – Present</span>
+                </div>
+                <ul>
+                  <li>
+                    <strong
+                      >Game Design —
+                      <a href="gamedev/lamport.html">Lamport General Systems</a>:</strong
+                    >
+                    First-person immersive sim set inside a derelict data center running
+                    Byzantine fault-tolerant protocols, where players intercept messages, inject
+                    code, and sabotage subnetworks to influence an authoritarian surveillance
+                    state. Produced concept doc, pitch deck, systems design, and a playable
+                    in-engine prototype.
+                  </li>
+                  <li>
+                    <strong>Implementation:</strong> Currently building the full game in Godot
+                    (GDScript). Engineered a simulated terminal with functional command parsing,
+                    custom state machine player controller, network simulation layer, and item
+                    interaction systems. Managing development with Kanban and iterative sprints.
+                    Conducting ongoing playtesting to assess whether terminal mechanics and game
+                    systems are intuitive without explanation.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="resume-entry">
+                <div class="resume-entry-header">
+                  <span class="resume-entry-org">University of Pittsburgh</span>
+                  <span class="resume-entry-location">Pittsburgh, PA</span>
+                </div>
+                <div class="resume-entry-sub">
+                  <span class="resume-entry-role"
+                    >Undergraduate Research Assistant — Distributed Systems</span
+                  >
+                  <span class="resume-entry-date">December 2024 – August 2025</span>
+                </div>
+                <ul>
+                  <li>
+                    <strong>Dynamic Reconfiguration System:</strong> Designed and implemented a
+                    YAML-based routine configuration system in C for Spire, a Byzantine
+                    fault-tolerant distributed system. Replaced static compiled constants with
+                    live reconfiguration; developed YAML parsing, network transmission, and
+                    application components enabling configuration updates without recompilation.
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="resume-section">
+              <div class="resume-section-title">Projects</div>
+              <div class="resume-entry">
+                <ul>
+                  <li>
+                    <span class="resume-project-name"
+                      ><a href="gamedev/fight-or-flight.html">Fight or Flight</a> — Pitt Games
+                      4 Social Impact (G4SI) Game Jam (2025):</span
+                    >
+                    Won Technical Achievement Award. 2.5D platformer built in Godot in 48 hours;
+                    player controls a flightless penguin navigating climate displacement through
+                    movement constraints. Built NPC dialogue system with per-character text speed
+                    and sound pitch variation to convey personality without voice acting. Managed
+                    all Git operations for a four-person team including merge conflict resolution
+                    under deadline pressure.
+                  </li>
+                  <li>
+                    <span class="resume-project-name"
+                      >Public Service Abandoned — Pitt G4SI Game Jam (2024):</span
+                    >
+                    Won First Penguin Award. Ren'Py visual novel exploring the value of public
+                    service and the effects on communities.
+                  </li>
+                  <li>
+                    <span class="resume-project-name"
+                      ><a href="gamedev/caterpillar-quest.html">Caterpillar Quest:</a></span
+                    >
+                    Top-down exploration game in Unity (C#) inspired by
+                    <em>The Very Hungry Caterpillar</em>. Exceeded class requirements by
+                    implementing full 3D environments where a 2D game was the minimum. Built
+                    custom Arduino glove controller: accelerometer maps hand tilt to cursor
+                    position using absolute positioning, with finger contacts emulating mouse
+                    clicks. Reworked the hardware pipeline by pivoting from velocity to
+                    tilt-angle mapping, producing immediately intuitive control. Python pipeline
+                    handles auto-calibration, deadzone filtering, and cursor scaling. Validated
+                    through 10+ user playtests with iterated design changes.
+                  </li>
+                  <li>
+                    <span class="resume-project-name"
+                      ><a href="gamedev/discards.html">Discards:</a></span
+                    >
+                    First-person narrative game in Godot exploring identity and digital
+                    consciousness. Structured around a single irreversible moral choice that
+                    permanently alters the game state, implemented via conditional state tracking
+                    that controls which world elements are visible and interactable.
+                  </li>
+                  <li>
+                    <span class="resume-project-name"
+                      ><a href="projects/home-server.html">Home Server Infrastructure:</a></span
+                    >
+                    Maintains a 50TB RAID server running Docker-containerized services with
+                    reverse proxies, DNS, firewall, and automated backups. Reduced power
+                    consumption 50% through hardware optimization.
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <section class="resume-section">
+              <div class="resume-section-title">Technical Skills</div>
+              <div class="resume-skills">
+                <div class="resume-skill-row">
+                  <span class="resume-skill-label">Languages:</span>
+                  <span>C# | C | C++ | GDScript | Python | Java | JavaScript | HTML/CSS</span>
+                </div>
+                <div class="resume-skill-row">
+                  <span class="resume-skill-label">Engines &amp; Tools:</span>
+                  <span
+                    >Godot | Unity | Blender | Git | Photoshop | Premiere | Docker | Linux |
+                    Arduino</span
+                  >
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
+
       </section>
     </main>
-
-    <!-- Lightbox -->
-    <div id="resume-lightbox" class="lightbox">
-      <img id="lightbox-image" src="" alt="Expanded Resume" />
-    </div>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const tabs = document.querySelectorAll(".resume-tab");
-        const images = document.querySelectorAll(".resume-image");
+        const docs = document.querySelectorAll(".resume-doc");
+        const downloadLink = document.getElementById("resume-download");
 
-        // Tab switching
         tabs.forEach((tab) => {
           tab.addEventListener("click", () => {
             tabs.forEach((t) => t.classList.remove("active"));
-            images.forEach((img) => img.classList.remove("active"));
+            docs.forEach((d) => d.classList.remove("active"));
 
             tab.classList.add("active");
             document
               .getElementById("resume-" + tab.dataset.target)
               .classList.add("active");
+
+            const pdf = tab.dataset.pdf;
+            downloadLink.href = pdf;
+            downloadLink.download = pdf.split("/").pop();
           });
-        });
-
-        // Lightbox logic
-        const lightbox = document.getElementById("resume-lightbox");
-        const lightboxImg = document.getElementById("lightbox-image");
-
-        document.querySelectorAll(".clickable-resume").forEach((img) => {
-          img.addEventListener("click", () => {
-            lightboxImg.src = img.src;
-            lightbox.classList.add("active");
-            document.body.style.overflow = "hidden";
-          });
-        });
-
-        function closeLightbox() {
-          lightbox.classList.remove("active");
-          document.body.style.overflow = "";
-        }
-
-        lightbox.addEventListener("click", closeLightbox);
-
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") closeLightbox();
         });
       });
     </script>
