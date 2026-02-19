@@ -7,28 +7,44 @@ let max_wrong_dist = 150;
 let num_dots = 20;
 let hero;
 let started = false;
+let textZone = null;
 
 function randomPerimeterPoint() {
+  const depth = 0.28;
   let edge = floor(random(4));
-  if (edge == 0) return createVector(random(width), 0);
-  if (edge == 1) return createVector(width, random(height));
-  if (edge == 2) return createVector(random(width), height);
-  return createVector(0, random(height));
+  if (edge == 0) return { pos: createVector(random(width), 0),         goal: createVector(width / 2,          height * depth) };
+  if (edge == 1) return { pos: createVector(width, random(height)),    goal: createVector(width * (1 - depth), height / 2) };
+  if (edge == 2) return { pos: createVector(random(width), height),    goal: createVector(width / 2,          height * (1 - depth)) };
+  return                 { pos: createVector(0, random(height)),        goal: createVector(width * depth,       height / 2) };
 }
 
 function initDots() {
   dots = [];
   for (let i = 0; i < num_dots; i++) {
-    let start = randomPerimeterPoint();
+    let { pos, goal } = randomPerimeterPoint();
     dots.push({
-      pos: start,
-      goal: createVector(width / 2, height / 2),
+      pos: pos,
+      goal: goal,
       dir: floor(random(1, 5)),
       hue_offset: random(360),
       done: false,
     });
   }
   started = true;
+}
+
+function computeTextZone() {
+  let nameEl = document.querySelector("#hero-landing .hero-landing-name");
+  if (!nameEl) return;
+  let heroRect = hero.getBoundingClientRect();
+  let nameRect = nameEl.getBoundingClientRect();
+  let pad = 18;
+  textZone = {
+    x: nameRect.left - pad,
+    y: nameRect.top - heroRect.top - pad,
+    w: nameRect.width + pad * 2,
+    h: nameRect.height + pad * 2,
+  };
 }
 
 function positionCanvas() {
@@ -62,6 +78,7 @@ function setup() {
     if (w > 0 && h > 0) {
       resizeCanvas(w, h);
       positionCanvas();
+      computeTextZone();
       initDots();
       loop();
     }
@@ -71,6 +88,7 @@ function setup() {
 function windowResized() {
   resizeCanvas(window.innerWidth, hero.offsetHeight);
   positionCanvas();
+  computeTextZone();
 }
 
 function draw() {
@@ -99,43 +117,53 @@ function draw() {
     }
   }
 
-  drawVignette();
-  drawCenterMask();
+  drawEdgeFade();
 
   if (started && all_done && trail.length === 0) {
     noLoop();
   }
 }
 
-function drawCenterMask() {
+function drawEdgeFade() {
   let ctx = drawingContext;
-  let cx = width / 2;
-  let cy = height / 2;
-  let r = min(width * 0.38, height * 0.58);
-  let gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-  gradient.addColorStop(0, "rgba(217,201,100,1)");
-  gradient.addColorStop(1, "rgba(217,201,100,0)");
   ctx.save();
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, width, height);
-  ctx.restore();
-}
+  let fade = Math.min(width, height) * 0.15;
 
-function drawVignette() {
-  let ctx = drawingContext;
-  let cx = width / 2;
-  let cy = height / 2;
-  let r = max(width, height);
-  let gradient = ctx.createRadialGradient(cx, cy, r * 0.25, cx, cy, r * 0.75);
-  gradient.addColorStop(0, "rgba(217,201,100,0)");
-  gradient.addColorStop(1, "rgba(217,201,100,1)");
-  ctx.save();
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, width, height);
+  let gl = ctx.createLinearGradient(0, 0, fade, 0);
+  gl.addColorStop(0, "rgba(217,201,100,1)");
+  gl.addColorStop(1, "rgba(217,201,100,0)");
+  ctx.fillStyle = gl;
+  ctx.fillRect(0, 0, fade, height);
+
+  let gr = ctx.createLinearGradient(width, 0, width - fade, 0);
+  gr.addColorStop(0, "rgba(217,201,100,1)");
+  gr.addColorStop(1, "rgba(217,201,100,0)");
+  ctx.fillStyle = gr;
+  ctx.fillRect(width - fade, 0, fade, height);
+
+  let gt = ctx.createLinearGradient(0, 0, 0, fade);
+  gt.addColorStop(0, "rgba(217,201,100,1)");
+  gt.addColorStop(1, "rgba(217,201,100,0)");
+  ctx.fillStyle = gt;
+  ctx.fillRect(0, 0, width, fade);
+
+  let gb = ctx.createLinearGradient(0, height, 0, height - fade);
+  gb.addColorStop(0, "rgba(217,201,100,1)");
+  gb.addColorStop(1, "rgba(217,201,100,0)");
+  ctx.fillStyle = gb;
+  ctx.fillRect(0, height - fade, width, fade);
+
   ctx.restore();
 }
 
 function update_dot(dot) {
+  if (textZone &&
+      dot.pos.x >= textZone.x && dot.pos.x <= textZone.x + textZone.w &&
+      dot.pos.y >= textZone.y && dot.pos.y <= textZone.y + textZone.h) {
+    dot.done = true;
+    return;
+  }
+
   let near_goal =
     dist(dot.pos.x, dot.pos.y, dot.goal.x, dot.goal.y) < goal_radius;
 

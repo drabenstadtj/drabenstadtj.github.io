@@ -17,11 +17,9 @@ body {
    Background sketch
    ========================= */
 #bg-sketch {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  z-index: -1 !important;
-  pointer-events: none !important;
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
 }
 
 html,
@@ -871,6 +869,7 @@ a.tag:hover {
   font-size: clamp(1.75rem, 3vw, 3rem);
   line-height: 1.05;
   margin-top: 2rem;
+  color: #d9c964;
 }
 
 .page-home .hero-sub {
