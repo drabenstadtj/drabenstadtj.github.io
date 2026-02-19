@@ -1,8 +1,3 @@
-- more logo?
-- home page -> landing page 
-    - big logo, description, big nav
-- incorporate devlog more
-- increase feature thumbnail size
-- maybe remove description from featured
-- change projects category title
-    - need to be more specifci about what is projects vs game dev
+- too much space above name on hero
+- back to top button on mobile projects page
+- scrub phone number from resumes

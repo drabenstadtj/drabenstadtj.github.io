@@ -28,6 +28,10 @@ html,
 body {
   overscroll-behavior-y: none;
 }
+
+html {
+  scroll-behavior: smooth;
+}
 /* =========================
    Navbar
    ========================= */
@@ -62,9 +66,6 @@ body {
   position: absolute;
 }
 
-.name-short {
-  display: none;
-}
 
 .navbar-page {
   font-weight: 500;
@@ -343,7 +344,7 @@ body {
 }
 
 section[id] {
-  scroll-margin-top: 6rem;
+  scroll-margin-top: calc(var(--navbar-h, 6rem) + 1rem);
 }
 
 @media (max-width: 700px) {
@@ -451,97 +452,11 @@ section[id] {
   margin-bottom: 1rem;
 }
 
-.hero-cta {
-  display: flex;
-  gap: 1rem;
-}
-
-.hero-cta > * {
-  flex: 1;
-}
 
 .hero {
   margin-bottom: 2.5rem;
 }
 
-/* =========================
-   Proof
-   ========================= */
-.proof {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.proof-item {
-  border: 1px solid #000;
-  padding: 0.9rem;
-}
-
-.proof-k {
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-
-.proof-v {
-  line-height: 1.5;
-  font-size: 0.95rem;
-}
-
-/* =========================
-   Buttons
-   ========================= */
-.btn {
-  display: inline-block;
-  padding: 0.65rem 0.95rem;
-  border: 1px solid #000;
-  border-radius: 10px;
-  text-decoration: none;
-  color: #000;
-  font-weight: 500;
-  width: 100%;
-  text-align: center;
-}
-
-.btn:hover {
-  background: rgba(0, 0, 0, 0.06);
-}
-
-.btn-outline {
-  background: transparent;
-}
-
-.cta-resume-dropdown .btn {
-  cursor: pointer;
-  animation: fresnel-glow 3s ease-in-out infinite;
-}
-
-.cta-resume-dropdown .btn:hover {
-  animation: none;
-  box-shadow:
-    0 0 8px rgba(0, 0, 0, 0.3),
-    inset 0 0 8px rgba(0, 0, 0, 0.08);
-}
-
-@keyframes fresnel-glow {
-  0%,
-  100% {
-    box-shadow:
-      0 0 4px rgba(0, 0, 0, 0.15),
-      inset 0 0 4px rgba(0, 0, 0, 0.04);
-  }
-  50% {
-    box-shadow:
-      0 0 12px rgba(0, 0, 0, 0.3),
-      inset 0 0 8px rgba(0, 0, 0, 0.08);
-  }
-}
-
-.cta-resume-dropdown .resume-dropdown-menu {
-  left: 0;
-  right: 0;
-}
 
 /* =========================
    Featured
@@ -854,11 +769,7 @@ a.tag:hover {
 }
 
 @media (max-width: 700px) {
-  .proof {
-    grid-template-columns: 1fr;
-  }
-
-  .card-list {
+.card-list {
     grid-auto-rows: auto;
   }
 
@@ -923,10 +834,6 @@ a.tag:hover {
     font-size: 0.95rem !important;
   }
 
-  .resume-dropdown-menu {
-    right: auto;
-    left: 0;
-  }
 }
 
 /* =========================
