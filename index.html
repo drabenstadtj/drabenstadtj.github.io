@@ -29,17 +29,18 @@
         </span>
 
         <div class="navbar-socials">
-          <div class="resume-dropdown">
-            <span class="navbar-resume">Resume</span>
-            <div class="resume-dropdown-menu">
-              <a href="static/resumes/software_dev_resume.pdf" target="_blank"
-                >Software Dev</a
-              >
-              <a href="static/resumes/game_dev_resume.pdf" target="_blank"
-                >Game Design</a
-              >
-            </div>
-          </div>
+          <a
+            href="static/resumes/software_dev_resume.pdf"
+            target="_blank"
+            class="navbar-resume"
+            >Software</a
+          >
+          <a
+            href="static/resumes/game_dev_resume.pdf"
+            target="_blank"
+            class="navbar-resume"
+            >Game Dev</a
+          >
           <a
             href="/gamedev/pages/gamelog.html"
             target="_blank"
@@ -83,72 +84,78 @@
     <!-- Spacer so content isn't hidden behind the navbar -->
     <div id="navbar-spacer"></div>
 
-    <main class="content-strip">
-      <header class="hero">
-        <h1>Software engineer + game developer.</h1>
+    <main class="content-strip page-home">
+      <section id="hero-landing">
+        <span class="hero-landing-name">Jack Drabenstadt</span>
+        <span class="hero-landing-tagline"
+          >Software engineer + game developer.</span
+        >
+        <button class="hero-scroll-arrow" aria-label="Scroll to content">
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </section>
+
+      <header class="hero" id="hero-content">
+        <h1>I build software systems and games.</h1>
 
         <p class="hero-sub">
-          I build software systems and games.
-          <br /><br />
           My work focuses on turning complex technical systems into things
           people can interact with and understand. I’ve built runtime
           configuration systems for distributed software, deployed and
           maintained self-hosted infrastructure, and developed games where
           network protocols and system rules are the core mechanics.
-          <br /><br />
-          I’m currently building a first-person game where players manipulate a
-          hostile fault-tolerant network through terminals, message
-          interception, and physical sabotage.
         </p>
-
-        <div class="hero-cta">
-          <div class="resume-dropdown cta-resume-dropdown">
-            <span class="btn btn-outline">Resume</span>
-            <div class="resume-dropdown-menu">
-              <a href="static/resumes/software_dev_resume.pdf" target="_blank"
-                >Software Dev</a
-              >
-              <a href="static/resumes/game_dev_resume.pdf" target="_blank"
-                >Game Design</a
-              >
-            </div>
-          </div>
-          <a href="#featured" class="btn btn-outline">View My Work</a>
-        </div>
       </header>
 
-      <section>
-        <h2>Currently Working On</h2>
-        <p>
-          <a href="gamedev/lamport.html">Lamport General Systems</a> — A
-          first-person immersive sim where you manipulate hostile Byzantine
-          fault-tolerant networks through message interception, code injection,
-          and physical sabotage.
-        </p>
-      </section>
+      <section id="featured-section">
+        <div class="featured-header">
+          <h2 id="featured">Featured Projects</h2>
+          <div class="carousel-nav">
+            <button class="carousel-prev" aria-label="Previous">&#8592;</button>
+            <button class="carousel-next" aria-label="Next">&#8594;</button>
+          </div>
+        </div>
 
-      <section>
-        <h2 id="featured">Featured</h2>
-
-        <div class="card-list">
-          <a href="gamedev/lamport.html" class="card">
-            <div class="card-title">
-              <h2>Lamport General Systems</h2>
+        <div class="featured-carousel">
+          <a href="gamedev/lamport.html" class="featured-slide">
+            <div class="featured-img-wrap">
+              <img
+                src="static/images/featured/lgs_featured.png"
+                alt="Lamport General Systems"
+              />
+              <div class="featured-desc">
+                <p>
+                  A first-person immersive sim — manipulate hostile Byzantine
+                  fault-tolerant networks through message interception, code
+                  injection, and physical sabotage.
+                </p>
+              </div>
+            </div>
+            <div class="featured-meta">
+              <h3>Lamport General Systems</h3>
               <div class="card-tags">
                 <span class="tag">Godot</span>
                 <span class="tag">GDScript</span>
               </div>
             </div>
-            <img src="static/images/lgs_thumbnail.png" alt="Lamport General Systems" />
-            <p>
-              A first-person immersive sim — manipulate hostile Byzantine
-              fault-tolerant networks through message interception, code injection,
-              and physical sabotage.
-            </p>
           </a>
-          <a href="projects/spire.html" class="card">
-            <div class="card-title">
-              <h2>Dynamic Reconfiguration in Spire</h2>
+
+          <a href="projects/spire.html" class="featured-slide">
+            <div class="featured-img-wrap">
+              <img
+                src="static/images/featured/spire_featured.png"
+                alt="Dynamic Reconfiguration in Spire"
+              />
+              <div class="featured-desc">
+                <p>
+                  Designed and implemented runtime reconfiguration and key
+                  management for a multi-site intrusion-tolerant distributed
+                  system with Dr. Amy Babay.
+                </p>
+              </div>
+            </div>
+            <div class="featured-meta">
+              <h3>Dynamic Reconfiguration in Spire</h3>
               <div class="card-tags">
                 <span class="tag">C / C++</span>
                 <span class="tag">OpenSSL</span>
@@ -156,47 +163,71 @@
                 <span class="tag">Python</span>
               </div>
             </div>
-            <img src="static/images/reconfig_thumbnail.png" alt="Dynamic Reconfiguration in Spire" />
-            <p>
-              Designed and implemented runtime reconfiguration and key management
-              for a multi-site intrusion-tolerant distributed system with Dr. Amy Babay.
-            </p>
           </a>
-          <a href="gamedev/fight-or-flight.html" class="card">
-            <div class="card-title">
-              <h2>Fight or Flight</h2>
+
+          <a href="gamedev/fight-or-flight.html" class="featured-slide">
+            <div class="featured-img-wrap">
+              <img
+                src="static/images/featured/fightorflight_featured.png"
+                alt="Fight or Flight"
+              />
+              <div class="featured-desc">
+                <p>
+                  A 2.5D platformer built in Godot for Pitt's 2025 Games for
+                  Social Impact Game Jam, with original 3D assets and music.
+                </p>
+              </div>
+            </div>
+            <div class="featured-meta">
+              <h3>Fight or Flight</h3>
               <div class="card-tags">
                 <span class="tag">Godot</span>
                 <span class="tag">GDScript</span>
                 <span class="tag">Blender</span>
-                <span class="tag">GIMP</span>
               </div>
             </div>
-            <img src="static/images/fight_flight_thumbnail.png" alt="" />
-            <p>
-              A 2.5D platformer built in Godot for Pitt's 2025 Games for Social
-              Impact Game Jam, with original 3D assets and music.
-            </p>
           </a>
-          <a href="projects/food-map.html" class="card">
-            <div class="card-title">
-              <h2>Pittsburgh Food Access Map</h2>
+
+          <a href="projects/food-map.html" class="featured-slide">
+            <div class="featured-img-wrap">
+              <img
+                src="static/images/featured/foodmap_featured.png"
+                alt="Pittsburgh Food Access Map"
+              />
+              <div class="featured-desc">
+                <p>
+                  Rebuilt a community food access map with React, Flask, and
+                  PostgreSQL, featuring an admin dashboard, community reporting,
+                  and WCAG 2.1 accessibility.
+                </p>
+              </div>
+            </div>
+            <div class="featured-meta">
+              <h3>Pittsburgh Food Access Map</h3>
               <div class="card-tags">
                 <span class="tag">React</span>
                 <span class="tag">Flask</span>
                 <span class="tag">Docker</span>
-                <span class="tag">SQLite</span>
               </div>
             </div>
-            <img src="static/images/food_map_thumbnail.png" alt="" />
-            <p>
-              Rebuilt a community food access map with React, Flask, and PostgreSQL,
-              featuring an admin dashboard, community reporting, and WCAG 2.1 accessibility.
-            </p>
           </a>
-          <a href="projects/home-server.html" class="card">
-            <div class="card-title">
-              <h2>Home Server</h2>
+
+          <a href="projects/home-server.html" class="featured-slide">
+            <div class="featured-img-wrap">
+              <img
+                src="static/images/featured/homeserver_featured.jpeg"
+                alt="Home Server"
+              />
+              <div class="featured-desc">
+                <p>
+                  Self-hosted server with nearly 50TB of storage, running
+                  containerized services across media, security, observability,
+                  and home automation.
+                </p>
+              </div>
+            </div>
+            <div class="featured-meta">
+              <h3>Home Server</h3>
               <div class="card-tags">
                 <span class="tag">Docker</span>
                 <span class="tag">Linux</span>
@@ -204,20 +235,65 @@
                 <span class="tag">Grafana</span>
               </div>
             </div>
-            <img src="static/images/wintermute_thumbnail.png" alt="Home Server" />
-            <p>
-              Self-hosted server with nearly 50TB of storage, running containerized
-              services across media, security, observability, and home automation.
-            </p>
           </a>
         </div>
-        <a href="projects.html" class="btn btn-outline" style="margin-top: 1rem;">View More</a>
-      </section>
 
+        <a
+          href="projects.html"
+          class="btn btn-outline"
+          style="margin-top: 1.25rem"
+          >View More</a
+        >
+      </section>
     </main>
 
     <script src="static/js/navbar.js"></script>
+    <script>
+      document
+        .querySelector(".hero-scroll-arrow")
+        .addEventListener("click", () => {
+          const target = document.getElementById("hero-content");
+          const navH = document.getElementById("navbar").offsetHeight;
+          const top =
+            target.getBoundingClientRect().top + window.scrollY - navH;
+          window.scrollTo({ top, behavior: "smooth" });
+        });
+
+      const carousel = document.querySelector(".featured-carousel");
+      function slideWidth() {
+        const slide = carousel.querySelector(".featured-slide");
+        return slide.offsetWidth + 20; // width + gap
+      }
+      function advanceCarousel() {
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        if (carousel.scrollLeft >= maxScroll - 1) {
+          carousel.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          carousel.scrollBy({ left: slideWidth(), behavior: "smooth" });
+        }
+      }
+
+      let autoAdvance = setInterval(advanceCarousel, 4000);
+
+      function resetAutoAdvance() {
+        clearInterval(autoAdvance);
+        autoAdvance = setInterval(advanceCarousel, 4000);
+      }
+
+      document.querySelector(".carousel-prev").addEventListener("click", () => {
+        if (carousel.scrollLeft <= 1) {
+          carousel.scrollTo({ left: carousel.scrollWidth, behavior: "smooth" });
+        } else {
+          carousel.scrollBy({ left: -slideWidth(), behavior: "smooth" });
+        }
+        resetAutoAdvance();
+      });
+      document.querySelector(".carousel-next").addEventListener("click", () => {
+        advanceCarousel();
+        resetAutoAdvance();
+      });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-    <script src="static/js/sketch.js"></script>
+    <!-- <script src="static/js/sketch.js"></script> -->
   </body>
 </html>
