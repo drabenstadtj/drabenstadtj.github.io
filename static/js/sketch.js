@@ -1,10 +1,10 @@
 let dots = [];
 let trail = [];
 let max_age = 20;
-let speed = 20;
+let speed = 10;
 let goal_radius = 50;
 let max_wrong_dist = 150;
-let num_dots = 10;
+let num_dots = 20;
 let hero;
 let started = false;
 
@@ -39,7 +39,8 @@ function positionCanvas() {
 
 function setup() {
   hero = document.getElementById("hero-landing");
-  frameRate(250);
+  frameRate(60);
+  pixelDensity(1);
   let cnv = createCanvas(1, 1);
   cnv.id("bg-sketch");
   // Place outside content-strip so it can be full viewport width
