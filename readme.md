@@ -1,3 +1,3 @@
-- too much space above name on hero
-- back to top button on mobile projects page
-- scrub phone number from resumes
+- better pic of home audio
+- writeup for pi music player
+- add back in 'this website' software project

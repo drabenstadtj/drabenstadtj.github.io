@@ -1,62 +1,80 @@
-let current_dir;
-let current_pos;
-let goal_pos;
-let speed = 3;
-let mouse_timer = null;
-let mouse_cooldown = 750;
-let near_goal = false;
-let goal_radius = 50;
+let dots = [];
 let trail = [];
-let max_age = 100;
+let max_age = 20;
+let speed = 20;
+let goal_radius = 50;
+let max_wrong_dist = 150;
+let num_dots = 10;
+let hero;
+let started = false;
 
-function getContentBounds() {
-  let contentWidth = min(860, windowWidth);
-  let leftEdge = (windowWidth - contentWidth) / 2;
-  let rightEdge = (windowWidth + contentWidth) / 2;
-  return { left: leftEdge, right: rightEdge };
+function randomPerimeterPoint() {
+  let edge = floor(random(4));
+  if (edge == 0) return createVector(random(width), 0);
+  if (edge == 1) return createVector(width, random(height));
+  if (edge == 2) return createVector(random(width), height);
+  return createVector(0, random(height));
 }
 
-function clampGoalToMargins(x, y) {
-  let b = getContentBounds();
-  if (b.left <= 20) return createVector(x, y);
-  if (x > b.left && x < b.right) {
-    let distLeft = x - b.left;
-    let distRight = b.right - x;
-    x = distLeft < distRight ? b.left - 10 : b.right + 10;
+function initDots() {
+  dots = [];
+  for (let i = 0; i < num_dots; i++) {
+    let start = randomPerimeterPoint();
+    dots.push({
+      pos: start,
+      goal: createVector(width / 2, height / 2),
+      dir: floor(random(1, 5)),
+      hue_offset: random(360),
+      done: false,
+    });
   }
-  return createVector(x, y);
+  started = true;
+}
+
+function positionCanvas() {
+  let rect = hero.getBoundingClientRect();
+  let top = rect.top + window.scrollY;
+  document.getElementById("bg-sketch").style.top = top + "px";
 }
 
 function setup() {
-  let cnv = createCanvas(windowWidth, windowHeight);
+  hero = document.getElementById("hero-landing");
+  frameRate(250);
+  let cnv = createCanvas(1, 1);
   cnv.id("bg-sketch");
+  // Place outside content-strip so it can be full viewport width
+  document.body.insertBefore(cnv.elt, document.body.firstChild);
+
   strokeCap(SQUARE);
   colorMode(HSB, 360, 100, 100, 100);
-  cnv.style("position", "fixed");
+  cnv.style("position", "absolute");
   cnv.style("top", "0");
   cnv.style("left", "0");
   cnv.style("z-index", "-1");
   cnv.style("pointer-events", "none");
-  current_pos = createVector(0, 0);
-  goal_pos = clampGoalToMargins(width / 2, height / 2);
-  current_dir = 2;
 
-  document.addEventListener("mousemove", function (e) {
-    clearTimeout(mouse_timer);
-    mouse_timer = setTimeout(() => {
-      goal_pos = clampGoalToMargins(e.clientX, e.clientY + window.scrollY);
-    }, mouse_cooldown);
+  noLoop();
+
+  requestAnimationFrame(function () {
+    let w = window.innerWidth;
+    let h = hero.offsetHeight;
+    if (w > 0 && h > 0) {
+      resizeCanvas(w, h);
+      positionCanvas();
+      initDots();
+      loop();
+    }
   });
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  resizeCanvas(window.innerWidth, hero.offsetHeight);
+  positionCanvas();
 }
 
 function draw() {
   clear();
 
-  // Age trail and remove old segments
   for (let i = trail.length - 1; i >= 0; i--) {
     trail[i].age++;
   }
@@ -64,98 +82,113 @@ function draw() {
     trail.shift();
   }
 
-  // Draw trail with fading opacity
   noStroke();
   for (let i = 0; i < trail.length; i++) {
-    let a = map(trail[i].age, 0, max_age, 40, 0);
-    fill(25, a);
-    circle(trail[i].x, trail[i].y, 10);
+    let t = trail[i].age / max_age;
+    let a = 80 * (1 - t * t); // quadratic falloff — starts dark, drops fast
+    fill(0, 0, 8, a);
+    square(trail[i].x - 5, trail[i].y - 5, 10);
   }
 
-  // Deflect dot out of content strip
-  let b = getContentBounds();
-  if (b.left > 20 && current_pos.x > b.left && current_pos.x < b.right) {
-    if (current_dir == 2) { current_pos.x = b.left - 1; current_dir = 4; }
-    else if (current_dir == 4) { current_pos.x = b.right + 1; current_dir = 2; }
-    else {
-      let distLeft = current_pos.x - b.left;
-      let distRight = b.right - current_pos.x;
-      current_pos.x = distLeft < distRight ? b.left - 1 : b.right + 1;
+  let all_done = true;
+  for (let dot of dots) {
+    if (!dot.done) {
+      all_done = false;
+      update_dot(dot);
     }
   }
 
-  near_goal =
-    dist(current_pos.x, current_pos.y, goal_pos.x, goal_pos.y) < goal_radius;
+  drawVignette();
+  drawCenterMask();
 
-  if (!near_goal) {
-    move_circle();
+  if (started && all_done && trail.length === 0) {
+    noLoop();
+  }
+}
+
+function drawCenterMask() {
+  let ctx = drawingContext;
+  let cx = width / 2;
+  let cy = height / 2;
+  let r = min(width * 0.38, height * 0.58);
+  let gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+  gradient.addColorStop(0, "rgba(217,201,100,1)");
+  gradient.addColorStop(1, "rgba(217,201,100,0)");
+  ctx.save();
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, width, height);
+  ctx.restore();
+}
+
+function drawVignette() {
+  let ctx = drawingContext;
+  let cx = width / 2;
+  let cy = height / 2;
+  let r = max(width, height);
+  let gradient = ctx.createRadialGradient(cx, cy, r * 0.25, cx, cy, r * 0.75);
+  gradient.addColorStop(0, "rgba(217,201,100,0)");
+  gradient.addColorStop(1, "rgba(217,201,100,1)");
+  ctx.save();
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, width, height);
+  ctx.restore();
+}
+
+function update_dot(dot) {
+  let near_goal =
+    dist(dot.pos.x, dot.pos.y, dot.goal.x, dot.goal.y) < goal_radius;
+
+  if (near_goal) {
+    dot.done = true;
+    return;
   }
 
-  if (!near_goal && random() < 0.08) {
-    if (current_dir == 1 || current_dir == 3) {
-      current_dir = random() < 0.5 ? 2 : 4;
+  move_dot(dot);
+
+  if (random() < 0.08) {
+    if (dot.dir == 1 || dot.dir == 3) {
+      dot.dir = random() < 0.5 ? 2 : 4;
     } else {
-      current_dir = random() < 0.5 ? 1 : 3;
+      dot.dir = random() < 0.5 ? 1 : 3;
     }
   }
 
-  let max_wrong_dist = 150;
+  if (dot.dir == 2 && dot.pos.x > dot.goal.x + max_wrong_dist) dot.dir = 4;
+  if (dot.dir == 4 && dot.pos.x < dot.goal.x - max_wrong_dist) dot.dir = 2;
+  if (dot.dir == 1 && dot.pos.y > dot.goal.y + max_wrong_dist) dot.dir = 3;
+  if (dot.dir == 3 && dot.pos.y < dot.goal.y - max_wrong_dist) dot.dir = 1;
 
-  if (!near_goal) {
-    if (current_dir == 2 && current_pos.x > goal_pos.x + max_wrong_dist)
-      current_dir = 4;
-    if (current_dir == 4 && current_pos.x < goal_pos.x - max_wrong_dist)
-      current_dir = 2;
-    if (current_dir == 1 && current_pos.y > goal_pos.y + max_wrong_dist)
-      current_dir = 3;
-    if (current_dir == 3 && current_pos.y < goal_pos.y - max_wrong_dist)
-      current_dir = 1;
-  }
-
-  if (current_dir == 2 || current_dir == 4) {
-    if (abs(current_pos.x - goal_pos.x) < speed) {
-      current_pos.x = goal_pos.x;
-      if (current_pos.y > goal_pos.y) {
-        current_dir = 3;
-      } else {
-        current_dir = 1;
-      }
+  if (dot.dir == 2 || dot.dir == 4) {
+    if (abs(dot.pos.x - dot.goal.x) < speed) {
+      dot.pos.x = dot.goal.x;
+      dot.dir = dot.pos.y > dot.goal.y ? 3 : 1;
     }
-  } else if (current_dir == 1 || current_dir == 3) {
-    if (abs(current_pos.y - goal_pos.y) < speed) {
-      current_pos.y = goal_pos.y;
-      if (current_pos.x > goal_pos.x) {
-        current_dir = 4;
-      } else {
-        current_dir = 2;
-      }
+  } else if (dot.dir == 1 || dot.dir == 3) {
+    if (abs(dot.pos.y - dot.goal.y) < speed) {
+      dot.pos.y = dot.goal.y;
+      dot.dir = dot.pos.x > dot.goal.x ? 4 : 2;
     }
   }
 }
 
-function move_circle() {
-  switch (current_dir) {
+function move_dot(dot) {
+  switch (dot.dir) {
     case 1:
-      current_pos.y += speed;
+      dot.pos.y += speed;
       break;
     case 2:
-      current_pos.x += speed;
+      dot.pos.x += speed;
       break;
     case 3:
-      current_pos.y -= speed;
+      dot.pos.y -= speed;
       break;
     case 4:
-      current_pos.x -= speed;
+      dot.pos.x -= speed;
       break;
   }
-  let h = (frameCount * 0.5) % 360;
-  trail.push({
-    x: current_pos.x,
-    y: current_pos.y,
-    age: 0,
-    hue: h,
-  });
+  let h = (frameCount * 0.5 + dot.hue_offset) % 360;
+  trail.push({ x: dot.pos.x, y: dot.pos.y, age: 0 });
   noStroke();
-  fill(h, 60, 40, 40);
-  circle(current_pos.x, current_pos.y, 10);
+  fill(h, 80, 18, 85);
+  square(dot.pos.x - 5, dot.pos.y - 5, 10);
 }
