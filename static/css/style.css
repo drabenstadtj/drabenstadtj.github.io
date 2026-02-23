@@ -901,6 +901,52 @@ a.tag:hover {
 }
 
 /* =========================
+   Dev Log preview (home page)
+   ========================= */
+.devlog-preview {
+  display: block;
+  text-decoration: none;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 1.1rem 1.25rem;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.devlog-preview:hover {
+  box-shadow: 4px 4px 0 #00000044;
+  border-color: #000;
+}
+
+.devlog-preview-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.devlog-preview-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.devlog-preview-date {
+  font-size: 0.85rem;
+  opacity: 0.5;
+}
+
+.devlog-preview-desc {
+  font-size: 1rem;
+  line-height: 1.55;
+  opacity: 0.75;
+  margin: 0;
+}
+
+#devlog-section .featured-header {
+  grid-template-columns: 1fr auto;
+}
+
+/* =========================
    Featured carousel
    ========================= */
 .featured-header {

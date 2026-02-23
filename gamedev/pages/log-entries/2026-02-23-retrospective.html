@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/css/styles.css" />
+    <title>Retrospective - Game Design Log</title>
+  </head>
+  <body class="has-top-bar">
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <img src="../../static/images/logo2-noise.svg" class="top-bar-logo" alt="logo" />
+        <nav class="top-bar-dropdown">
+          <a href="../../../index.html">⌂ Home</a>
+          <a href="../gamelog.html">≡ Log Entries</a>
+          <a href="#" onclick="toggleFont(); return false;">Aa Toggle Font</a>
+        </nav>
+      </div>
+      <span class="top-bar-right"><span id="top-bar-clock"></span></span>
+    </div>
+    <div class="header">
+      <h1>Retrospective</h1>
+      <div class="stats">
+        <p>Feb 23, 2026</p>
+      </div>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-content">
+        <p>
+          It's been a while since updating this log as I've gotten caught up in
+          too many things since last semester. Alas, I wrapped up last semester
+          with a week of flu-fueled frantic work where my entire household
+          (myself included) came down with the flu. I ended up finishing what I
+          set out to do over the course of the semester, which was to complete a
+          concept doc, a game design doc, a macro, and a prototype. These can be
+          accessed <a href="/lamport.html">here</a>. By the end of the semester
+          I felt like I came to experience things I was warned about in feedback
+          I received throughout the semester — things such as the project being
+          quite large in scope and the subject matter making for a potentially
+          niche audience.
+        </p>
+        <p>
+          Over winter break I did some light polish, and this semester I picked
+          things back up under a new independent study, this time focused on
+          implementation rather than design.
+        </p>
+        <p>
+          The bulk of the work since then has been level building and
+          environment. I've been learning Blender and Photoshop to solidify an
+          asset creation workflow for low-poly style assets, and I set up the
+          project with TrenchBroom for quick level design. A demo level with a
+          tutorial system was added to give new players a guided introduction to
+          the mechanics, which has surfaced what I think will be the defining
+          challenge of this project: communicating the concepts within the game.
+          BFT is complex, and it's hard to convey how it works without shoving a
+          wall of text down the player's throat. This is something I'll have to
+          carefully work through and iterate on for the entire lifetime of this
+          project.
+        </p>
+        <p>
+          I've also come to realize this project is going to take a long time.
+          Around my second week of heavy implementation I had a bit of a crisis,
+          sparked by not seeing much visible progress after putting in a lot of
+          work. I felt like the concept was too complicated and bloated — and
+          honestly I still do, a little. It's something I'll keep in mind as I
+          keep building. A piece of advice you hear constantly from developers is
+          to distill your concept down to the smallest possible thing, and this
+          project is pretty much the opposite of that.
+        </p>
+        <p>
+          All of that said, I'm learning a lot. Even if this game takes forever
+          to reach a finished state, the process itself has been worth it.
+        </p>
+      </div>
+    </div>
+
+    <div class="keyboard-help">
+      <p>[ ←/ESC back ]</p>
+    </div>
+
+    <script src="../../static/js/cursor-nav.js"></script>
+      <script>
+      (function() {
+        function updateClock() {
+          const now = new Date();
+          const h = String(now.getHours()).padStart(2, '0');
+          const m = String(now.getMinutes()).padStart(2, '0');
+          const s = String(now.getSeconds()).padStart(2, '0');
+          document.getElementById('top-bar-clock').textContent = h + ':' + m + ':' + s;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+      })();
+
+    // Font toggle
+    function updateFontLabel() {
+      var link = document.querySelector('.top-bar-dropdown a[href="#"]');
+      if (link) link.textContent = document.body.classList.contains('vt323-font') ? 'Aa  IBM Plex ✓' : 'Aa  IBM XGA ✓';
+    }
+    function toggleFont() {
+      document.body.classList.toggle('vt323-font');
+      localStorage.setItem('useVT323', document.body.classList.contains('vt323-font'));
+      updateFontLabel();
+    }
+    if (localStorage.getItem('useVT323') === 'true') {
+      document.body.classList.add('vt323-font');
+    }
+    updateFontLabel();
+    </script>
+  </body>
+</html>

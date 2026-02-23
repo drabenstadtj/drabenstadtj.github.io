@@ -6,8 +6,18 @@
     <link rel="stylesheet" href="../../static/css/styles.css" />
     <title>Stuck In - Game Design Log</title>
   </head>
-  <body>
-    <a href="../gamelog.html">< back to log</a>
+  <body class="has-top-bar">
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <img src="../../static/images/logo2-noise.svg" class="top-bar-logo" alt="logo" />
+        <nav class="top-bar-dropdown">
+          <a href="../../../index.html">⌂ Home</a>
+          <a href="../gamelog.html">≡ Log Entries</a>
+          <a href="#" onclick="toggleFont(); return false;">Aa Toggle Font</a>
+        </nav>
+      </div>
+      <span class="top-bar-right"><span id="top-bar-clock"></span></span>
+    </div>
     <div class="header">
       <h1>Stuck In</h1>
       <div class="stats">
@@ -51,5 +61,33 @@
   </div>
 
   <script src="../../static/js/cursor-nav.js"></script>
+      <script>
+      (function() {
+        function updateClock() {
+          const now = new Date();
+          const h = String(now.getHours()).padStart(2, '0');
+          const m = String(now.getMinutes()).padStart(2, '0');
+          const s = String(now.getSeconds()).padStart(2, '0');
+          document.getElementById('top-bar-clock').textContent = h + ':' + m + ':' + s;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+      })();
+
+    // Font toggle
+    function updateFontLabel() {
+      var link = document.querySelector('.top-bar-dropdown a[href="#"]');
+      if (link) link.textContent = document.body.classList.contains('vt323-font') ? 'Aa  IBM Plex ✓' : 'Aa  IBM XGA ✓';
+    }
+    function toggleFont() {
+      document.body.classList.toggle('vt323-font');
+      localStorage.setItem('useVT323', document.body.classList.contains('vt323-font'));
+      updateFontLabel();
+    }
+    if (localStorage.getItem('useVT323') === 'true') {
+      document.body.classList.add('vt323-font');
+    }
+    updateFontLabel();
+    </script>
   </body>
 </html>

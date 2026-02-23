@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/css/styles.css" />
+    <title>Robot AI System - Game Design Log</title>
+  </head>
+  <body class="has-top-bar">
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <img src="../../static/images/logo2-noise.svg" class="top-bar-logo" alt="logo" />
+        <nav class="top-bar-dropdown">
+          <a href="../../../index.html">⌂ Home</a>
+          <a href="../gamelog.html">≡ Log Entries</a>
+          <a href="#" onclick="toggleFont(); return false;">Aa Toggle Font</a>
+        </nav>
+      </div>
+      <span class="top-bar-right"><span id="top-bar-clock"></span></span>
+    </div>
+    <div class="header">
+      <h1>Robot AI System</h1>
+      <div class="stats">
+        <p>Feb 23, 2026</p>
+      </div>
+    </div>
+    <div class="log-entry">
+      <div class="log-content">
+        <p>
+          This week I worked on the AI system for LGS. The robots are humanoid
+          security units meant to be off-the-shelf hardware LGS modified for
+          facility use. A focus is balancing the system so that the AI feels
+          threatening and reactive without being unfair — something I'd been
+          thinking about since reading breakdowns of the AI design in
+          <em>Alien: Isolation</em>, which handles this problem better than
+          almost any other game I can think of. I spent a while thinking through
+          the architecture before writing any code.
+        </p>
+        <p>
+          The system is split into two layers. The first is an
+          <strong>AI Director</strong> — a global autoload that manages pacing
+          and tracks robot state across the whole facility. It holds save data
+          for every robot so their positions and states persist when you leave
+          and re-enter areas. Robot data is serialized as Godot Resource files
+          and written to disk on scene transition, keyed by level and robot ID.
+          When a robot spawns it checks for saved data and restores from it,
+          otherwise starts fresh.
+        </p>
+        <p>
+          The second layer is the <strong>per-robot behavior</strong>, built
+          from a reusable state machine (shared with the player controller) and
+          a sensory component. Each robot has four states: Patrol, Investigate,
+          Hunt, and the groundwork for more later. In Patrol the robot samples
+          random walkable points from the navmesh and wanders between them. The
+          sensory component runs every frame checking for the player — vision
+          uses a horizontal and vertical FOV cone check followed by a physics
+          raycast for line of sight. Detection builds a confidence value over
+          time rather than triggering instantly, so brief glimpses don't
+          immediately alert the robot. Once confidence hits a threshold the
+          robot transitions to Hunt and actively chases. If it loses sight, a
+          countdown timer runs and it falls back to Investigate, searching the
+          last known position before giving up and returning to Patrol.
+        </p>
+        <p>
+          I also added a hearing system. Player actions like walking, running,
+          and jumping emit sound events through the Director, which broadcasts
+          to all nearby robots. Each robot's sensory component checks the sound
+          against a distance-based threshold curve — loud sounds carry further,
+          quiet ones don't. This means crouching and moving carefully actually
+          matters.
+        </p>
+        <p>
+          The two-layer design is directly inspired by the AI system in Alien:
+          Isolation, where a high-level Director manages the Xenomorph's pacing
+          and a separate behavior layer handles its real-time reactions. The
+          Director in that game is responsible for making the alien feel
+          omnipresent and fair — nudging it toward the player when tension is
+          low, pulling it back when things get too intense. I wanted the same
+          feel for LGS. The Director and the per-robot behavior are deliberately
+          decoupled — the Director handles pacing and persistence, the robots
+          handle their own moment-to-moment decisions.
+        </p>
+        <p>
+          That said, the Director side is still incomplete. Right now robots
+          find the player entirely through their own sensors. The Director isn't
+          yet sending hints to robots about the player's general location, which
+          is a key part of what makes the Isolation system work — it's what
+          stops the alien from wandering the wrong end of the map while you
+          stand still for five minutes. Implementing that is the next priority
+          on the AI side.
+        </p>
+        <p>
+          The other obvious gap is that the robots have no body. No model or
+          animations so they're just a capsule moving around the level.
+          Animation is something I find genuinely difficult and have been
+          putting off. Rigging and animating a humanoid robot is a non-trivial
+          chunk of work and I don't want to block AI progress on it, so for now
+          the logic runs on a placeholder. It'll need to be tackled eventually
+          but I'd rather have the behavior working correctly first.
+        </p>
+      </div>
+    </div>
+    <div class="keyboard-help">
+      <p>[ ←/ESC back ]</p>
+    </div>
+    <script src="../../static/js/cursor-nav.js"></script>
+      <script>
+      (function() {
+        function updateClock() {
+          const now = new Date();
+          const h = String(now.getHours()).padStart(2, '0');
+          const m = String(now.getMinutes()).padStart(2, '0');
+          const s = String(now.getSeconds()).padStart(2, '0');
+          document.getElementById('top-bar-clock').textContent = h + ':' + m + ':' + s;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+      })();
+
+    // Font toggle
+    function updateFontLabel() {
+      var link = document.querySelector('.top-bar-dropdown a[href="#"]');
+      if (link) link.textContent = document.body.classList.contains('vt323-font') ? 'Aa  IBM Plex ✓' : 'Aa  IBM XGA ✓';
+    }
+    function toggleFont() {
+      document.body.classList.toggle('vt323-font');
+      localStorage.setItem('useVT323', document.body.classList.contains('vt323-font'));
+      updateFontLabel();
+    }
+    if (localStorage.getItem('useVT323') === 'true') {
+      document.body.classList.add('vt323-font');
+    }
+    updateFontLabel();
+    </script>
+  </body>
+</html>

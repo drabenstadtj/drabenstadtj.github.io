@@ -238,12 +238,41 @@ a {
   margin-bottom: 0;
 }
 
-/* Navigation Links */
-a[href="../index.html"],
-a[href="../gamelog.html"] {
+/* Navigation Links (legacy absolute positioning, not inside .log-nav) */
+body > a[href="../index.html"],
+body > a[href="../gamelog.html"] {
   position: absolute;
   top: 20px;
   left: 20px;
+}
+
+.log-nav a {
+  position: static;
+}
+
+/* Log entry navbar */
+.log-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #ffaa00;
+  border-bottom: none;
+  padding: 8px 12px;
+  background-color: rgba(255, 170, 0, 0.05);
+  margin-top: 40px;
+}
+
+.log-nav + .header {
+  margin-top: 0;
+}
+
+.log-nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.log-nav a:hover {
+  text-decoration: underline;
 }
 
 .nav .log-preview-header {
@@ -492,4 +521,99 @@ a[href="../gamelog.html"] {
 
 .keyboard-help p {
   margin: 0;
+}
+
+/* Desktop-style Top Bar */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(10, 10, 10, 0.6);
+  border-bottom: 2px solid #ffaa00;
+  padding: 0 16px;
+  height: 72px;
+  box-sizing: border-box;
+  z-index: 100;
+  font-size: 0.95em;
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  align-self: stretch;
+}
+
+.top-bar-logo {
+  height: 58px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 0 4px rgba(255, 170, 0, 0.4));
+  transition: filter 0.15s;
+}
+
+.top-bar-left:hover .top-bar-logo {
+  filter: drop-shadow(0 0 8px rgba(255, 170, 0, 0.8));
+}
+
+.top-bar-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(10, 10, 10, 0.6);
+  border: 2px solid #ffaa00;
+  border-top: none;
+  min-width: 160px;
+  flex-direction: column;
+  z-index: 101;
+}
+
+.top-bar-left:hover .top-bar-dropdown {
+  display: flex;
+}
+
+.top-bar-dropdown a {
+  display: block;
+  padding: 10px 14px;
+  color: #ffaa00;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: background-color 0.1s, opacity 0.1s;
+  border-bottom: 1px solid rgba(255, 170, 0, 0.15);
+}
+
+.top-bar-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.top-bar-dropdown a:hover {
+  background: rgba(255, 170, 0, 0.1);
+  opacity: 1;
+}
+
+.top-bar-dropdown a.active {
+  opacity: 1;
+  background: rgba(255, 170, 0, 0.05);
+}
+
+.top-bar-right {
+  color: #ffaa00;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+}
+
+/* Offset body content below the fixed top bar */
+.has-top-bar {
+  padding-top: 76px;
+}
+
+.has-top-bar .header {
+  margin-top: 20px;
 }

@@ -6,17 +6,54 @@
     <link rel="stylesheet" href="../static/css/styles.css" />
     <title>Game Design Log</title>
   </head>
-  <body>
-    <a href="../index.html">< back</a>
+  <body class="has-top-bar">
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <img src="../static/images/logo2-noise.svg" class="top-bar-logo" alt="logo" />
+        <nav class="top-bar-dropdown">
+          <a href="../../index.html">⌂ Home</a>
+          <a href="gamelog.html" class="active">≡ Log Entries</a>
+          <a href="#" onclick="toggleFont(); return false;">Aa Toggle Font</a>
+        </nav>
+      </div>
+      <span class="top-bar-right"><span id="top-bar-clock"></span></span>
+    </div>
     <div class="header">
       <h1>Game Design Log</h1>
       <div class="stats">
-        <p>Total Entries: <span id="total-entries">6</span></p>
-        <p>Last Updated: <span id="last-updated">No 17, 2025</span></p>
+        <p>Total Entries: <span id="total-entries">8</span></p>
+        <p>Last Updated: <span id="last-updated">Feb 23, 2026</span></p>
       </div>
     </div>
 
     <div class="log-list">
+      <div class="log-preview">
+        <a href="log-entries/2026-02-23-ai-system.html">
+          <div class="log-preview-header">
+            <h2>Robot AI System</h2>
+            <p class="date">Feb 23, 2026</p>
+          </div>
+          <p class="log-preview-description">
+            Designing and implementing the enemy AI for LGS — a two-layer system
+            inspired by Alien: Isolation, with a global Director for pacing and
+            persistence, and per-robot behavior built on a state machine with
+            vision, confidence, and hearing.
+          </p>
+        </a>
+      </div>
+      <div class="log-preview">
+        <a href="log-entries/2026-02-23-retrospective.html">
+          <div class="log-preview-header">
+            <h2>Retrospective</h2>
+            <p class="date">Feb 23, 2026</p>
+          </div>
+          <p class="log-preview-description">
+            Catching up after a long gap — wrapping last semester's deliverables,
+            picking things back up this semester, and grappling with the slow
+            reality of building something this big.
+          </p>
+        </a>
+      </div>
       <div class="log-preview">
         <a href="log-entries/2025-11-17-stuck-in.html">
           <div class="log-preview-header">
@@ -117,19 +154,44 @@
     <p>[ ↑/↓ navigate · ←/ESC back · →/ENTER select ]</p>
   </div>
 
-  <button class="font-toggle" onclick="toggleFont()">Toggle Font</button>
 
   <script src="../static/js/cursor-nav.js"></script>
   <script>
+    (function() {
+      function updateClock() {
+        const now = new Date();
+        const h = String(now.getHours()).padStart(2, '0');
+        const m = String(now.getMinutes()).padStart(2, '0');
+        const s = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById('top-bar-clock').textContent = h + ':' + m + ':' + s;
+      }
+      updateClock();
+      setInterval(updateClock, 1000);
+    })();
+
+    function updateFontLabel() {
+      var link = document.querySelector('.top-bar-dropdown a[href="#"]');
+      if (link) link.textContent = document.body.classList.contains('vt323-font') ? 'Aa  IBM Plex ✓' : 'Aa  IBM XGA ✓';
+    }
     function toggleFont() {
       document.body.classList.toggle('vt323-font');
       localStorage.setItem('useVT323', document.body.classList.contains('vt323-font'));
+      updateFontLabel();
     }
 
     // Load saved preference
     if (localStorage.getItem('useVT323') === 'true') {
       document.body.classList.add('vt323-font');
     }
+    updateFontLabel();
+
+    // Auto-update stats from DOM
+    const entries = document.querySelectorAll('.log-preview');
+    document.getElementById('total-entries').textContent = entries.length;
+
+    const dates = Array.from(entries).map(e => new Date(e.querySelector('.date').textContent));
+    const latest = new Date(Math.max(...dates));
+    document.getElementById('last-updated').textContent = latest.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   </script>
   </body>
 </html>
