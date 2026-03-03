@@ -100,10 +100,9 @@
             <p>
                 Spire's original codebase couldn't support this — compile-time
                 constants for site counts, replica numbers, and network
-                parameters meant any topology or key change required a full
-                recompile and redeployment. There was no way to rotate
-                cryptographic keys or add nodes without taking everything
-                offline.
+                parameters meant any topology change required a full recompile
+                and redeployment. There was no way to add nodes without taking
+                everything offline.
             </p>
 
             <figure>
@@ -126,15 +125,8 @@
                 material before release; a Config Disseminator that reliably
                 distributes packages across unreliable multi-site links; and a
                 Config Agent running on every node that validates authenticity,
-                stages changes, rotates keys, and coordinates local service
-                transitions without disrupting active operations.
-            </p>
-            <p>
-                <strong>Hybrid cryptographic key rotation.</strong> Implemented
-                AES-256 + RSA-OAEP encryption with key versioning so nodes can
-                handle overlapping key sets during transitions and securely
-                discard deprecated material — without any window where the
-                system is unprotected.
+                stages changes, and coordinates local service transitions
+                without disrupting active operations.
             </p>
             <p>
                 <strong>Custom reliable multicast protocol.</strong> Built
@@ -151,8 +143,8 @@
                 from source, automated all dependency and key generation steps,
                 and designed a Docker Compose topology of 26 containers on a
                 deterministic bridged subnet. The result is a one-command
-                environment for demonstrating live topology changes, key
-                rotation, and coordinated transitions with zero downtime.
+                environment for demonstrating live topology changes and
+                coordinated transitions with zero downtime.
             </p>
 
             <figure>
