@@ -1,174 +1,188 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&family=Space+Grotesk:wght@300..700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="../static/css/style.css" />
-    <link rel="icon" type="image/png" href="../favicon.png" />
-    <title>Dynamic Reconfiguration in Spire - Jack Drabenstadt</title>
-  </head>
-  <body>
-    <nav id="navbar">
-      <div class="navbar-top">
-        <span class="navbar-name">
-          <span class="name-full">Jack Drabenstadt</span>
-        </span>
-        <span class="navbar-page">Projects</span>
-        <div class="navbar-socials">
-          <a
-            href="/gamedev/pages/gamelog.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="navbar-resume"
-            >Dev Log</a
-          >
-          <a
-            href="https://www.linkedin.com/in/jackdrabenstadt/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn" data-tooltip="LinkedIn"
-            ><i class="fa-brands fa-linkedin"></i
-          ></a>
-          <a
-            href="https://github.com/drabenstadtj"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub" data-tooltip="GitHub"
-            ><i class="fa-brands fa-github"></i
-          ></a>
-          <a
-            href="https://drabenstadtj.itch.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Itch.io" data-tooltip="Itch.io"
-            ><i class="fa-brands fa-itch-io"></i
-          ></a>
-          <a
-            href="mailto:jackdrabenstadt@gmail.com"
-            aria-label="Email" data-tooltip="Email"
-          >
-            <i class="fa-solid fa-envelope"></i>
-          </a>
-        </div>
-      </div>
-      <div class="navbar-links">
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../projects.html" class="active">Projects</a></li>
-          <li><a href="../resume.html">Resume</a></li>
-        </ul>
-      </div>
-    </nav>
-    <div id="navbar-spacer"></div>
-    <main class="content-strip">
-      <h1>Dynamic Reconfiguration in Spire</h1>
-
-      <div class="project-meta">
-        <span class="tag">C / C++</span>
-        <span class="tag">OpenSSL</span>
-        <span class="tag">Docker</span>
-        <span class="tag">Python</span>
-      </div>
-
-      <p>
-        I collaborated with Professor Babay and a small team of graduate
-        students to design a dynamic reconfiguration system for Spire, a
-        fault-tolerant SCADA protection platform, and was solely responsible
-        for implementing it. The driving use case is crisis response: when a
-        control center goes offline due to a natural disaster or cyber attack,
-        a mobile replacement needs to be brought online without taking
-        protected infrastructure down.
-      </p>
-
-      <h3>The Problem</h3>
-      <p>
-        Spire's original codebase couldn't support this — compile-time
-        constants for site counts, replica numbers, and network parameters
-        meant any topology or key change required a full recompile and
-        redeployment. There was no way to rotate cryptographic keys or add
-        nodes without taking everything offline.
-      </p>
-
-      <figure>
-        <img
-          src="../static/images/spire_demo_explain.jpg"
-          alt="Control center failure and restoration scenario"
-          class="img-strip"
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&family=Space+Grotesk:wght@300..700&display=swap"
+            rel="stylesheet"
         />
-        <figcaption>
-          The scenario being demonstrated: a control center failure and
-          coordinated restoration across sites.
-        </figcaption>
-      </figure>
-
-      <h3>What I Built</h3>
-      <p>
-        <strong>End-to-end reconfiguration pipeline.</strong> The system spans
-        three components: a Config Manager that generates and signs new
-        configurations, validating topology, roles, and key material before
-        release; a Config Disseminator that reliably distributes packages across
-        unreliable multi-site links; and a Config Agent running on every node
-        that validates authenticity, stages changes, rotates keys, and
-        coordinates local service transitions without disrupting active
-        operations.
-      </p>
-      <p>
-        <strong>Hybrid cryptographic key rotation.</strong> Implemented AES-256
-        + RSA-OAEP encryption with key versioning so nodes can handle
-        overlapping key sets during transitions and securely discard deprecated
-        material — without any window where the system is unprotected.
-      </p>
-      <p>
-        <strong>Custom reliable multicast protocol.</strong> Built
-        fragmentation, acknowledgment tracking, and retransmission logic from
-        scratch to guarantee complete configuration delivery across all nodes
-        before any transition begins. This was necessary because standard
-        reliable transport assumptions don't hold across Spire's multi-site
-        links.
-      </p>
-      <p>
-        <strong>26-node reproducible demo environment.</strong> To validate
-        under realistic conditions, I built a custom AlmaLinux-based Docker
-        image that compiles the full Spire stack from source, automated all
-        dependency and key generation steps, and designed a Docker Compose
-        topology of 26 containers on a deterministic bridged subnet. The result
-        is a one-command environment for demonstrating live topology changes,
-        key rotation, and coordinated transitions with zero downtime.
-      </p>
-
-      <figure>
-        <img
-          src="../static/images/spire_demo_label.jpg"
-          alt="Live 26-node deployment with control centers and data center logs"
-          class="img-strip"
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
-        <figcaption>
-          Guide to the demo terminals: what each window shows during a live run.
-        </figcaption>
-      </figure>
+        <link rel="stylesheet" href="../static/css/style.css" />
+        <link rel="icon" type="image/png" href="../favicon.png" />
+        <title>Dynamic Reconfiguration in Spire - Jack Drabenstadt</title>
+    </head>
+    <body>
+        <nav id="navbar">
+            <div class="navbar-top">
+                <span class="navbar-name">
+                    <span class="name-full">Jack Drabenstadt</span>
+                </span>
+                <span class="navbar-page">Projects</span>
+                <div class="navbar-socials">
+                    <a
+                        href="/gamedev/pages/gamelog.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="navbar-resume"
+                        >Dev Log</a
+                    >
+                    <a
+                        href="https://www.linkedin.com/in/jackdrabenstadt/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                        data-tooltip="LinkedIn"
+                        ><i class="fa-brands fa-linkedin"></i
+                    ></a>
+                    <a
+                        href="https://github.com/drabenstadtj"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                        data-tooltip="GitHub"
+                        ><i class="fa-brands fa-github"></i
+                    ></a>
+                    <a
+                        href="https://drabenstadtj.itch.io/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Itch.io"
+                        data-tooltip="Itch.io"
+                        ><i class="fa-brands fa-itch-io"></i
+                    ></a>
+                    <a
+                        href="mailto:jackdrabenstadt@gmail.com"
+                        aria-label="Email"
+                        data-tooltip="Email"
+                    >
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li>
+                        <a href="../projects.html" class="active">Projects</a>
+                    </li>
+                    <li><a href="../resume.html">Resume</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div id="navbar-spacer"></div>
+        <main class="content-strip">
+            <h1>Dynamic Reconfiguration in Spire</h1>
 
-      <h3>Demo</h3>
-      <figure>
-        <video controls class="img-strip" style="border-radius: 10px">
-          <source src="../static/videos/spire_demo.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <figcaption>
-          A scenario running in real time across the 26-node demo environment.
-        </figcaption>
-      </figure>
-    </main>
+            <div class="project-meta">
+                <span class="tag">C / C++</span>
+                <span class="tag">OpenSSL</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Python</span>
+            </div>
 
-    <script src="../static/js/navbar.js"></script>
-  </body>
+            <p>
+                I collaborated with Professor Babay and a small team of graduate
+                students to design a dynamic reconfiguration system for Spire, a
+                fault-tolerant SCADA protection platform, and was solely
+                responsible for implementing it. The driving use case is crisis
+                response: when a control center goes offline due to a natural
+                disaster or cyber attack, a mobile replacement needs to be
+                brought online without taking protected infrastructure down.
+            </p>
+
+            <h3>The Problem</h3>
+            <p>
+                Spire's original codebase couldn't support this — compile-time
+                constants for site counts, replica numbers, and network
+                parameters meant any topology or key change required a full
+                recompile and redeployment. There was no way to rotate
+                cryptographic keys or add nodes without taking everything
+                offline.
+            </p>
+
+            <figure>
+                <img
+                    src="../static/images/spire_demo_explain.jpg"
+                    alt="Control center failure and restoration scenario"
+                    class="img-strip"
+                />
+                <figcaption>
+                    The scenario being demonstrated: a control center failure
+                    and coordinated restoration across sites.
+                </figcaption>
+            </figure>
+
+            <h3>What I Built</h3>
+            <p>
+                <strong>End-to-end reconfiguration pipeline.</strong> The system
+                spans three components: a Config Manager that generates and
+                signs new configurations, validating topology, roles, and key
+                material before release; a Config Disseminator that reliably
+                distributes packages across unreliable multi-site links; and a
+                Config Agent running on every node that validates authenticity,
+                stages changes, rotates keys, and coordinates local service
+                transitions without disrupting active operations.
+            </p>
+            <p>
+                <strong>Hybrid cryptographic key rotation.</strong> Implemented
+                AES-256 + RSA-OAEP encryption with key versioning so nodes can
+                handle overlapping key sets during transitions and securely
+                discard deprecated material — without any window where the
+                system is unprotected.
+            </p>
+            <p>
+                <strong>Custom reliable multicast protocol.</strong> Built
+                fragmentation and fragment reassembly over Spines multicast,
+                with periodic re-broadcast to ensure delivery across unreliable
+                multi-site links. This was necessary because standard reliable
+                transport assumptions don't hold across Spire's multi-site
+                links.
+            </p>
+            <p>
+                <strong>26-node reproducible demo environment.</strong> To
+                validate under realistic conditions, I built a custom
+                AlmaLinux-based Docker image that compiles the full Spire stack
+                from source, automated all dependency and key generation steps,
+                and designed a Docker Compose topology of 26 containers on a
+                deterministic bridged subnet. The result is a one-command
+                environment for demonstrating live topology changes, key
+                rotation, and coordinated transitions with zero downtime.
+            </p>
+
+            <figure>
+                <img
+                    src="../static/images/spire_demo_label.jpg"
+                    alt="Live 26-node deployment with control centers and data center logs"
+                    class="img-strip"
+                />
+                <figcaption>
+                    Guide to the demo terminals: what each window shows during a
+                    live run.
+                </figcaption>
+            </figure>
+
+            <h3>Demo</h3>
+            <figure>
+                <video controls class="img-strip" style="border-radius: 10px">
+                    <source
+                        src="../static/videos/spire_demo.mp4"
+                        type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                </video>
+                <figcaption>
+                    A scenario running in real time across the 26-node demo
+                    environment.
+                </figcaption>
+            </figure>
+        </main>
+
+        <script src="../static/js/navbar.js"></script>
+    </body>
 </html>
