@@ -129,7 +129,7 @@
                 without disrupting active operations.
             </p>
             <p>
-                <strong>Custom reliable multicast protocol.</strong> Built
+                <strong>Custom reliable transmission protocol.</strong> Built
                 fragmentation and fragment reassembly over Spines multicast,
                 with periodic re-broadcast to ensure delivery across unreliable
                 multi-site links. This was necessary because standard reliable
@@ -138,13 +138,12 @@
             </p>
             <p>
                 <strong>26-node reproducible demo environment.</strong> To
-                validate under realistic conditions, I built a custom
-                AlmaLinux-based Docker image that compiles the full Spire stack
-                from source, automated all dependency and key generation steps,
-                and designed a Docker Compose topology of 26 containers on a
-                deterministic bridged subnet. The result is a one-command
-                environment for demonstrating live topology changes and
-                coordinated transitions with zero downtime.
+                validate under realistic conditions, I built a custom Docker
+                image that compiles the full Spire stack from source, automated
+                all dependency and key generation steps, and designed a Docker
+                Compose topology of 26 containers on a bridged subnet. The
+                result is a one-command environment for demonstrating live
+                topology changes and coordinated transitions with zero downtime.
             </p>
 
             <figure>

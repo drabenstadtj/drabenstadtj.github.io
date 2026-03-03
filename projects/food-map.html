@@ -1,165 +1,187 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&family=Space+Grotesk:wght@300..700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="../static/css/style.css" />
-    <link rel="icon" type="image/png" href="../favicon.png" />
-    <title>Pittsburgh Food Access Map - Jack Drabenstadt</title>
-  </head>
-  <body>
-    <nav id="navbar">
-      <div class="navbar-top">
-        <span class="navbar-name">
-          <span class="name-full">Jack Drabenstadt</span>
-        </span>
-        <span class="navbar-page">Projects</span>
-        <div class="navbar-socials">
-          <a
-            href="/gamedev/pages/gamelog.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="navbar-resume"
-            >Dev Log</a
-          >
-          <a
-            href="https://www.linkedin.com/in/jackdrabenstadt/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn" data-tooltip="LinkedIn"
-            ><i class="fa-brands fa-linkedin"></i
-          ></a>
-          <a
-            href="https://github.com/drabenstadtj"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub" data-tooltip="GitHub"
-            ><i class="fa-brands fa-github"></i
-          ></a>
-          <a
-            href="https://drabenstadtj.itch.io/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Itch.io" data-tooltip="Itch.io"
-            ><i class="fa-brands fa-itch-io"></i
-          ></a>
-          <a
-            href="mailto:jackdrabenstadt@gmail.com"
-            aria-label="Email" data-tooltip="Email"
-          >
-            <i class="fa-solid fa-envelope"></i>
-          </a>
-        </div>
-      </div>
-      <div class="navbar-links">
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../projects.html" class="active">Projects</a></li>
-          <li><a href="../resume.html">Resume</a></li>
-        </ul>
-      </div>
-    </nav>
-    <div id="navbar-spacer"></div>
-
-    <main class="content-strip">
-      <h1>
-        <a href="https://map.jackdrab.dev" target="_blank" rel="noopener noreferrer" class="heading-link"
-          >Pittsburgh Food Access Map
-          <i class="fa-solid fa-arrow-up-right-from-square heading-arrow"></i
-        ></a>
-      </h1>
-
-      <div class="project-meta">
-        <a
-          href="https://github.com/drabenstadtj/PittsburghFoodAccessMap"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="meta-link"
-          ><i class="fa-brands fa-github"></i> GitHub</a
-        >
-        <span class="project-meta-divider"></span>
-        <span class="tag">React</span>
-        <span class="tag">Flask</span>
-        <span class="tag">Docker</span>
-        <span class="tag">SQLite</span>
-      </div>
-
-      <p>
-        A capstone project built for and currently deployed with the Pittsburgh
-        Policy Initiative — helping residents find food assistance across nearly
-        800 locations citywide. No account needed. Search, filter by type or
-        distance, check what's open right now, and get directions. PPI staff
-        manage the full dataset through a role-gated admin dashboard.
-      </p>
-
-      <figure>
-        <img
-          src="../static/images/foodmapdemo.gif"
-          alt="Pittsburgh Food Access Map demo"
-          class="img-strip"
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&family=Space+Grotesk:wght@300..700&display=swap"
+            rel="stylesheet"
         />
-        <figcaption>Searching and filtering food resources across Pittsburgh.</figcaption>
-      </figure>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+        <link rel="stylesheet" href="../static/css/style.css" />
+        <link rel="icon" type="image/png" href="../favicon.png" />
+        <title>Pittsburgh Food Access Map - Jack Drabenstadt</title>
+    </head>
+    <body>
+        <nav id="navbar">
+            <div class="navbar-top">
+                <span class="navbar-name">
+                    <span class="name-full">Jack Drabenstadt</span>
+                </span>
+                <span class="navbar-page">Projects</span>
+                <div class="navbar-socials">
+                    <a
+                        href="/gamedev/pages/gamelog.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="navbar-resume"
+                        >Dev Log</a
+                    >
+                    <a
+                        href="https://www.linkedin.com/in/jackdrabenstadt/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                        data-tooltip="LinkedIn"
+                        ><i class="fa-brands fa-linkedin"></i
+                    ></a>
+                    <a
+                        href="https://github.com/drabenstadtj"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="GitHub"
+                        data-tooltip="GitHub"
+                        ><i class="fa-brands fa-github"></i
+                    ></a>
+                    <a
+                        href="https://drabenstadtj.itch.io/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Itch.io"
+                        data-tooltip="Itch.io"
+                        ><i class="fa-brands fa-itch-io"></i
+                    ></a>
+                    <a
+                        href="mailto:jackdrabenstadt@gmail.com"
+                        aria-label="Email"
+                        data-tooltip="Email"
+                    >
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li>
+                        <a href="../projects.html" class="active">Projects</a>
+                    </li>
+                    <li><a href="../resume.html">Resume</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div id="navbar-spacer"></div>
 
-      <h3>The Problem</h3>
-      <p>
-        Food insecurity is a persistent challenge in Pittsburgh, with many
-        neighborhoods lacking consistent access to affordable, healthy food. In
-        2019, Code for Good Pittsburgh built a map to visualize food deserts and
-        resources, but it fell out of maintenance. The Pittsburgh Policy
-        Initiative set out to rebuild it — not just as a resident-facing tool,
-        but as a platform staff could maintain without a developer and where
-        community members could contribute updates directly.
-      </p>
+        <main class="content-strip">
+            <h1>
+                <a
+                    href="https://map.jackdrab.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="heading-link"
+                    >Pittsburgh Food Access Map
+                    <i
+                        class="fa-solid fa-arrow-up-right-from-square heading-arrow"
+                    ></i
+                ></a>
+            </h1>
 
-      <h3>My Role</h3>
-      <p>
-        Lead developer on a small team. Owned the full-stack architecture,
-        deployment infrastructure, and most of the feature work.
-      </p>
+            <div class="project-meta">
+                <a
+                    href="https://github.com/drabenstadtj/PittsburghFoodAccessMap"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="meta-link"
+                    ><i class="fa-brands fa-github"></i> GitHub</a
+                >
+                <span class="project-meta-divider"></span>
+                <span class="tag">React</span>
+                <span class="tag">Flask</span>
+                <span class="tag">Docker</span>
+                <span class="tag">SQLite</span>
+            </div>
 
-      <h3>What I Built</h3>
-      <p>
-        <strong>Filtering by type, distance, and hours.</strong> Users can
-        narrow results by resource type (food pantry, food bank, community
-        fridge, and more), filter by distance from their location, and toggle to
-        show only currently open sites. Hours are stored as structured JSON per
-        day and checked client-side against the current time. That same data
-        structure powers an admin-facing hours editor — one schema serving both
-        the public UI and the management tool. These filters address the most
-        common frustration with resource finders: wading through irrelevant or
-        closed locations.
-      </p>
-      <p>
-        <strong>Community suggestion pipeline.</strong> Anyone can submit a new
-        resource location for review. Admins can approve, reject, geocode via
-        Nominatim, and promote a suggestion into a live map entry in a single
-        workflow. The suggestion retains a link to the created resource for a
-        clean audit trail. This keeps the dataset accurate without requiring
-        staff to source every update themselves.
-      </p>
-      <p>
-        <strong>Containerized deployment with a closed security model.</strong>
-        The full stack ships as two Docker containers (Flask/Gunicorn + Nginx)
-        behind an external reverse proxy, with the database volume-mounted so
-        data persists across rebuilds. Admin registration requires an existing
-        admin session — there's no open self-registration endpoint. Production
-        uses HTTPS-only session cookies with secrets injected via environment
-        variables. PPI staff depend on this daily, so the deployment had to be
-        simple to maintain and hard to break.
-      </p>
-    </main>
+            <p>
+                A capstone project built for and currently deployed with the
+                Pittsburgh Policy Initiative — helping residents find food
+                assistance across nearly 800 locations citywide. No account
+                needed. Search, filter by type or distance, check what's open
+                right now, and get directions. PPI staff manage the full dataset
+                through a role-gated admin dashboard.
+            </p>
 
-    <script src="../static/js/navbar.js"></script>
-  </body>
+            <figure>
+                <img
+                    src="../static/images/foodmapdemo.gif"
+                    alt="Pittsburgh Food Access Map demo"
+                    class="img-strip"
+                />
+                <figcaption>
+                    Searching and filtering food resources across Pittsburgh.
+                </figcaption>
+            </figure>
+
+            <h3>The Problem</h3>
+            <p>
+                Food insecurity is a persistent challenge in Pittsburgh, with
+                many neighborhoods lacking consistent access to affordable,
+                healthy food. In 2019, Code for Good Pittsburgh built a map to
+                visualize food deserts and resources, but it fell out of
+                maintenance. The Pittsburgh Policy Initiative set out to rebuild
+                it — not just as a resident-facing tool, but as a platform staff
+                could maintain without a developer and where community members
+                could contribute updates directly.
+            </p>
+
+            <h3>My Role</h3>
+            <p>
+                Lead developer on a small team. Responsible for the full-stack
+                architecture, deployment infrastructure, and most of the feature
+                work.
+            </p>
+
+            <h3>What I Built</h3>
+            <p>
+                <strong>Filtering by type, distance, and hours.</strong> Users
+                can narrow results by resource type (food pantry, food bank,
+                community fridge, and more), filter by distance from their
+                location, and toggle to show only currently open sites. Hours
+                are stored as structured JSON per day and checked client-side
+                against the current time. That same data structure powers an
+                admin-facing hours editor. These filters address the most common
+                frustration with resource finders: wading through irrelevant or
+                closed locations.
+            </p>
+            <p>
+                <strong>Community suggestion pipeline.</strong> Anyone can
+                submit a new resource location for review. Admins can approve,
+                reject, or promote a suggestion into a live map entry in a
+                single workflow. The suggestion retains a link to the created
+                resource for a clean audit trail. This keeps the dataset
+                accurate without requiring staff to source every update
+                themselves.
+            </p>
+            <p>
+                <strong
+                    >Containerized deployment with a closed security
+                    model.</strong
+                >
+                The full stack ships as two Docker containers behind an external
+                reverse proxy, with the database volume-mounted so data persists
+                across rebuilds. Admin registration requires an existing admin
+                session as there's no open self-registration endpoint.
+                Production uses HTTPS-only session cookies with secrets injected
+                via environment variables. Pittsburgh residents will depend on
+                this daily, so the deployment had to be simple to maintain and
+                hard to break.
+            </p>
+        </main>
+
+        <script src="../static/js/navbar.js"></script>
+    </body>
 </html>
